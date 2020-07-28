@@ -1,0 +1,2 @@
+# Project exclude paths
+/${project.build.directory}/classes/

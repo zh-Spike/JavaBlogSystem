@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: BlogApplication
+  datasource:
+    url: jdbc:mysql://192.168.106.128:3306/blog_system?characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+server:
+  port: 8080
+
+
+
