@@ -1,5 +1,6 @@
 package net.blog.controller;
 
+import net.blog.response.ResponseResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,8 +11,13 @@ public class TestController {
 
    @ResponseBody
    @RequestMapping(value = "/Hello-world",method = RequestMethod.GET)
-    public String helloWorld() {
+    public ResponseResult helloWorld() {
        System.out.println("Hello World!");
-       return "hello world!";
+       ResponseResult responseResult = new ResponseResult();
+       responseResult.setSuccess(true);
+       responseResult.setCode(20000);
+       responseResult.setMessage("操作成功");
+       responseResult.setData("hello world");
+       return responseResult;
     }
 }
