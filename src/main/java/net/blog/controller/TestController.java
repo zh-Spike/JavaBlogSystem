@@ -1,23 +1,20 @@
 package net.blog.controller;
 
+import net.blog.response.ResponeState;
 import net.blog.response.ResponseResult;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/test")
 public class TestController {
 
-   @ResponseBody
-   @RequestMapping(value = "/Hello-world",method = RequestMethod.GET)
+   @GetMapping("/Hello-world")
     public ResponseResult helloWorld() {
        System.out.println("Hello World!");
-       ResponseResult responseResult = new ResponseResult();
-       responseResult.setSuccess(true);
-       responseResult.setCode(20000);
-       responseResult.setMessage("操作成功");
-       responseResult.setData("hello world");
+       ResponseResult responseResult = new ResponseResult(ResponeState.FAILED);
+       responseResult.setData();
        return responseResult;
     }
 }
