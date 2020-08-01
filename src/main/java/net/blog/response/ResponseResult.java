@@ -1,37 +1,30 @@
 package net.blog.response;
 
 public class ResponseResult {
-
-    public ResponseResult(ICommentResult commentResult) {
-        this.message = commentResult.getMessage();
-        this.success = commentResult.isSuccess();
-        this.code = commentResult.getCode();
-    }
-
-    public static ResponseResult SUCCESS() {
-        return new ResponseResult(CommentResponse.SUCCESS);
-    }
-
-    public static ResponseResult SUCCESS(String message) {
-        ResponseResult success = SUCCESS();
-        success.setMessage(message);
-        return success;
-    }
-
-    public static ResponseResult FAILED() {
-        return new ResponseResult(CommentResponse.FAILED);
-    }
-
-    public static ResponseResult FAILED(String message) {
-        ResponseResult failed = FAILED();
-        failed.setMessage(message);
-        return failed;
-    }
-
-    private String message;
     private boolean success;
+    private String message;
     private int code;
     private Object data;
+
+    public ResponseResult(ResponseState responseState) {
+        this.message = responseState.getMessage();
+        this.success = responseState.isSuccess();
+        this.code = responseState.getCode();
+    }
+
+    public static ResponseResult SUCCESS(){
+        return new ResponseResult(ResponseState.SUCCESS);
+    }
+
+    public static ResponseResult SUCCESS(String message){
+        ResponseResult responseResult = new ResponseResult(ResponseState.SUCCESS);
+        responseResult.setMessage(message);
+        return responseResult;
+    }
+
+    public static ResponseResult FAILED(){
+        return new ResponseResult(ResponseState.FAILED);
+    }
 
     public String getMessage() {
         return message;
@@ -61,7 +54,8 @@ public class ResponseResult {
         return data;
     }
 
-    public void setData(Object data) {
+    public ResponseResult setData(Object data) {
         this.data = data;
+        return this;
     }
 }
