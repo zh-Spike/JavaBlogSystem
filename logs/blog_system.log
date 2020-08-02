@@ -25,3 +25,7 @@
 [2020/08/02-22:29:19][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
 [2020/08/02-22:29:24][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 4.879 seconds (JVM running for 5.94)
 [2020/08/02-22:31:00][http-nio-8080-exec-7][INFO ][net.blog.controller.user.UserApi]:email ==>lbw@example.com
+[2020/08/02-22:46:44][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/02-22:46:44][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5172 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/02-22:46:44][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/02-22:46:48][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 4.366 seconds (JVM running for 5.236)
