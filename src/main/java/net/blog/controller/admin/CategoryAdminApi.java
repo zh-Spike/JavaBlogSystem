@@ -1,6 +1,6 @@
 package net.blog.controller.admin;
 
-import net.blog.pojo.Categories;
+import net.blog.pojo.Category;
 import net.blog.response.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class CategoryAdminApi {
      *
      */
     @PostMapping
-    public ResponseResult addCategory(@RequestBody Categories category){
+    public ResponseResult addCategory(@RequestBody Category category){
         return null;
     }
     /**
@@ -31,7 +31,7 @@ public class CategoryAdminApi {
      *
      */
     @PutMapping
-    public ResponseResult updateCategory(@PathVariable("categoryId") String categoryId,@RequestBody Categories category){
+    public ResponseResult updateCategory(@PathVariable("categoryId") String categoryId,@RequestBody Category category){
         return null;
     }
     /**

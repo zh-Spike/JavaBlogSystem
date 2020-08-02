@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="BlogSystem" uuid="adbe3c89-1f99-4a34-b17e-92ac042c581d">
+    <data-source source="LOCAL" name="blog_system" uuid="9572b4b0-697a-4583-9542-4cb34c439467">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.106.128:3306/blog_system</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="BlogSystem1" uuid="33d23720-e24f-4e82-9224-b1b39a8bcfed">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.106.128:3306/blog_system?characterEncoding=utf-8&amp;useSSL=false</jdbc-url>
     </data-source>
   </component>
 </project>

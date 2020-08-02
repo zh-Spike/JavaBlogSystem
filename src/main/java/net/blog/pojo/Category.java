@@ -1,14 +1,13 @@
 package net.blog.pojo;
 
-import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
-@Table ( name ="tb_categories" )
-public class Categories {
+@Table ( name ="tb_category" )
+public class Category {
 
   	@Id
 	private String id;
