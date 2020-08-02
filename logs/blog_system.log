@@ -1,0 +1,6 @@
+[2020/08/02-21:37:39][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/02-21:37:39][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 9160 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/02-21:37:39][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/02-21:37:43][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 3.656 seconds (JVM running for 4.562)
+[2020/08/02-21:37:50][http-nio-8080-exec-2][INFO ][net.blog.controller.TestController]:user name -== > 666
+[2020/08/02-21:37:50][http-nio-8080-exec-2][INFO ][net.blog.controller.TestController]:password -== > 123456
