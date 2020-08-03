@@ -31,10 +31,9 @@ public class User {
   	@Column(name = "login_ip" )
 	private String login_ip;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp create_time;
+	private Date create_time;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp update_time;
-
+	private Date update_time;
 
 	public String getId() {
 		return id;
@@ -44,7 +43,6 @@ public class User {
 		this.id = id;
 	}
 
-
 	public String getUser_name() {
 		return user_name;
 	}
@@ -52,7 +50,6 @@ public class User {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-
 
 	public String getPassword() {
 		return password;
@@ -62,7 +59,6 @@ public class User {
 		this.password = password;
 	}
 
-
 	public String getRoles() {
 		return roles;
 	}
@@ -70,7 +66,6 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
-
 
 	public String getAvatar() {
 		return avatar;
@@ -80,7 +75,6 @@ public class User {
 		this.avatar = avatar;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
@@ -88,7 +82,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getSign() {
 		return sign;
@@ -98,7 +91,6 @@ public class User {
 		this.sign = sign;
 	}
 
-
 	public String getState() {
 		return state;
 	}
@@ -106,7 +98,6 @@ public class User {
 	public void setState(String state) {
 		this.state = state;
 	}
-
 
 	public String getReg_ip() {
 		return reg_ip;
@@ -116,7 +107,6 @@ public class User {
 		this.reg_ip = reg_ip;
 	}
 
-
 	public String getLogin_ip() {
 		return login_ip;
 	}
@@ -125,22 +115,19 @@ public class User {
 		this.login_ip = login_ip;
 	}
 
-
-	public java.sql.Timestamp getCreate_time() {
+	public Date getCreate_time() {
 		return create_time;
 	}
 
-	public void setCreate_time(java.sql.Timestamp create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
 
-
-	public java.sql.Timestamp getUpdate_time() {
+	public Date getUpdate_time() {
 		return update_time;
 	}
 
-	public void setUpdate_time(java.sql.Timestamp update_time) {
+	public void setUpdate_time(Date update_time) {
 		this.update_time = update_time;
 	}
-
 }

@@ -26,6 +26,12 @@ public class ResponseResult {
         return new ResponseResult(ResponseState.FAILED);
     }
 
+    public static ResponseResult FAILED(String message){
+        ResponseResult responseResult = new ResponseResult(ResponseState.FAILED);
+        responseResult.setMessage(message);
+        return responseResult;
+    }
+
     public String getMessage() {
         return message;
     }
