@@ -90,6 +90,15 @@ public class UserApi {
         return null;
     }
 
+    @GetMapping("/list")
+    public ResponseResult listUser(@RequestParam("page") int page,@RequestParam("size")int size){
+        return null;
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseResult deleteUser(@PathVariable("userId")String userId){
+        return null;
+    }
 
 }
 
