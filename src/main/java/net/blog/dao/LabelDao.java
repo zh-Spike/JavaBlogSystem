@@ -17,4 +17,6 @@ public interface LabelDao extends JpaRepository<Labels,String>, JpaSpecification
      * @return
      */
     Labels findOneById(String id);
+
+    Labels findOneByName(String name);
 }

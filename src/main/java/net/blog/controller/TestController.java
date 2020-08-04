@@ -12,10 +12,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Transactional
 @Slf4j
@@ -55,18 +61,18 @@ public class TestController {
     }
 
     @DeleteMapping("/label/{labelId}")
-    public ResponseResult delete(@PathVariable("labelId") String labelId){
+    public ResponseResult delete(@PathVariable("labelId") String labelId) {
         int deleteResult = labelDao.deleteOneById(labelId);
         log.info("deleteResult ==> " + deleteResult);
-        if (deleteResult > 0){
-        return ResponseResult.SUCCESS("删除标签成功");
-        } else{
+        if (deleteResult > 0) {
+            return ResponseResult.SUCCESS("删除标签成功");
+        } else {
             return ResponseResult.FAILED("标签不存在");
         }
     }
 
     @PutMapping("/label/{labelId}")
-    public ResponseResult updateLabel(@PathVariable("labelId")String labelId,@RequestBody Labels labels){
+    public ResponseResult updateLabel(@PathVariable("labelId") String labelId, @RequestBody Labels labels) {
         Labels dbLabel = labelDao.findOneById(labelId);
         if (dbLabel == null) {
             return ResponseResult.FAILED("标签不存在");
@@ -79,27 +85,47 @@ public class TestController {
     }
 
     @GetMapping("/label/{labelId}")
-    public ResponseResult getLabelById(@PathVariable("labelId")String labelId){
+    public ResponseResult getLabelById(@PathVariable("labelId") String labelId) {
         Labels dbLabel = labelDao.findOneById(labelId);
-        if (dbLabel == null){
+        if (dbLabel == null) {
             return ResponseResult.FAILED("标签不存在");
         }
         return ResponseResult.SUCCESS("获取标签成功").setData(dbLabel);
     }
 
     @GetMapping("/label/list/{page}/{size}")
-    public ResponseResult listLabels(@PathVariable("page")int page,@PathVariable("size") int size){
+    public ResponseResult listLabels(@PathVariable("page") int page, @PathVariable("size") int size) {
         if (page < 1) {
             page = 1;
         }
         if (size <= 0) {
             size = Constants.DEFAULT_SIZE;
         }
-        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
-        Pageable pageable = PageRequest.of(page - 1, size,sort);
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<Labels> result = labelDao.findAll(pageable);
         return ResponseResult.SUCCESS("获取成功").setData(result);
     }
 
+    @GetMapping("/label/search")
+    public ResponseResult doLabelSearch(@RequestParam("keyword") String keyword, @RequestParam("count") int count) {
+//        Labels OneByName = labelDao.findOneByName(keyword);
+//        return ResponseResult.SUCCESS("查找成功").setData(OneByName);
+        List<Labels> all = labelDao.findAll(new Specification<Labels>() {
+            @Override
+            public Predicate toPredicate(Root<Labels> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Predicate namePre = criteriaBuilder.like(root.get("name").as(String.class), "%" + keyword + "%");
+                Predicate countPre = criteriaBuilder.equal(root.get("count").as(Integer.class), count);
+                Predicate and = criteriaBuilder.and(namePre, countPre);
+                return and;
+            }
+        });
+        if (all.size() == 0) {
+            return ResponseResult.FAILED("结果为空");
+        }
+        return ResponseResult.SUCCESS("查找成功").setData(all);
+    }
+
 }
+
 
