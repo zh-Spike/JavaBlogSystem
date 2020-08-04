@@ -35,7 +35,7 @@ public class UserServiceImpl implements IUserService {
     public ResponseResult initManagerAccount(User user, HttpServletRequest request){
         //检查是否有初始化
         Settings managerAccountState = settingsDao.findOneByKey(Constants.Settings.MANAGER_ACCOUNT_INIT_STATE);
-        if (managerAccountState == null){
+        if (managerAccountState != null){
             return ResponseResult.FAILED("管理员账号已经初始化了");
         };
         //检查数据
