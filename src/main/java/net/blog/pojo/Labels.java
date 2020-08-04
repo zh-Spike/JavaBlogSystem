@@ -17,10 +17,9 @@ public class Labels {
   	@Column(name = "count" )
 	private long count;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp create_time;
+	private Date create_time;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp update_time;
-
+	private Date update_time;
 
 	public String getId() {
 		return id;
@@ -30,7 +29,6 @@ public class Labels {
 		this.id = id;
 	}
 
-
 	public String getName() {
 		return name;
 	}
@@ -38,7 +36,6 @@ public class Labels {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public long getCount() {
 		return count;
@@ -48,22 +45,19 @@ public class Labels {
 		this.count = count;
 	}
 
-
-	public java.sql.Timestamp getCreate_time() {
+	public Date getCreate_time(Date date) {
 		return create_time;
 	}
 
-	public void setCreate_time(java.sql.Timestamp create_time) {
+	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
 	}
 
-
-	public java.sql.Timestamp getUpdate_time() {
+	public Date getUpdate_time() {
 		return update_time;
 	}
 
-	public void setUpdate_time(java.sql.Timestamp update_time) {
+	public void setUpdate_time(Date update_time) {
 		this.update_time = update_time;
 	}
-
 }
