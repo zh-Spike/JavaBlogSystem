@@ -11,6 +11,7 @@ import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,9 @@ import java.util.Date;
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService {
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private SnowflakeIdWorker idWorker;
@@ -62,6 +66,12 @@ public class UserServiceImpl implements IUserService {
         user.setReg_ip(remoteAddr);
         user.setCreate_time(new Date());
         user.setUpdate_time(new Date());
+        //对密码进行加密
+        //原密码
+        String password = user.getPassword();
+        //加密码
+        String encode = bCryptPasswordEncoder.encode(password);
+        user.setPassword(encode);
         //存到数据库
         userDao.save(user);
         //改标记

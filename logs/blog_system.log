@@ -164,3 +164,61 @@
 [2020/08/04-20:12:15][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 19372 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
 [2020/08/04-20:12:15][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
 [2020/08/04-20:12:21][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.719 seconds (JVM running for 7.79)
+[2020/08/04-20:28:55][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:28:56][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 19348 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:28:56][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:29:02][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.388 seconds (JVM running for 7.547)
+[2020/08/04-20:29:15][http-nio-8080-exec-9][INFO ][net.blog.controller.TestController]:Hello World!
+[2020/08/04-20:29:16][http-nio-8080-exec-10][INFO ][net.blog.controller.TestController]:Hello World!
+[2020/08/04-20:39:21][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:39:21][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2748 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:39:21][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:39:27][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.405 seconds (JVM running for 7.68)
+[2020/08/04-20:52:22][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:52:23][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 19248 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:52:23][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:52:32][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 9.491 seconds (JVM running for 10.957)
+[2020/08/04-20:52:43][http-nio-8080-exec-6][INFO ][net.blog.controller.user.UserApi]:user name ==> 666
+[2020/08/04-20:52:43][http-nio-8080-exec-6][INFO ][net.blog.controller.user.UserApi]:password ==> 123456
+[2020/08/04-20:52:43][http-nio-8080-exec-6][INFO ][net.blog.controller.user.UserApi]:email ==> admin@test.com
+[2020/08/04-20:52:43][http-nio-8080-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:remoteAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:52:43][http-nio-8080-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:localAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:53:40][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:53:40][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 18040 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:53:40][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:53:47][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.265 seconds (JVM running for 8.407)
+[2020/08/04-20:54:36][http-nio-8080-exec-3][INFO ][net.blog.controller.user.UserApi]:user name ==> 666
+[2020/08/04-20:54:36][http-nio-8080-exec-3][INFO ][net.blog.controller.user.UserApi]:password ==> 123456
+[2020/08/04-20:54:36][http-nio-8080-exec-3][INFO ][net.blog.controller.user.UserApi]:email ==> admin@test.com
+[2020/08/04-20:54:36][http-nio-8080-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:remoteAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:54:36][http-nio-8080-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:localAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:57:44][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:57:45][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 10620 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:57:45][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:57:53][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.4 seconds (JVM running for 9.683)
+[2020/08/04-20:58:01][http-nio-8080-exec-9][INFO ][net.blog.controller.user.UserApi]:user name ==> 666
+[2020/08/04-20:58:01][http-nio-8080-exec-9][INFO ][net.blog.controller.user.UserApi]:password ==> 123456
+[2020/08/04-20:58:01][http-nio-8080-exec-9][INFO ][net.blog.controller.user.UserApi]:email ==> admin@test.com
+[2020/08/04-20:58:01][http-nio-8080-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:remoteAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:58:01][http-nio-8080-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:localAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:58:48][http-nio-8081-exec-1][INFO ][net.blog.controller.user.UserApi]:user name ==> 666
+[2020/08/04-20:58:48][http-nio-8081-exec-1][INFO ][net.blog.controller.user.UserApi]:password ==> 123456
+[2020/08/04-20:58:48][http-nio-8081-exec-1][INFO ][net.blog.controller.user.UserApi]:email ==> admin@test.com
+[2020/08/04-20:58:49][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:remoteAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:58:49][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:localAddr ==>0:0:0:0:0:0:0:1
+[2020/08/04-20:59:41][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:59:42][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16572 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:59:42][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-20:59:58][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-20:59:59][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14748 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-20:59:59][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-21:00:06][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.096 seconds (JVM running for 9.442)
+[2020/08/04-21:07:06][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/04-21:07:07][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 19208 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/04-21:07:07][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/04-21:07:14][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.495 seconds (JVM running for 8.889)
+[2020/08/04-21:07:30][http-nio-8081-exec-2][INFO ][net.blog.controller.TestController]:captcha content == > 8ax9y
+[2020/08/04-21:07:40][http-nio-8081-exec-3][INFO ][net.blog.controller.TestController]:captcha content == > 7aca2
+[2020/08/04-21:07:41][http-nio-8081-exec-4][INFO ][net.blog.controller.TestController]:captcha content == > ugcsd
+[2020/08/04-21:07:42][http-nio-8081-exec-5][INFO ][net.blog.controller.TestController]:captcha content == > scudg
+[2020/08/04-21:07:42][http-nio-8081-exec-6][INFO ][net.blog.controller.TestController]:captcha content == > tw8pz
