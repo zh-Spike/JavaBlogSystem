@@ -47,7 +47,7 @@ public class TestController {
         //判断
         //补全
         labels.setId(idWorker.nextId() + "");
-        labels.setCreate_time(new Date());
+        labels.setCreateTime(new Date());
         labels.setUpdate_time(new Date());
         //保存
         labelDao.save(labels);
@@ -95,8 +95,8 @@ public class TestController {
         if (size <= 0) {
             size = Constants.DEFAULT_SIZE;
         }
-        Sort sort = new Sort(Sort.Direction.DESC,"create_time");
-        Pageable pageable = PageRequest.of(page -1, size, sort);
+        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
+        Pageable pageable = PageRequest.of(page - 1, size,sort);
         Page<Labels> result = labelDao.findAll(pageable);
         return ResponseResult.SUCCESS("获取成功").setData(result);
     }

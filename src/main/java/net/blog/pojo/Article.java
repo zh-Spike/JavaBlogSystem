@@ -1,10 +1,9 @@
 package net.blog.pojo;
 
-import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
 @Table ( name ="tb_article" )
@@ -35,9 +34,9 @@ public class Article {
   	@Column(name = "view_count" )
 	private long view_count;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp create_time;
+	private java.sql.Timestamp createTime;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp update_time;
+	private java.sql.Timestamp updateTime;
 
 
 	public String getId() {
@@ -149,20 +148,20 @@ public class Article {
 
 
 	public java.sql.Timestamp getCreate_time() {
-		return create_time;
+		return createTime;
 	}
 
 	public void setCreate_time(java.sql.Timestamp create_time) {
-		this.create_time = create_time;
+		this.createTime = create_time;
 	}
 
 
 	public java.sql.Timestamp getUpdate_time() {
-		return update_time;
+		return updateTime;
 	}
 
 	public void setUpdate_time(java.sql.Timestamp update_time) {
-		this.update_time = update_time;
+		this.updateTime = update_time;
 	}
 
 }

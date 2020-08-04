@@ -22,9 +22,9 @@ public class Category {
   	@Column(name = "status" )
 	private String status;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp create_time;
+	private java.sql.Timestamp createTime;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp update_time;
+	private java.sql.Timestamp updateTime;
 
 
 	public String getId() {
@@ -82,20 +82,20 @@ public class Category {
 
 
 	public java.sql.Timestamp getCreate_time() {
-		return create_time;
+		return createTime;
 	}
 
 	public void setCreate_time(java.sql.Timestamp create_time) {
-		this.create_time = create_time;
+		this.createTime = create_time;
 	}
 
 
 	public java.sql.Timestamp getUpdate_time() {
-		return update_time;
+		return updateTime;
 	}
 
 	public void setUpdate_time(java.sql.Timestamp update_time) {
-		this.update_time = update_time;
+		this.updateTime = update_time;
 	}
 
 }

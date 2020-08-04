@@ -17,9 +17,9 @@ public class Labels {
   	@Column(name = "count" )
 	private long count;
   	@Column(name = "create_time" )
-	private Date create_time;
+	private Date createTime;
   	@Column(name = "update_time" )
-	private Date update_time;
+	private Date updateTime;
 
 	public String getId() {
 		return id;
@@ -46,18 +46,18 @@ public class Labels {
 	}
 
 	public Date getCreate_time(Date date) {
-		return create_time;
+		return createTime;
 	}
 
-	public void setCreate_time(Date create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	public Date getUpdate_time() {
-		return update_time;
+		return updateTime;
 	}
 
 	public void setUpdate_time(Date update_time) {
-		this.update_time = update_time;
+		this.updateTime = update_time;
 	}
 }

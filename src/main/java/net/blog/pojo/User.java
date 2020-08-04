@@ -31,9 +31,9 @@ public class User {
   	@Column(name = "login_ip" )
 	private String login_ip;
   	@Column(name = "create_time" )
-	private Date create_time;
+	private Date createTime;
   	@Column(name = "update_time" )
-	private Date update_time;
+	private Date updateTime;
 
 	public String getId() {
 		return id;
@@ -116,18 +116,18 @@ public class User {
 	}
 
 	public Date getCreate_time() {
-		return create_time;
+		return createTime;
 	}
 
 	public void setCreate_time(Date create_time) {
-		this.create_time = create_time;
+		this.createTime = create_time;
 	}
 
 	public Date getUpdate_time() {
-		return update_time;
+		return updateTime;
 	}
 
 	public void setUpdate_time(Date update_time) {
-		this.update_time = update_time;
+		this.updateTime = update_time;
 	}
 }
