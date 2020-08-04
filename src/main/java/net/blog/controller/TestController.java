@@ -8,6 +8,7 @@ import net.blog.pojo.Labels;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.utils.Constants;
+import net.blog.utils.RedisUtils;
 import net.blog.utils.SnowflakeIdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,6 +43,8 @@ public class TestController {
     @GetMapping("/Hello-world")
     public ResponseResult helloWorld() {
         log.info("Hello World!");
+        String captchaContent = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + "123456");
+        log.info("capchaContent == >" + captchaContent);
         return ResponseResult.SUCCESS().setData("Hello");
     }
 
@@ -130,6 +133,8 @@ public class TestController {
         return ResponseResult.SUCCESS("查找成功").setData(all);
     }
 
+    @Autowired
+    private RedisUtils redisUtils;
     @RequestMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 设置请求头为输出图片类型
@@ -150,8 +155,9 @@ public class TestController {
         String content = specCaptcha.text().toLowerCase();
         log.info("captcha content == > " + content);
         // 验证码存入session
-        request.getSession().setAttribute("captcha", content);
-
+        //request.getSession().setAttribute("captcha", content);
+        //存入redis,10分钟
+        redisUtils.set(Constants.User.KEY_CAPTCHA_CONTENT + "123456", content, 60 * 10);
         // 输出图片流
         specCaptcha.out(response.getOutputStream());
     }
