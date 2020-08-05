@@ -202,3 +202,7 @@
 [2020/08/05-16:16:23][blog_task_worker-2][INFO ][net.blog.utils.EmailSender]:email send...
 [2020/08/05-16:20:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 2
 [2020/08/05-16:20:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > csgwn
+[2020/08/05-16:42:00][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/05-16:42:00][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14936 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/05-16:42:00][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/05-16:42:05][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 5.466 seconds (JVM running for 6.589)

@@ -4,6 +4,7 @@ import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import io.jsonwebtoken.Jwt;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.SettingsDao;
 import net.blog.dao.UserDao;
@@ -12,18 +13,19 @@ import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.response.ResponseState;
 import net.blog.services.IUserService;
-import net.blog.utils.Constants;
-import net.blog.utils.RedisUtils;
-import net.blog.utils.SnowflakeIdWorker;
-import net.blog.utils.TextUtils;
+import net.blog.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @Slf4j
@@ -42,6 +44,11 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private SettingsDao settingsDao;
+    private Object object;
+    private String userName;
+    private String password;
+    private User oneByUserName;
+    private boolean aBoolean;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -300,5 +307,70 @@ public class UserServiceImpl implements IUserService {
         userDao.save(user);
         //第九步：返回结果
         return ResponseResult.GET(ResponseState.JOIN_IN_SUCCESS);
+    }
+
+    @Override
+    public ResponseResult doLogin(String captcha,
+                                  String captchaKey,
+                                  User user,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
+        String captchaValue = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
+        if (captcha.equals(captchaValue)) {
+            return ResponseResult.FAILED("图灵验证码失败");
+        }
+        // 有可能是邮箱，也可能是用户名
+        String userName = user.getUserName();
+        if (TextUtils.isEmpty(userName)) {
+            return ResponseResult.FAILED("账号不能为空");
+        }
+        String password = user.getPassword();
+        if (TextUtils.isEmpty(password)) {
+            return ResponseResult.FAILED("密码不能为空");
+        }
+
+        User userFromDb = userDao.findOneByUserName(userName);
+        if (userFromDb == null) {
+            userFromDb = userDao.findOneByUserName(userName);
+        }
+
+        if (userFromDb == null) {
+            return ResponseResult.FAILED("用户名或密码不正确");
+        }
+        // 用户存在
+        // 对比密码
+        Boolean matches= bCryptPasswordEncoder.matches(password, userFromDb.getPassword());
+        if (!matches) {
+            return  ResponseResult.FAILED("用户名或密码不正确");
+        }
+        // 判断用户状态
+        if (!"1".equals(userFromDb.getState())) {
+            return ResponseResult.FAILED("当前账号已被禁止.");
+        }
+
+        // 密码正确
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("id", userFromDb.getId());
+        claims.put("user_name",userFromDb.getUserName());
+        claims.put("roles", userFromDb.getRoles());
+        claims.put("avater",userFromDb.getAvatar());
+        claims.put("email",userFromDb.getEmail());
+        claims.put("sign", userFromDb.getSign());
+        // token有效2小时
+        String token = JwtUtils.createJWT("claims");
+        // 返回token MD5,token保存在redis里
+        // 前端访问取token的MD5key，从redis读取
+        String tokenKey = DigestUtils.md5DigestAsHex(token.getBytes());
+        // 保存token到redis,有效期2h，key为tokenkey
+        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey,token,60 * 60 * 2 );
+        // 把tokenkey写到cookies
+        Cookie cookie = new Cookie("Blog_token",tokenKey);
+        // 动态获取
+        cookie.setDomain("localhost");
+        cookie.setMaxAge(60*60*24*365);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return ResponseResult.SUCCESS("登录成功");
     }
 }

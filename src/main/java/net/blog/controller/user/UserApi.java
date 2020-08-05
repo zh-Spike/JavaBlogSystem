@@ -46,14 +46,24 @@ public class UserApi {
 
     /**
      * 登录sign-up
+     * 需要提交的数据
+     * 1.账号、邮箱 唯一
+     * 2.密码
+     * 3.图灵验证码
+     * 4.图灵验证码key
      *
      * @param captcha
      * @param user
+     * @param captchaKey
      * @return
      */
     @PostMapping("/{captcha}")
-    public ResponseResult login(@PathVariable("captcha") String captcha, @RequestBody User user) {
-        return null;
+    public ResponseResult login(@PathVariable("captcha_key") String captchaKey,
+                                @PathVariable("captcha") String captcha,
+                                @RequestBody User user,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
+        return userService.doLogin(captcha, captchaKey, user, request, response);
     }
 
     /**
