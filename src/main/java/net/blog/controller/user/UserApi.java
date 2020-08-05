@@ -76,9 +76,9 @@ public class UserApi {
      * @return
      */
     @GetMapping("/verify_code")
-    public ResponseResult sendVerifyCode(@RequestParam("email") String emailAddress){
+    public ResponseResult sendVerifyCode(HttpServletRequest request,@RequestParam("email") String emailAddress){
         log.info("email ==>"+ emailAddress);
-        return null;
+        return userService.sendEmail(request, emailAddress);
     }
 
     /**

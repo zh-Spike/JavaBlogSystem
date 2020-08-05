@@ -23,7 +23,7 @@ public class EmailSender {
         private List<MimeBodyPart> attachments = new ArrayList<MimeBodyPart>();
 
         private EmailSender() {
-            EmailSender.config(EmailSender.SMTP_ENT_QQ(false), "邮箱地址", "密码");
+            EmailSender.config(EmailSender.SMTP_QQ(false), "zh_spike@foxmail.com", "ldtmaeueelnddeec");
         }
 
         public static Properties defaultConfig(Boolean debug) {
@@ -281,6 +281,7 @@ public class EmailSender {
                 msg.setContent(content);
                 msg.setSentDate(new Date());
                 Transport.send(msg);
+                log.info("email send...");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -302,6 +303,14 @@ public class EmailSender {
             MimeBodyPart bodyPart = new MimeBodyPart();
             bodyPart.setContent(html, "text/html; charset=utf-8");
             return bodyPart;
+        }
+
+        public static void sendRegisterVerifyCode(String code,String address) throws Exception{
+            EmailSender.subject("邮箱注册验证码")
+                    .from("zh_spike")
+                    .text("注册验证码是:" + code + " 有效期为10分钟，若非本人，请忽略本邮件")
+                    .to(address)
+                    .send();
         }
 }
 
