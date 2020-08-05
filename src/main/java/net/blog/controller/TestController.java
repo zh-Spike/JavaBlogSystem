@@ -135,6 +135,7 @@ public class TestController {
 
     @Autowired
     private RedisUtils redisUtils;
+
     @RequestMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 设置请求头为输出图片类型

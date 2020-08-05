@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @RestController
@@ -33,6 +34,16 @@ public class UserApi {
      */
     @PostMapping
     public ResponseResult register(@RequestBody User user){
+        //第一步：检查当前用户名是否已经注册
+        //第二步：检查邮箱格式是否正确
+        //第三步：检查该邮箱是否已经注册
+        //第四步：检查邮箱验证码是否正确
+        //第五步：检查CAPTCHA是否正确
+        //第六步：对密码进行加密
+        //第七步：补全数据
+        //注册IP，登录IP，角色，头像，创建时间，登陆时间
+        //第八步：保存到数据库
+        //第九步：返回结果
         return null;
     }
     /**
@@ -49,13 +60,17 @@ public class UserApi {
 
     /**
      * 验证码
+     * 有效时长10mins
      * @return
      */
     @GetMapping("/captcha")
-    public ResponseResult getCaptcha(){
-        return null;
+    public void getCaptcha(HttpServletResponse response,@RequestParam("captcha_key")String captchaKey) {
+        try {
+            userService.createCaptcha(response, captchaKey);
+        } catch (Exception e){
+            log.error(response.toString());
+        }
     }
-
     /**
      *发邮件
      * @return
