@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table ( name ="tb_article" )
@@ -14,13 +15,13 @@ public class Article {
   	@Column(name = "title" )
 	private String title;
   	@Column(name = "user_id" )
-	private String user_id;
+	private String userId;
   	@Column(name = "user_avatar" )
-	private String user_avatar;
+	private String userAvatar;
   	@Column(name = "user_name" )
-	private String user_name;
+	private String userName;
   	@Column(name = "category_id" )
-	private String category_id;
+	private String categoryId;
   	@Column(name = "content" )
 	private String content;
   	@Column(name = "type" )
@@ -32,11 +33,11 @@ public class Article {
   	@Column(name = "labels" )
 	private String labels;
   	@Column(name = "view_count" )
-	private long view_count;
+	private long viewCount;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp createTime;
+	private Date createTime;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp updateTime;
+	private Date updateTime;
 
 
 	public String getId() {
@@ -57,39 +58,39 @@ public class Article {
 	}
 
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-
-
-	public String getUser_avatar() {
-		return user_avatar;
-	}
-
-	public void setUser_avatar(String user_avatar) {
-		this.user_avatar = user_avatar;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserAvatar() {
+		return userAvatar;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserAvatar(String userAvatar) {
+		this.userAvatar = userAvatar;
 	}
 
 
-	public String getCategory_id() {
-		return category_id;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setCategory_id(String category_id) {
-		this.category_id = category_id;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
 	}
 
 
@@ -138,16 +139,16 @@ public class Article {
 	}
 
 
-	public long getView_count() {
-		return view_count;
+	public long getViewCount() {
+		return viewCount;
 	}
 
-	public void setView_count(long view_count) {
-		this.view_count = view_count;
+	public void setViewCount(long viewCount) {
+		this.viewCount = viewCount;
 	}
 
 
-	public java.sql.Timestamp getCreate_time() {
+	public Date getCreate_time() {
 		return createTime;
 	}
 
@@ -156,7 +157,7 @@ public class Article {
 	}
 
 
-	public java.sql.Timestamp getUpdate_time() {
+	public Date getUpdate_time() {
 		return updateTime;
 	}
 

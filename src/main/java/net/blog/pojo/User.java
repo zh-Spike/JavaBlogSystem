@@ -13,7 +13,7 @@ public class User {
   	@Id
 	private String id;
   	@Column(name = "user_name" )
-	private String user_name;
+	private String userName;
   	@Column(name = "password" )
 	private String password;
   	@Column(name = "roles" )
@@ -27,9 +27,9 @@ public class User {
   	@Column(name = "state" )
 	private String state;
   	@Column(name = "reg_ip" )
-	private String reg_ip;
+	private String regIp;
   	@Column(name = "login_ip" )
-	private String login_ip;
+	private String loginIp;
   	@Column(name = "create_time" )
 	private Date createTime;
   	@Column(name = "update_time" )
@@ -43,12 +43,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -99,35 +99,35 @@ public class User {
 		this.state = state;
 	}
 
-	public String getReg_ip() {
-		return reg_ip;
+	public String getRegIp() {
+		return regIp;
 	}
 
-	public void setReg_ip(String reg_ip) {
-		this.reg_ip = reg_ip;
+	public void setRegIp(String regIp) {
+		this.regIp = regIp;
 	}
 
-	public String getLogin_ip() {
-		return login_ip;
+	public String getLoginIp() {
+		return loginIp;
 	}
 
-	public void setLogin_ip(String login_ip) {
-		this.login_ip = login_ip;
+	public void setLoginIp(String loginIp) {
+		this.loginIp = loginIp;
 	}
 
 	public Date getCreate_time() {
 		return createTime;
 	}
 
-	public void setCreate_time(Date create_time) {
+	public void setCreateTime(Date create_time) {
 		this.createTime = create_time;
 	}
 
-	public Date getUpdate_time() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdate_time(Date update_time) {
+	public void setUpdateTime(Date update_time) {
 		this.updateTime = update_time;
 	}
 }

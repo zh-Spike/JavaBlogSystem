@@ -10,8 +10,12 @@ import net.blog.dao.UserDao;
 import net.blog.pojo.Settings;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
+import net.blog.response.ResponseState;
 import net.blog.services.IUserService;
-import net.blog.utils.*;
+import net.blog.utils.Constants;
+import net.blog.utils.RedisUtils;
+import net.blog.utils.SnowflakeIdWorker;
+import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -48,7 +52,7 @@ public class UserServiceImpl implements IUserService {
         }
         ;
         //检查数据
-        if (TextUtils.isEmpty(user.getUser_name())) {
+        if (TextUtils.isEmpty(user.getUserName())) {
             return ResponseResult.FAILED("用户名不能为空");
         }
         if (TextUtils.isEmpty(user.getPassword())) {
@@ -67,10 +71,10 @@ public class UserServiceImpl implements IUserService {
         String localAddr = request.getLocalAddr();
         log.info("remoteAddr ==>" + remoteAddr);
         log.info("localAddr ==>" + localAddr);
-        user.setLogin_ip(remoteAddr);
-        user.setReg_ip(remoteAddr);
-        user.setCreate_time(new Date());
-        user.setUpdate_time(new Date());
+        user.setLoginIp(remoteAddr);
+        user.setRegIp(remoteAddr);
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
         //对密码进行加密
         //原密码
         String password = user.getPassword();
@@ -156,18 +160,37 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 发生邮件验证码
+     * 注册、找回密码、修改邮箱
+     * 注册：判断是否注册过了
+     * 找回：如果没注册，提示未注册
+     * 修改：如果新邮箱已经注册，提示修改密码
      *
      * @param request
      * @param emailAddress
      * @return
      */
     @Override
-    public ResponseResult sendEmail(HttpServletRequest request, String emailAddress) {
+    public ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress) {
+        if (emailAddress == null) {
+            return ResponseResult.FAILED("邮箱地址不能为空");
+        }
+        // 根据类型查询邮箱是否存在
+        if ("regiser".equals(type) || "updtae".equals(type)) {
+            User userByEmail = userDao.findOneByEmail(emailAddress);
+            if (userByEmail != null) {
+                return ResponseResult.FAILED("该邮箱已注册");
+            }
+        } else if ("forget".equals(type)) {
+            User userByEmail = userDao.findOneByEmail(emailAddress);
+            if (userByEmail == null) {
+                return ResponseResult.FAILED("该邮箱未注册");
+            }
+        }
         // 1.防暴力发送:同个邮箱间隔要超过30s，同个ip最多发10次，1h内短信最多3次
         String remoteAddr = request.getRemoteAddr();
         log.info("sendEmail ==>  ip ==> " + remoteAddr);
-        if (remoteAddr != null){
-            remoteAddr = remoteAddr.replaceAll(":","_");
+        if (remoteAddr != null) {
+            remoteAddr = remoteAddr.replaceAll(":", "_");
         }
         // 取，如果没有 通过
         Integer ipSendTime = (Integer) redisUtils.get(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr);
@@ -205,7 +228,77 @@ public class UserServiceImpl implements IUserService {
         redisUtils.set(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr, ipSendTime, 60 * 60);
         redisUtils.set(Constants.User.KEY_EMAIL_SEND_ADDRESS + emailAddress, "true", 30);
         // 保存code, 10分钟有效
-        redisUtils.set(Constants.User.KEY_EMAIL_CODE_CONTENT,String.valueOf(code), 60 * 10);
+        redisUtils.set(Constants.User.KEY_EMAIL_CODE_CONTENT + emailAddress, String.valueOf(code), 60 * 10);
         return ResponseResult.SUCCESS("验证码发送成功");
+    }
+
+    @Override
+    public ResponseResult register(User user, String emailCode, String captchaCode, String captchaKey, HttpServletRequest request) {
+        //第一步：检查当前用户名是否已经注册
+        String userName = user.getUserName();
+        if (TextUtils.isEmpty(userName)) {
+            return ResponseResult.FAILED("用户名不能为空");
+        }
+        User userByName = userDao.findOneByUserName(userName);
+        if (userByName != null) {
+            return ResponseResult.FAILED("该用户名已注册");
+        }
+        //第二步：检查邮箱格式是否正确
+        String email = user.getEmail();
+        if (TextUtils.isEmpty(email)) {
+            return ResponseResult.FAILED("邮箱地址不能为空");
+        }
+        if (!TextUtils.isEmailAddressRight(email)) {
+            return ResponseResult.FAILED("邮箱地址格式不正确");
+        }
+        //第三步：检查该邮箱是否已经注册
+        User userByEmail = userDao.findOneByEmail(email);
+        if (userByEmail != null) {
+            return ResponseResult.FAILED("该邮箱地址已注册");
+        }
+        //第四步：检查邮箱验证码是否正确
+        String emailVerifyCode = (String) redisUtils.get(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        if (TextUtils.isEmpty(emailVerifyCode)) {
+            return ResponseResult.FAILED("邮箱验证码已过期");
+        }
+        if (!emailVerifyCode.equals(emailCode)) {
+            return ResponseResult.FAILED("邮箱验证码不正确");
+        } else {
+            //正确，删除redis
+            redisUtils.del(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        }
+        //第五步：检查CAPTCHA是否正确
+        String captchaVerifyCode = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
+        if (TextUtils.isEmpty(captchaVerifyCode)) {
+            return ResponseResult.FAILED("人类验证码已过期");
+        }
+        if (!captchaVerifyCode.equals(captchaCode)) {
+            return ResponseResult.FAILED("人类验证码不正确");
+        } else {
+            //正确，删除redis
+            redisUtils.del(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
+        }
+        // 通过可注册
+        // 第六步：对密码进行加密
+        String password = user.getPassword();
+        if (TextUtils.isEmpty(password)) {
+            return ResponseResult.FAILED("密码不能为空");
+        }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        //第七步：补全数据
+        //注册IP，登录IP，角色，头像，创建时间，登陆时间
+        String ipAddress = request.getRemoteAddr();
+        user.setRegIp(ipAddress);
+        user.setLoginIp(ipAddress);
+        user.setUpdateTime(new Date());
+        user.setCreateTime(new Date());
+        user.setAvatar(Constants.User.DEFAULT_AVATAR);
+        user.setRoles(Constants.User.ROLE_NORMAL);
+        user.setState("1");
+        user.setId(idWorker.nextId() + "");
+        //第八步：保存到数据库
+        userDao.save(user);
+        //第九步：返回结果
+        return ResponseResult.GET(ResponseState.JOIN_IN_SUCCESS);
     }
 }

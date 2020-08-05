@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table ( name ="tb_category" )
@@ -22,9 +23,9 @@ public class Category {
   	@Column(name = "status" )
 	private String status;
   	@Column(name = "create_time" )
-	private java.sql.Timestamp createTime;
+	private Date createTime;
   	@Column(name = "update_time" )
-	private java.sql.Timestamp updateTime;
+	private Date updateTime;
 
 
 	public String getId() {
@@ -81,7 +82,7 @@ public class Category {
 	}
 
 
-	public java.sql.Timestamp getCreate_time() {
+	public Date getCreate_time() {
 		return createTime;
 	}
 
@@ -90,7 +91,7 @@ public class Category {
 	}
 
 
-	public java.sql.Timestamp getUpdate_time() {
+	public Date getUpdate_time() {
 		return updateTime;
 	}
 

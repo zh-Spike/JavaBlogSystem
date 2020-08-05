@@ -32,6 +32,9 @@ public class ResponseResult {
         return responseResult;
     }
 
+    public static ResponseResult GET(ResponseState state){
+        return new ResponseResult(state);
+    }
     public String getMessage() {
         return message;
     }

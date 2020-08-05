@@ -45,7 +45,7 @@ public class Labels {
 		this.count = count;
 	}
 
-	public Date getCreate_time(Date date) {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
@@ -53,11 +53,11 @@ public class Labels {
 		this.createTime = createTime;
 	}
 
-	public Date getUpdate_time() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdate_time(Date update_time) {
-		this.updateTime = update_time;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 }

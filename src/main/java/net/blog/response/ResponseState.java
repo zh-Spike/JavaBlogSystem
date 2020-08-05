@@ -2,6 +2,7 @@ package net.blog.response;
 
 public enum ResponseState {
     SUCCESS(10000, true, "操作成功"),
+    JOIN_IN_SUCCESS(60001, true, "注册成功"),
     FAILED(20000, false, "操作失败"),
     PARAMS_ILL(30000, false, "参数错误"),
     PERMISSION_DENIED(40000, false, "权限不够"),

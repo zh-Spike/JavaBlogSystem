@@ -50,7 +50,7 @@ public class TestController {
 
     @PostMapping("/test-login")
     public ResponseResult testlogin(@RequestBody User user) {
-        log.info("user name -== > " + user.getUser_name());
+        log.info("user name -== > " + user.getUserName());
         log.info("password -== > " + user.getPassword());
         return ResponseResult.SUCCESS("登陆成功");
     }
@@ -61,7 +61,7 @@ public class TestController {
         //补全
         labels.setId(idWorker.nextId() + "");
         labels.setCreateTime(new Date());
-        labels.setUpdate_time(new Date());
+        labels.setUpdateTime(new Date());
         //保存
         labelDao.save(labels);
         return ResponseResult.SUCCESS("添加标签成功");
@@ -86,7 +86,7 @@ public class TestController {
         }
         dbLabel.setCount(labels.getCount());
         dbLabel.setName(labels.getName());
-        dbLabel.setUpdate_time(new Date());
+        dbLabel.setUpdateTime(new Date());
         labelDao.save(dbLabel);
         return ResponseResult.SUCCESS("修改成功");
     }
