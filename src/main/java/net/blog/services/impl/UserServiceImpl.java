@@ -4,10 +4,11 @@ import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
-import io.jsonwebtoken.Jwt;
 import lombok.extern.slf4j.Slf4j;
+import net.blog.dao.RefreshTokenDao;
 import net.blog.dao.SettingsDao;
 import net.blog.dao.UserDao;
+import net.blog.pojo.RefreshToken;
 import net.blog.pojo.Settings;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
@@ -19,12 +20,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -44,6 +43,10 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private SettingsDao settingsDao;
+
+    @Autowired
+    private RefreshTokenDao refreshTokenDao;
+
     private Object object;
     private String userName;
     private String password;
@@ -348,29 +351,28 @@ public class UserServiceImpl implements IUserService {
             return ResponseResult.FAILED("当前账号已被禁止.");
         }
 
-        // 密码正确
-        Map<String,Object> claims = new HashMap<>();
-        claims.put("id", userFromDb.getId());
-        claims.put("user_name",userFromDb.getUserName());
-        claims.put("roles", userFromDb.getRoles());
-        claims.put("avater",userFromDb.getAvatar());
-        claims.put("email",userFromDb.getEmail());
-        claims.put("sign", userFromDb.getSign());
+        // 密码正确,生成Token
+        Map<String,Object> claims = ClaimsUtils.user2Claims(userFromDb);
         // token有效2小时
-        String token = JwtUtils.createJWT("claims");
+        String token = JwtUtils.createToken(claims);
         // 返回token MD5,token保存在redis里
         // 前端访问取token的MD5key，从redis读取
         String tokenKey = DigestUtils.md5DigestAsHex(token.getBytes());
         // 保存token到redis,有效期2h，key为tokenkey
-        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey,token,60 * 60 * 2 );
+        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey,token,Constants.TimeValue.HOUR_2);
         // 把tokenkey写到cookies
-        Cookie cookie = new Cookie("Blog_token",tokenKey);
-        // 动态获取
-        cookie.setDomain("localhost");
-        cookie.setMaxAge(60*60*24*365);
-        cookie.setPath("/");
-        response.addCookie(cookie);
-
+        CookieUtils.setUpCookie(response,Constants.User.COOKIE_TOKEN_KEY,tokenKey);
+        // 生成refreshToken
+        String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(),Constants.TimeValue.MONTH);
+        // 保存到数据库
+        RefreshToken refreshToken = new RefreshToken();
+        refreshToken.setId(idWorker.nextId() + "");
+        refreshToken.setRefreshToken(refreshTokenValue);
+        refreshToken.setUserId(userFromDb.getId());
+        refreshToken.setTokenKey(tokenKey);
+        refreshToken.setCreateTime(new Date());
+        refreshToken.setUpdateTime(new Date());
+        refreshTokenDao.save(refreshToken);
         return ResponseResult.SUCCESS("登录成功");
     }
 }

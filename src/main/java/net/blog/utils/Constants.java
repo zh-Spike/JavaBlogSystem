@@ -12,11 +12,25 @@ public interface Constants {
         String KEY_CAPTCHA_CONTENT = "key_captcha_content_";
         String KEY_EMAIL_CODE_CONTENT = "key_email_code_content_";
         String KEY_EMAIL_SEND_IP = "key_email_send_ip_";
-        String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_",
+        String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_";
         String KEY_TOKEN = "key_token_";
+        String COOKIE_TOKEN_KEY = "cookie_token_key";
     }
 
     interface Settings{
         String MANAGER_ACCOUNT_INIT_STATE ="mamger_account_init_state";
+    }
+
+    /**
+     * 单位是秒
+     */
+
+    interface TimeValue{
+        int MIN = 60;
+        int HOUR = 60 * MIN;
+        int HOUR_2 = 60 * MIN;
+        int DAY = 24 * HOUR;
+        int WEEK = 7 * DAY;
+        int MONTH = 30 * DAY;
     }
 }
