@@ -57,9 +57,9 @@ public class UserApi {
      * @param captchaKey
      * @return
      */
-    @PostMapping("/{captcha}")
-    public ResponseResult login(@PathVariable("captcha_key") String captchaKey,
-                                @PathVariable("captcha") String captcha,
+    @PostMapping("/{captcha}/{captcha_key}")
+    public ResponseResult login(@PathVariable("captcha") String captcha,
+                                @PathVariable("captcha_key") String captchaKey,
                                 @RequestBody User user,
                                 HttpServletRequest request,
                                 HttpServletResponse response) {

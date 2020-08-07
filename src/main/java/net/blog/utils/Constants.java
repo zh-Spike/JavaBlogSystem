@@ -18,7 +18,7 @@ public interface Constants {
     }
 
     interface Settings{
-        String MANAGER_ACCOUNT_INIT_STATE ="mamger_account_init_state";
+        String MANAGER_ACCOUNT_INIT_STATE ="manager_account_init_state";
     }
 
     /**

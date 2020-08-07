@@ -20,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -47,11 +48,10 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private RefreshTokenDao refreshTokenDao;
 
-    private Object object;
-    private String userName;
-    private String password;
-    private User oneByUserName;
-    private boolean aBoolean;
+
+    private Cookie[] cookies;
+    private String tokenKey;
+    private Object token;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -60,7 +60,6 @@ public class UserServiceImpl implements IUserService {
         if (managerAccountState != null) {
             return ResponseResult.FAILED("管理员账号已经初始化了");
         }
-        ;
         //检查数据
         if (TextUtils.isEmpty(user.getUserName())) {
             return ResponseResult.FAILED("用户名不能为空");
@@ -280,10 +279,10 @@ public class UserServiceImpl implements IUserService {
         //第五步：检查CAPTCHA是否正确
         String captchaVerifyCode = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
         if (TextUtils.isEmpty(captchaVerifyCode)) {
-            return ResponseResult.FAILED("人类验证码已过期");
+            return ResponseResult.FAILED("图灵验证码已过期");
         }
         if (!captchaVerifyCode.equals(captchaCode)) {
-            return ResponseResult.FAILED("人类验证码不正确");
+            return ResponseResult.FAILED("图灵验证码不正确");
         } else {
             //正确，删除redis
             redisUtils.del(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
@@ -313,14 +312,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ResponseResult doLogin(String captcha,
+    public ResponseResult doLogin (String captcha,
                                   String captchaKey,
                                   User user,
                                   HttpServletRequest request,
                                   HttpServletResponse response) {
         String captchaValue = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
-        if (captcha.equals(captchaValue)) {
-            return ResponseResult.FAILED("图灵验证码失败");
+        if (!captcha.equals(captchaValue)) {
+            return ResponseResult.FAILED("图灵验证码不正确");
         }
         // 有可能是邮箱，也可能是用户名
         String userName = user.getUserName();
@@ -342,28 +341,29 @@ public class UserServiceImpl implements IUserService {
         }
         // 用户存在
         // 对比密码
-        Boolean matches= bCryptPasswordEncoder.matches(password, userFromDb.getPassword());
+        Boolean matches = bCryptPasswordEncoder.matches(password, userFromDb.getPassword());
         if (!matches) {
-            return  ResponseResult.FAILED("用户名或密码不正确");
+            return ResponseResult.FAILED("用户名或密码不正确");
         }
         // 判断用户状态
         if (!"1".equals(userFromDb.getState())) {
             return ResponseResult.FAILED("当前账号已被禁止.");
         }
 
+
         // 密码正确,生成Token
-        Map<String,Object> claims = ClaimsUtils.user2Claims(userFromDb);
+        Map<String, Object> claims = ClaimsUtils.user2Claims(userFromDb);
         // token有效2小时
         String token = JwtUtils.createToken(claims);
         // 返回token MD5,token保存在redis里
         // 前端访问取token的MD5key，从redis读取
         String tokenKey = DigestUtils.md5DigestAsHex(token.getBytes());
         // 保存token到redis,有效期2h，key为tokenkey
-        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey,token,Constants.TimeValue.HOUR_2);
+        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey, token, Constants.TimeValue.HOUR_2);
         // 把tokenkey写到cookies
-        CookieUtils.setUpCookie(response,Constants.User.COOKIE_TOKEN_KEY,tokenKey);
+        CookieUtils.setUpCookie(response, Constants.User.COOKIE_TOKEN_KEY, tokenKey);
         // 生成refreshToken
-        String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(),Constants.TimeValue.MONTH);
+        String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(), Constants.TimeValue.MONTH);
         // 保存到数据库
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setId(idWorker.nextId() + "");
@@ -375,4 +375,5 @@ public class UserServiceImpl implements IUserService {
         refreshTokenDao.save(refreshToken);
         return ResponseResult.SUCCESS("登录成功");
     }
+
 }

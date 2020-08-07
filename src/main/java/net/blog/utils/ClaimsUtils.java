@@ -28,6 +28,7 @@ public class ClaimsUtils {
 
     public static User claims2User(Claims claims){
         User user = new User();
+
         String id = (String) claims.get(ID);
         user.setId(id);
         String userName = (String) claims.get(USER_NAME);
