@@ -48,6 +48,14 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private RefreshTokenDao refreshTokenDao;
 
+    @Autowired
+    private Random random;
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Autowired
+    private TaskService taskService;
 
     private Cookie[] cookies;
     private String tokenKey;
@@ -115,11 +123,6 @@ public class UserServiceImpl implements IUserService {
             , Captcha.FONT_9
             , Captcha.FONT_10};
 
-    @Autowired
-    private Random random;
-
-    @Autowired
-    private RedisUtils redisUtils;
 
     @Override
     public void createCaptcha(HttpServletResponse response, String captchaKey) throws Exception {
@@ -164,8 +167,6 @@ public class UserServiceImpl implements IUserService {
         targetCaptcha.out(response.getOutputStream());
     }
 
-    @Autowired
-    private TaskService taskService;
 
     /**
      * 发生邮件验证码
@@ -242,7 +243,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ResponseResult register(User user, String emailCode, String captchaCode, String captchaKey, HttpServletRequest request) {
+    public ResponseResult register(User user, String emailCode, String captchaCode,
+                                   String captchaKey, HttpServletRequest request) {
         //第一步：检查当前用户名是否已经注册
         String userName = user.getUserName();
         if (TextUtils.isEmpty(userName)) {
@@ -311,8 +313,9 @@ public class UserServiceImpl implements IUserService {
         return ResponseResult.GET(ResponseState.JOIN_IN_SUCCESS);
     }
 
+
     @Override
-    public ResponseResult doLogin (String captcha,
+    public ResponseResult doLogin(String captcha,
                                   String captchaKey,
                                   User user,
                                   HttpServletRequest request,
@@ -333,7 +336,7 @@ public class UserServiceImpl implements IUserService {
 
         User userFromDb = userDao.findOneByUserName(userName);
         if (userFromDb == null) {
-            userFromDb = userDao.findOneByUserName(userName);
+            userFromDb = userDao.findOneByEmail(userName);
         }
 
         if (userFromDb == null) {
@@ -341,7 +344,7 @@ public class UserServiceImpl implements IUserService {
         }
         // 用户存在
         // 对比密码
-        Boolean matches = bCryptPasswordEncoder.matches(password, userFromDb.getPassword());
+        boolean matches = bCryptPasswordEncoder.matches(password, userFromDb.getPassword());
         if (!matches) {
             return ResponseResult.FAILED("用户名或密码不正确");
         }
@@ -358,9 +361,9 @@ public class UserServiceImpl implements IUserService {
         // 返回token MD5,token保存在redis里
         // 前端访问取token的MD5key，从redis读取
         String tokenKey = DigestUtils.md5DigestAsHex(token.getBytes());
-        // 保存token到redis,有效期2h，key为tokenkey
+        // 保存token到redis,有效期2h，key为tokenKey
         redisUtils.set(Constants.User.KEY_TOKEN + tokenKey, token, Constants.TimeValue.HOUR_2);
-        // 把tokenkey写到cookies
+        // 把tokenKey写到cookies
         CookieUtils.setUpCookie(response, Constants.User.COOKIE_TOKEN_KEY, tokenKey);
         // 生成refreshToken
         String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(), Constants.TimeValue.MONTH);

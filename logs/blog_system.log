@@ -110,3 +110,96 @@
 [2020/08/07-14:29:07][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2504 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
 [2020/08/07-14:29:07][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
 [2020/08/07-14:29:13][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.147 seconds (JVM running for 7.316)
+[2020/08/07-14:32:18][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-14:32:19][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14988 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-14:32:19][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-14:32:24][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.172 seconds (JVM running for 7.155)
+[2020/08/07-14:32:29][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 6
+[2020/08/07-14:32:29][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 81
+[2020/08/07-19:46:00][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:46:01][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3940 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:46:01][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:46:07][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.656 seconds (JVM running for 7.879)
+[2020/08/07-19:46:11][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
+[2020/08/07-19:46:11][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 6dmhp
+[2020/08/07-19:48:37][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:48:38][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2772 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:48:38][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:48:44][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.36 seconds (JVM running for 7.425)
+[2020/08/07-19:48:53][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 0
+[2020/08/07-19:48:53][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 4
+[2020/08/07-19:50:55][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:50:56][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15012 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:50:56][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:51:01][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.434 seconds (JVM running for 7.516)
+[2020/08/07-19:52:26][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:52:27][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 9068 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:52:27][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:52:33][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.389 seconds (JVM running for 7.843)
+[2020/08/07-19:52:33][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 5
+[2020/08/07-19:52:33][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 7
+[2020/08/07-19:52:35][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 2
+[2020/08/07-19:52:35][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > gwxdw
+[2020/08/07-19:56:10][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:56:11][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6004 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:56:11][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:56:17][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.326 seconds (JVM running for 7.31)
+[2020/08/07-19:56:24][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 5
+[2020/08/07-19:56:24][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > s6nnr
+[2020/08/07-19:57:35][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-19:57:36][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8764 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-19:57:36][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-19:57:41][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.07 seconds (JVM running for 7.077)
+[2020/08/07-19:57:50][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 3
+[2020/08/07-19:57:50][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > vtbc5
+[2020/08/07-20:00:47][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:00:48][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6976 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:00:48][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:00:54][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.406 seconds (JVM running for 7.404)
+[2020/08/07-20:00:55][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
+[2020/08/07-20:00:55][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > tyxgd
+[2020/08/07-20:08:38][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:08:39][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 13196 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:08:39][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:08:44][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.077 seconds (JVM running for 7.02)
+[2020/08/07-20:08:48][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 0
+[2020/08/07-20:08:48][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > jwrec
+[2020/08/07-20:19:52][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:19:53][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6236 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:19:53][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:19:59][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.513 seconds (JVM running for 7.535)
+[2020/08/07-20:20:00][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 1
+[2020/08/07-20:20:01][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 1
+[2020/08/07-20:20:36][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:20:36][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3912 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:20:36][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:20:42][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 5.873 seconds (JVM running for 6.809)
+[2020/08/07-20:20:45][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 1
+[2020/08/07-20:20:45][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > cpr8e
+[2020/08/07-20:26:18][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:26:19][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2768 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:26:19][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:26:25][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.529 seconds (JVM running for 7.653)
+[2020/08/07-20:26:27][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 3
+[2020/08/07-20:26:27][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > j8y4n
+[2020/08/07-20:37:06][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:37:06][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2720 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:37:06][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:37:13][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.102 seconds (JVM running for 8.197)
+[2020/08/07-20:37:15][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 2
+[2020/08/07-20:37:15][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 6j7fn
+[2020/08/07-20:46:51][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:46:52][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 9840 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:46:52][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-20:46:59][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.473 seconds (JVM running for 8.617)
+[2020/08/07-20:47:00][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 2
+[2020/08/07-20:47:00][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > -6
+[2020/08/07-20:52:58][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-20:52:59][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5796 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-20:52:59][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-21:01:40][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-21:01:41][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6348 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-21:01:41][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-21:01:48][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.065 seconds (JVM running for 9.461)
+[2020/08/07-21:01:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
+[2020/08/07-21:01:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > g6sqs

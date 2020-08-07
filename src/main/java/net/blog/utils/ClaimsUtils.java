@@ -10,7 +10,7 @@ public class ClaimsUtils {
     public static final String ID = "id";
     public static final String USER_NAME = "user_name";
     public static final String ROLES = "roles";
-    public static final String AVATER = "avater";
+    public static final String AVATAR = "avatar";
     public static final String EMAIL = "email";
     public static final String SIGN = "sign";
 
@@ -20,7 +20,7 @@ public class ClaimsUtils {
         claims.put(ID, user.getId());
         claims.put(USER_NAME,user.getUserName());
         claims.put(ROLES, user.getRoles());
-        claims.put(AVATER,user.getAvatar());
+        claims.put(AVATAR,user.getAvatar());
         claims.put(EMAIL,user.getEmail());
         claims.put(SIGN, user.getSign());
         return claims;
@@ -35,8 +35,8 @@ public class ClaimsUtils {
         user.setUserName(userName);
         String roles = (String) claims.get(ROLES);
         user.setRoles(roles);
-        String avater = (String) claims.get(AVATER);
-        user.setAvatar(avater);
+        String avatar = (String) claims.get(AVATAR);
+        user.setAvatar(avatar);
         String email = (String) claims.get(EMAIL);
         user.setEmail(email);
         String sign = (String) claims.get(SIGN);
