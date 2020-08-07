@@ -203,3 +203,22 @@
 [2020/08/07-21:01:48][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.065 seconds (JVM running for 9.461)
 [2020/08/07-21:01:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
 [2020/08/07-21:01:53][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > g6sqs
+[2020/08/07-21:09:20][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-21:09:21][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3988 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-21:09:21][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-21:09:28][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.845 seconds (JVM running for 9.011)
+[2020/08/07-21:09:40][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 1
+[2020/08/07-21:09:40][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 2kxhz
+[2020/08/07-21:11:05][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-21:11:06][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 7972 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-21:11:06][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-21:23:50][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/07-21:23:51][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6968 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/07-21:23:51][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/07-21:23:57][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.899 seconds (JVM running for 8.008)
+[2020/08/07-21:24:48][http-nio-8081-exec-1][INFO ][net.blog.controller.user.UserApi]:email ==>zh-bebop@outlook.com
+[2020/08/07-21:24:48][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:sendEmail ==>  ip ==> 0:0:0:0:0:0:0:1
+[2020/08/07-21:24:49][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:sendEmail ==> 784983
+[2020/08/07-21:24:50][blog_task_worker-1][INFO ][net.blog.utils.EmailSender]:email send...
+[2020/08/07-21:26:18][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 4
+[2020/08/07-21:26:18][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > f5tkm

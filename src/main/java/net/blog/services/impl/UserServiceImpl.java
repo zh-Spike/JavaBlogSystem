@@ -20,7 +20,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
@@ -54,12 +53,6 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private RedisUtils redisUtils;
 
-    @Autowired
-    private TaskService taskService;
-
-    private Cookie[] cookies;
-    private String tokenKey;
-    private Object token;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -112,7 +105,7 @@ public class UserServiceImpl implements IUserService {
         return ResponseResult.SUCCESS("初始化成功");
     }
 
-    public static final int[] catcha_font_types = {Captcha.FONT_1
+    public static final int[] captcha_font_types = {Captcha.FONT_1
             , Captcha.FONT_2
             , Captcha.FONT_3
             , Captcha.FONT_4
@@ -147,16 +140,16 @@ public class UserServiceImpl implements IUserService {
         } else if (captchaType == 1) {
             // gif类
             targetCaptcha = new GifCaptcha(200, 60);
-        } else if (captchaType == 2) {
+        } else {
             // 算术类
             targetCaptcha = new ArithmeticCaptcha(200, 60);
             targetCaptcha.setLen(2); // 几位数运算
         }
         // 设置字体
         // specCaptcha.setFont(new Font("Verdana", Font.PLAIN, 32));  // 有默认字体，可以不用设置
-        int index = random.nextInt(catcha_font_types.length);
+        int index = random.nextInt(captcha_font_types.length);
         log.info("captcha font type index ==> " + index);
-        targetCaptcha.setFont(catcha_font_types[index]);
+        targetCaptcha.setFont(captcha_font_types[index]);
         // 设置类型，纯数字、纯字母、字母数字混合
         // specCaptcha.setCharType(Captcha.TYPE_ONLY_NUMBER);
         targetCaptcha.setCharType(Captcha.TYPE_DEFAULT);
@@ -174,10 +167,10 @@ public class UserServiceImpl implements IUserService {
      * 注册：判断是否注册过了
      * 找回：如果没注册，提示未注册
      * 修改：如果新邮箱已经注册，提示修改密码
-     *
+     * @param type
      * @param request
      * @param emailAddress
-     * @return
+     * @return ResponseResult
      */
     @Override
     public ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress) {
@@ -313,6 +306,9 @@ public class UserServiceImpl implements IUserService {
         return ResponseResult.GET(ResponseState.JOIN_IN_SUCCESS);
     }
 
+
+    @Autowired
+    private TaskService taskService;
 
     @Override
     public ResponseResult doLogin(String captcha,
