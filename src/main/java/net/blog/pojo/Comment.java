@@ -25,7 +25,7 @@ public class Comment {
     @Column(name = "user_name")
     private String userName;
     @Column(name = "state")
-    private String state;
+    private String state = "1";
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
