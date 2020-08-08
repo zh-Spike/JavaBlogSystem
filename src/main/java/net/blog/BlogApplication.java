@@ -1,5 +1,6 @@
 package net.blog;
 
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.utils.RedisUtils;
 import net.blog.utils.SnowflakeIdWorker;
@@ -38,5 +39,10 @@ public class BlogApplication {
     @Bean
     public Random createRandom() {
         return new Random();
+    }
+
+    @Bean
+    public Gson createGson(){
+        return new Gson();
     }
 }

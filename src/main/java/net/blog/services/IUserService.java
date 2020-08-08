@@ -23,4 +23,6 @@ public interface IUserService {
 
     User checkUser(HttpServletRequest request,HttpServletResponse response);
 
+    ResponseResult getUserInfo(String userId);
+
 }

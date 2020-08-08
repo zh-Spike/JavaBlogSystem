@@ -1,5 +1,6 @@
 package net.blog.services.impl;
 
+import com.google.gson.Gson;
 import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
@@ -52,6 +53,10 @@ public class UserServiceImpl implements IUserService {
     private TaskService taskService;
     private RefreshToken oneByTokenKey;
     private User user;
+
+    @Autowired
+    private Gson gson;
+    private String userJson;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -431,6 +436,25 @@ public class UserServiceImpl implements IUserService {
         return user;
     }
 
+    @Override
+    public ResponseResult getUserInfo(String userId) {
+        // 从数据库中获取
+        User user = userDao.findOneById(userId);
+        // 判断结果
+        if (user == null) {
+            // 如果不存在，就返回不存在
+            return ResponseResult.FAILED("用户不存在");
+        }
+        // 如果存在就返回对象，清空密码等数据
+        String userJson = gson.toJson(user);
+        User newUser = gson.fromJson(userJson, User.class);
+        newUser.setPassword("");
+        newUser.setEmail("");
+        newUser.setRegIp("");
+        newUser.setLoginIp("");
+        return ResponseResult.SUCCESS("获取成功").setData(newUser);
+    }
+
     private User parseByTokenKey(String tokenKey) {
         String token = (String) redisUtils.get(Constants.User.KEY_TOKEN + tokenKey);
         log.info("parseByTokenKey token == >" + token);
@@ -445,4 +469,7 @@ public class UserServiceImpl implements IUserService {
         }
         return null;
     }
+
+
+
 }

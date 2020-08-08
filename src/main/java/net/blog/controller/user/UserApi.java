@@ -111,7 +111,7 @@ public class UserApi {
      */
     @GetMapping("/{userId}")
     public ResponseResult getUserInfo(@PathVariable("userId") String userId) {
-        return null;
+        return userService.getUserInfo(userId);
     }
 
     /**
