@@ -9,22 +9,22 @@ import org.springframework.web.servlet.handler.RequestMatchResult;
 public class CommentApi {
 
     @DeleteMapping("/{commentId}")
-    public ResponseResult deleteComment(@PathVariable("commentId") String commentId){
+    public ResponseResult deleteComment(@PathVariable("commentId") String commentId) {
         return null;
     }
 
     @GetMapping("/{commentId}")
-    public ResponseResult getComment(@PathVariable("commentId") String commentId){
+    public ResponseResult getComment(@PathVariable("commentId") String commentId) {
         return null;
     }
 
     @GetMapping("/list")
-    public ResponseResult listComments(@RequestParam("page")int page,@RequestParam("size")int size){
+    public ResponseResult listComments(@RequestParam("page") int page, @RequestParam("size") int size) {
         return null;
     }
 
     @PutMapping("/top/{commentId}")
-    public RequestMatchResult topComment(@PathVariable("commentId")String commentId){
+    public RequestMatchResult topComment(@PathVariable("commentId") String commentId) {
         return null;
     }
 }

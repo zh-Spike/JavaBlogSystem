@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArticlePortalApi {
 
     @GetMapping("/list/{page}/{size}")
-    public ResponseResult listArticle(@PathVariable("page")int page,@PathVariable("size")int size){
+    public ResponseResult listArticle(@PathVariable("page") int page, @PathVariable("size") int size) {
         return null;
     }
 
     @GetMapping("/list/{categoryId}/[page}/{size}")
-    public ResponseResult listArticleByCategoryId(@PathVariable("categoryId")String categoryId,
-                                                  @PathVariable("page")int page,
-                                                  @PathVariable("size")int size){
+    public ResponseResult listArticleByCategoryId(@PathVariable("categoryId") String categoryId,
+                                                  @PathVariable("page") int page,
+                                                  @PathVariable("size") int size) {
         return null;
     }
 
     @GetMapping("/{articleId")
-    public ResponseResult getArticleDetail(@PathVariable("articleId") String articleId){
+    public ResponseResult getArticleDetail(@PathVariable("articleId") String articleId) {
         return null;
     }
 
     @GetMapping("/recommond/{articleId}")
-    public ResponseResult getRecommondArticles(@PathVariable("articleId")String articleId){
+    public ResponseResult getRecommondArticles(@PathVariable("articleId") String articleId) {
         return null;
     }
 }

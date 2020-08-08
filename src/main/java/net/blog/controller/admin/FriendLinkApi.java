@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.*;
 public class FriendLinkApi {
 
     @PostMapping
-    public ResponseResult addFriendLink(@RequestBody FriendLink friendLink){
+    public ResponseResult addFriendLink(@RequestBody FriendLink friendLink) {
         return null;
     }
 
     @DeleteMapping("/{friendLinkId}")
-    public ResponseResult deleteFriendLink(@PathVariable("friendLinkId") String friendLinkId){
+    public ResponseResult deleteFriendLink(@PathVariable("friendLinkId") String friendLinkId) {
         return null;
     }
 
     @PutMapping("/{friendLinkId}")
-    public ResponseResult updateFriendLink(@PathVariable("friendLinkId") String friendLinkId){
+    public ResponseResult updateFriendLink(@PathVariable("friendLinkId") String friendLinkId) {
         return null;
     }
 
     @GetMapping("/{friendLinkId}")
-    public ResponseResult getFriendLink(@PathVariable("friendLinkId") String friendLinkId){
+    public ResponseResult getFriendLink(@PathVariable("friendLinkId") String friendLinkId) {
         return null;
     }
 
     @GetMapping("/list")
-    public ResponseResult listFriendLinks(@RequestParam("page")int page,@RequestParam("size")int size){
+    public ResponseResult listFriendLinks(@RequestParam("page") int page, @RequestParam("size") int size) {
         return null;
     }
 }

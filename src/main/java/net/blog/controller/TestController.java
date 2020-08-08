@@ -2,7 +2,6 @@ package net.blog.controller;
 
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
-import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.CommentDao;
 import net.blog.dao.LabelDao;
@@ -11,7 +10,10 @@ import net.blog.pojo.Labels;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IUserService;
-import net.blog.utils.*;
+import net.blog.utils.Constants;
+import net.blog.utils.CookieUtils;
+import net.blog.utils.RedisUtils;
+import net.blog.utils.SnowflakeIdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -173,7 +175,9 @@ public class TestController {
     private IUserService userService;
 
     @PostMapping("/comment")
-    public ResponseResult testComment(@RequestBody Comment comment, HttpServletRequest request) {
+    public ResponseResult testComment(@RequestBody Comment comment,
+                                      HttpServletRequest request,
+                                      HttpServletResponse response) {
         String content = comment.getContent();
         log.info("comment content == >" + content);
         String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
@@ -181,21 +185,10 @@ public class TestController {
             return ResponseResult.FAILED("账号未登录");
         }
 
-        String token = (String) redisUtils.get(Constants.User.KEY_TOKEN + tokenKey);
-        if (token == null) {
-            // 若为空，可能过期，可能登陆过了,查refreshToken
+        User user = userService.checkUser(request, response);
+        if (user == null) {
+            return ResponseResult.FAILED("账号未登录");
         }
-        // 已登录，解析
-        Claims claims =null;
-        try{
-             claims = JwtUtils.parseJWT(token);
-        }catch (Exception e){
-            // 查refreshToken
-        }
-        if (claims == null) {
-            return ResponseResult.FAILED("用户未登录");
-        }
-        User user = ClaimsUtils.claims2User(claims);
         comment.setUserId(user.getId());
         comment.setUserAvatar(user.getAvatar());
         comment.setUserName(user.getUserName());

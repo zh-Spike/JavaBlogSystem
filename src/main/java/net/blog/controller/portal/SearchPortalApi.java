@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/portal/search")
 public class SearchPortalApi {
     @GetMapping
-    public ResponseResult doSearch(@RequestParam("keyword")String keyword, @RequestParam("page")int page){
+    public ResponseResult doSearch(@RequestParam("keyword") String keyword, @RequestParam("page") int page) {
         return null;
     }
 }

@@ -7,162 +7,162 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table ( name ="tb_article" )
+@Table(name = "tb_article")
 public class Article {
 
-  	@Id
-	private String id;
-  	@Column(name = "title" )
-	private String title;
-  	@Column(name = "user_id" )
-	private String userId;
-  	@Column(name = "user_avatar" )
-	private String userAvatar;
-  	@Column(name = "user_name" )
-	private String userName;
-  	@Column(name = "category_id" )
-	private String categoryId;
-  	@Column(name = "content" )
-	private String content;
-  	@Column(name = "type" )
-	private String type;
-  	@Column(name = "state" )
-	private String state;
-  	@Column(name = "summary" )
-	private String summary;
-  	@Column(name = "labels" )
-	private String labels;
-  	@Column(name = "view_count" )
-	private long viewCount;
-  	@Column(name = "create_time" )
-	private Date createTime;
-  	@Column(name = "update_time" )
-	private Date updateTime;
+    @Id
+    private String id;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "user_id")
+    private String userId;
+    @Column(name = "user_avatar")
+    private String userAvatar;
+    @Column(name = "user_name")
+    private String userName;
+    @Column(name = "category_id")
+    private String categoryId;
+    @Column(name = "content")
+    private String content;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "state")
+    private String state;
+    @Column(name = "summary")
+    private String summary;
+    @Column(name = "labels")
+    private String labels;
+    @Column(name = "view_count")
+    private long viewCount;
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
 
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-
-	public String getUserAvatar() {
-		return userAvatar;
-	}
-
-	public void setUserAvatar(String userAvatar) {
-		this.userAvatar = userAvatar;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 
-	public String getContent() {
-		return content;
-	}
+    public String getUserAvatar() {
+        return userAvatar;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
 
 
-	public String getState() {
-		return state;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
-
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
 
-	public String getLabels() {
-		return labels;
-	}
+    public String getCategoryId() {
+        return categoryId;
+    }
 
-	public void setLabels(String labels) {
-		this.labels = labels;
-	}
-
-
-	public long getViewCount() {
-		return viewCount;
-	}
-
-	public void setViewCount(long viewCount) {
-		this.viewCount = viewCount;
-	}
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
 
 
-	public Date getCreate_time() {
-		return createTime;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setCreate_time(java.sql.Timestamp create_time) {
-		this.createTime = create_time;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
 
-	public Date getUpdate_time() {
-		return updateTime;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setUpdate_time(java.sql.Timestamp update_time) {
-		this.updateTime = update_time;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+
+    public String getLabels() {
+        return labels;
+    }
+
+    public void setLabels(String labels) {
+        this.labels = labels;
+    }
+
+
+    public long getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(long viewCount) {
+        this.viewCount = viewCount;
+    }
+
+
+    public Date getCreate_time() {
+        return createTime;
+    }
+
+    public void setCreate_time(java.sql.Timestamp create_time) {
+        this.createTime = create_time;
+    }
+
+
+    public Date getUpdate_time() {
+        return updateTime;
+    }
+
+    public void setUpdate_time(java.sql.Timestamp update_time) {
+        this.updateTime = update_time;
+    }
 
 }

@@ -4,6 +4,7 @@ import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.RefreshTokenDao;
 import net.blog.dao.SettingsDao;
@@ -49,6 +50,8 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private TaskService taskService;
+    private RefreshToken oneByTokenKey;
+    private User user;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -169,6 +172,7 @@ public class UserServiceImpl implements IUserService {
      * 注册：判断是否注册过了
      * 找回：如果没注册，提示未注册
      * 修改：如果新邮箱已经注册，提示修改密码
+     *
      * @param type
      * @param request
      * @param emailAddress
@@ -309,8 +313,6 @@ public class UserServiceImpl implements IUserService {
     }
 
 
-
-
     @Override
     public ResponseResult doLogin(String captcha,
                                   String captchaKey,
@@ -349,6 +351,18 @@ public class UserServiceImpl implements IUserService {
         if (!"1".equals(userFromDb.getState())) {
             return ResponseResult.FAILED("当前账号已被禁止.");
         }
+        createToken(response, userFromDb);
+        return ResponseResult.SUCCESS("登录成功");
+    }
+
+    /**
+     * @param response
+     * @param userFromDb
+     * @return tokenKey
+     */
+    private String createToken(HttpServletResponse response, User userFromDb) {
+        int deleteResult = refreshTokenDao.deleteAllByUserId(userFromDb.getId());
+        log.info("deleteResult of refresh token..." + deleteResult);
         // 密码正确,生成Token
         Map<String, Object> claims = ClaimsUtils.user2Claims(userFromDb);
         // token有效2小时
@@ -371,13 +385,64 @@ public class UserServiceImpl implements IUserService {
         refreshToken.setCreateTime(new Date());
         refreshToken.setUpdateTime(new Date());
         refreshTokenDao.save(refreshToken);
-        return ResponseResult.SUCCESS("登录成功");
+        return tokenKey;
     }
 
+    /**
+     * 本质，通过token_key检查用户是否登录，如果有，则返回用户信息
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public User checkUser(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+        String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
+        log.info("checkUser tokenKey == > " + tokenKey);
+        User user = parseByTokenKey(tokenKey);
+        if (user == null) {
+            // 有token,解析
+            // 报错，token过期
+            // 1.去MySQL查refreshToken
+            RefreshToken refreshToken = refreshTokenDao.findOneByTokenKey(tokenKey);
+            // 2.不存在,重新登录
+            if (refreshToken == null) {
+                log.info("refresh token is null...");
+                return null;
+            }
+            // 3.存在,解析refreshToken
+            try {
+                Claims claims = JwtUtils.parseJWT(refreshToken.getRefreshToken());
+                // 4.如果refreshToken有效，创建新的token和refreshToken
+                String userId = refreshToken.getUserId();
+                User userFromDb = userDao.findOneById(userId);
+                // 不能直接setPassword,会重置数据库密码
+                // 删除refreshToken记录
+                String newTokenKey = createToken(response, userFromDb);
+                // 返回token
+                log.info("create new token and refresh token...");
+                return parseByTokenKey(newTokenKey);
+            } catch (Exception e1) {
+                log.info("refresh token is expired...");
+                // 5.如果refreshToken过期，则返回没有登陆
+                return null;
+            }
+        }
+        return user;
     }
 
-
+    private User parseByTokenKey(String tokenKey) {
+        String token = (String) redisUtils.get(Constants.User.KEY_TOKEN + tokenKey);
+        log.info("parseByTokenKey token == >" + token);
+        if (token != null) {
+            try {
+                Claims claims = JwtUtils.parseJWT(token);
+                return ClaimsUtils.claims2User(claims);
+            } catch (Exception e) {
+                log.info("parseByTokenKey" + tokenKey + "expired");
+                return null;
+            }
+        }
+        return null;
+    }
 }

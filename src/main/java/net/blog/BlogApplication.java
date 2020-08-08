@@ -21,8 +21,8 @@ public class BlogApplication {
     }
 
     @Bean
-    public SnowflakeIdWorker creatIdWorker(){
-        return new SnowflakeIdWorker(0,0);
+    public SnowflakeIdWorker creatIdWorker() {
+        return new SnowflakeIdWorker(0, 0);
     }
 
     @Bean
@@ -31,12 +31,12 @@ public class BlogApplication {
     }
 
     @Bean
-    public RedisUtils createRedisUtils(){
+    public RedisUtils createRedisUtils() {
         return new RedisUtils();
     }
 
     @Bean
-    public Random createRandom(){
+    public Random createRandom() {
         return new Random();
     }
 }

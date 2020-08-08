@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 
-public interface LabelDao extends JpaRepository<Labels,String>, JpaSpecificationExecutor<Labels> {
+public interface LabelDao extends JpaRepository<Labels, String>, JpaSpecificationExecutor<Labels> {
 
     @Modifying
     int deleteOneById(String id);

@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.*;
 public class WebSiteInfoApi {
 
     @GetMapping("/title")
-    public ResponseResult getWebSiteTitle(){
+    public ResponseResult getWebSiteTitle() {
         return null;
     }
 
     @PutMapping("/title")
-    public ResponseResult upWebSiteTitle(@RequestParam("title")String title){
+    public ResponseResult upWebSiteTitle(@RequestParam("title") String title) {
         return null;
     }
 
     @GetMapping("/seo")
-    public ResponseResult getSeoInfo(){
+    public ResponseResult getSeoInfo() {
         return null;
     }
 
     @PutMapping("/seo")
-    public ResponseResult putSeoInfo(@RequestParam("keywords")String keywords,
-                                     @RequestParam("description")String description){
+    public ResponseResult putSeoInfo(@RequestParam("keywords") String keywords,
+                                     @RequestParam("description") String description) {
         return null;
     }
 
     @GetMapping("/view_count")
-    public ResponseResult getWebSiteViewCount(){
+    public ResponseResult getWebSiteViewCount() {
         return null;
     }
 

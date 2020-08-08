@@ -14,7 +14,7 @@ public interface Constants {
         String KEY_EMAIL_SEND_IP = "key_email_send_ip_";
         String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_";
         String KEY_TOKEN = "key_token_";
-        String COOKIE_TOKEN_KEY = "cookie_token_key";
+        String COOKIE_TOKEN_KEY = "blog_token";
     }
 
     interface Settings {

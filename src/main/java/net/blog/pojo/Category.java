@@ -7,96 +7,96 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table ( name ="tb_category" )
+@Table(name = "tb_category")
 public class Category {
 
-  	@Id
-	private String id;
-  	@Column(name = "name" )
-	private String name;
-  	@Column(name = "pinyin" )
-	private String pinyin;
-  	@Column(name = "description" )
-	private String description;
-  	@Column(name = "`order`" )
-	private long order;
-  	@Column(name = "status" )
-	private String status;
-  	@Column(name = "create_time" )
-	private Date createTime;
-  	@Column(name = "update_time" )
-	private Date updateTime;
+    @Id
+    private String id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "pinyin")
+    private String pinyin;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "`order`")
+    private long order;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
 
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
-	public String getPinyin() {
-		return pinyin;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPinyin(String pinyin) {
-		this.pinyin = pinyin;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
-	public long getOrder() {
-		return order;
-	}
+    public String getPinyin() {
+        return pinyin;
+    }
 
-	public void setOrder(long order) {
-		this.order = order;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
+    }
 
 
-	public Date getCreate_time() {
-		return createTime;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setCreate_time(java.sql.Timestamp create_time) {
-		this.createTime = create_time;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
-	public Date getUpdate_time() {
-		return updateTime;
-	}
+    public long getOrder() {
+        return order;
+    }
 
-	public void setUpdate_time(java.sql.Timestamp update_time) {
-		this.updateTime = update_time;
-	}
+    public void setOrder(long order) {
+        this.order = order;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public Date getCreate_time() {
+        return createTime;
+    }
+
+    public void setCreate_time(java.sql.Timestamp create_time) {
+        this.createTime = create_time;
+    }
+
+
+    public Date getUpdate_time() {
+        return updateTime;
+    }
+
+    public void setUpdate_time(java.sql.Timestamp update_time) {
+        this.updateTime = update_time;
+    }
 
 }

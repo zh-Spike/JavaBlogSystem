@@ -9,18 +9,17 @@ import org.springframework.web.bind.annotation.*;
 public class CommentPortalApi {
 
     @PostMapping
-    public ResponseResult postComment(@RequestBody Comment comment){
+    public ResponseResult postComment(@RequestBody Comment comment) {
         return null;
     }
 
     @DeleteMapping("/{commentId}")
-    public ResponseResult deleteComment(@PathVariable("commentId") String commentId){
+    public ResponseResult deleteComment(@PathVariable("commentId") String commentId) {
         return null;
     }
 
     @GetMapping("/list/{commentId}")
-    public ResponseResult listComments(@PathVariable("commentId") String commentId)
-    {
+    public ResponseResult listComments(@PathVariable("commentId") String commentId) {
         return null;
 
     }

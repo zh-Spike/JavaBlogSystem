@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSiteInfoPortalApi {
 
     @GetMapping("/categories")
-    public ResponseResult getCategories(){
+    public ResponseResult getCategories() {
         return null;
     }
 
     @GetMapping("/title")
-    public ResponseResult getWebSiteTitle(){
+    public ResponseResult getWebSiteTitle() {
         return null;
     }
 
     @GetMapping("/view_count")
-    public ResponseResult getWebSiteViewCount(){
+    public ResponseResult getWebSiteViewCount() {
         return null;
     }
 
     @GetMapping("/seo")
-    public ResponseResult getSeo(){
+    public ResponseResult getSeo() {
         return null;
     }
 
     @GetMapping("/loop")
-    public ResponseResult getLoops(){
+    public ResponseResult getLoops() {
         return null;
     }
 
     @GetMapping("/friend_link")
-    public ResponseResult getFriendLink(){
+    public ResponseResult getFriendLink() {
         return null;
     }
 }

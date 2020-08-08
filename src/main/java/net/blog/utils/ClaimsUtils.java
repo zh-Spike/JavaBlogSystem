@@ -15,18 +15,18 @@ public class ClaimsUtils {
     public static final String SIGN = "sign";
 
 
-    public static Map<String, Object> user2Claims(User user){
-        Map<String,Object> claims = new HashMap<>();
+    public static Map<String, Object> user2Claims(User user) {
+        Map<String, Object> claims = new HashMap<>();
         claims.put(ID, user.getId());
-        claims.put(USER_NAME,user.getUserName());
+        claims.put(USER_NAME, user.getUserName());
         claims.put(ROLES, user.getRoles());
-        claims.put(AVATAR,user.getAvatar());
-        claims.put(EMAIL,user.getEmail());
+        claims.put(AVATAR, user.getAvatar());
+        claims.put(EMAIL, user.getEmail());
         claims.put(SIGN, user.getSign());
         return claims;
     }
 
-    public static User claims2User(Claims claims){
+    public static User claims2User(Claims claims) {
         User user = new User();
 
         String id = (String) claims.get(ID);
