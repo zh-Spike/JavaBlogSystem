@@ -10,7 +10,7 @@ public interface IUserService {
 
     ResponseResult initManagerAccount(User user, HttpServletRequest request);
 
-    void createCaptcha(HttpServletResponse response, String captchaKey)throws Exception;
+    void createCaptcha(HttpServletResponse response, String captchaKey) throws Exception;
 
     ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress);
 
@@ -21,8 +21,12 @@ public interface IUserService {
                            User user, HttpServletRequest request,
                            HttpServletResponse response);
 
-    User checkUser(HttpServletRequest request,HttpServletResponse response);
+    User checkUser(HttpServletRequest request, HttpServletResponse response);
 
     ResponseResult getUserInfo(String userId);
+
+    ResponseResult checkEmail(String email);
+
+    ResponseResult checkUserName(String userName);
 
 }

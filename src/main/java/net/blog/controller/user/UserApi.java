@@ -1,5 +1,7 @@
 package net.blog.controller.user;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
@@ -106,6 +108,13 @@ public class UserApi {
 
     /**
      * 作者信息user-info
+     * <p>
+     * 允许用户修改的内容
+     * 1.头像
+     * 2.用户名 唯一
+     * 3.签名
+     * 4.密码 单独
+     * 5.Email 唯一单独
      *
      * @return
      */
@@ -134,7 +143,35 @@ public class UserApi {
         return null;
     }
 
+    /**
+     * 检查Email是否已经注册
+     *
+     * @param email
+     * @return
+     */
+    @ApiResponses({
+            @ApiResponse(code = 20000, message = "当前邮箱已注册"),
+            @ApiResponse(code = 40000, message = "当前邮箱未注册")
+    })
+    @GetMapping("/email")
+    public ResponseResult checkEmail(@RequestParam("email") String email) {
+        return userService.checkEmail(email);
+    }
+
+
+    /**
+     * 检查Email是否已经注册
+     *
+     * @param userName
+     * @return
+     */
+    @ApiResponses({
+            @ApiResponse(code = 20000, message = "当前用户名已注册"),
+            @ApiResponse(code = 40000, message = "当前用户名未注册")
+    })
+    @GetMapping("/user_name")
+    public ResponseResult checkUserName(@RequestParam("userName") String userName) {
+        return userService.checkUserName(userName);
+    }
 }
-
-
 

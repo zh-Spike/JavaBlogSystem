@@ -455,6 +455,18 @@ public class UserServiceImpl implements IUserService {
         return ResponseResult.SUCCESS("获取成功").setData(newUser);
     }
 
+    @Override
+    public ResponseResult checkEmail(String email) {
+        User user = userDao.findOneByEmail(email);
+        return user == null ? ResponseResult.FAILED("该邮箱未注册") : ResponseResult.SUCCESS("该邮箱已注册");
+    }
+
+    @Override
+    public ResponseResult checkUserName(String userName) {
+        User user = userDao.findOneByUserName(userName);
+        return user == null ? ResponseResult.FAILED("该用户名未注册") : ResponseResult.SUCCESS("该用户名已注册");
+    }
+
     private User parseByTokenKey(String tokenKey) {
         String token = (String) redisUtils.get(Constants.User.KEY_TOKEN + tokenKey);
         log.info("parseByTokenKey token == >" + token);
@@ -469,7 +481,6 @@ public class UserServiceImpl implements IUserService {
         }
         return null;
     }
-
 
 
 }
