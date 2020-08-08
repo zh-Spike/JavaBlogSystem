@@ -128,9 +128,12 @@ public class UserApi {
      *
      * @return
      */
-    @PutMapping
-    public ResponseResult updateUserInfo(@RequestBody User user) {
-        return null;
+    @PutMapping("/{userId}")
+    public ResponseResult updateUserInfo(HttpServletRequest request,
+                                         HttpServletResponse response,
+                                         @PathVariable("userId") String userId,
+                                         @RequestBody User user) {
+        return userService.updateUserInfo(request, response, userId, user);
     }
 
     @GetMapping("/list")
@@ -138,9 +141,20 @@ public class UserApi {
         return null;
     }
 
+    /**
+     * 管理员权限
+     *
+     * @param userId
+     * @return
+     */
     @DeleteMapping("/{userId}")
-    public ResponseResult deleteUser(@PathVariable("userId") String userId) {
-        return null;
+    public ResponseResult deleteUser(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     @PathVariable("userId") String userId) {
+        // 判断当前用户
+        // 根据当前用户角色来删除
+        // 通过注解来控制权限
+        return userService.deleteUserById(userId, request, response);
     }
 
     /**

@@ -29,4 +29,10 @@ public interface IUserService {
 
     ResponseResult checkUserName(String userName);
 
+    ResponseResult updateUserInfo(HttpServletRequest request,
+                                  HttpServletResponse response,
+                                  String userId, User user);
+
+    ResponseResult deleteUserById(String userId, HttpServletRequest request, HttpServletResponse response);
+
 }

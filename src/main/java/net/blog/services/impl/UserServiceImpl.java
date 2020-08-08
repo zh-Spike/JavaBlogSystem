@@ -354,7 +354,7 @@ public class UserServiceImpl implements IUserService {
         }
         // 判断用户状态
         if (!"1".equals(userFromDb.getState())) {
-            return ResponseResult.FAILED("当前账号已被禁止.");
+            return ResponseResult.ACCOUNT_DENIED();
         }
         createToken(response, userFromDb);
         return ResponseResult.SUCCESS("登录成功");
@@ -465,6 +465,77 @@ public class UserServiceImpl implements IUserService {
     public ResponseResult checkUserName(String userName) {
         User user = userDao.findOneByUserName(userName);
         return user == null ? ResponseResult.FAILED("该用户名未注册") : ResponseResult.SUCCESS("该用户名已注册");
+    }
+
+    /**
+     * 更新用户信息
+     *
+     * @param request
+     * @param response
+     * @param userId
+     * @param user
+     * @return
+     */
+    @Override
+    public ResponseResult updateUserInfo(HttpServletRequest request, HttpServletResponse response, String userId, User user) {
+        User userFromTokenKey = checkUser(request, response);
+        // 从token中解析
+        if (userFromTokenKey == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        User userFromDb = userDao.findOneById(userFromTokenKey.getId());
+
+        // 判断ID是否一致，一致才能修改
+        if (!userFromDb.getId().equals(userId)) {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        // 用户名
+        String userName = user.getUserName();
+        if (!TextUtils.isEmpty(userName)) {
+            User userByUserName = userDao.findOneByUserName(userName);
+            if (userByUserName != null) {
+                return ResponseResult.FAILED("该用户名已注册");
+            }
+            userFromDb.setUserName(userName);
+        }
+        // 头像
+        if (!TextUtils.isEmpty(user.getAvatar())) {
+            userFromDb.setAvatar(user.getAvatar());
+        }
+        // 签名 可为空
+        userFromDb.setSign(user.getSign());
+        userDao.save(userFromDb);
+        // 更新redis里的token
+        String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
+        redisUtils.del(tokenKey);
+        return ResponseResult.SUCCESS("用户更新成功");
+    }
+
+    /**
+     * 删除不是真的删除，改用户状态
+     *
+     * @param userId
+     * @param request
+     * @param response
+     * @return
+     */
+    @Override
+    public ResponseResult deleteUserById(String userId, HttpServletRequest request, HttpServletResponse response) {
+        // 检验当前用户
+        User currentUser = checkUser(request, response);
+        if (currentUser == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        if (!Constants.User.ROLE_ADMIN.equals(currentUser.getRoles())) {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        // 可以操作
+        int result = userDao.deleteUserByState(userId);
+        if (result > 0) {
+            return ResponseResult.SUCCESS("删除成功");
+        } else {
+            return ResponseResult.FAILED("用户不存在");
+        }
     }
 
     private User parseByTokenKey(String tokenKey) {

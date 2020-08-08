@@ -192,3 +192,62 @@
 [2020/08/08-19:54:18][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8164 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
 [2020/08/08-19:54:18][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
 [2020/08/08-19:54:25][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.246 seconds (JVM running for 8.494)
+[2020/08/08-20:15:52][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:15:52][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 7608 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:15:52][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:15:59][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.869 seconds (JVM running for 7.968)
+[2020/08/08-20:21:18][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:21:19][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5788 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:21:19][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:21:26][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.339 seconds (JVM running for 8.562)
+[2020/08/08-20:25:41][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:25:41][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11348 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:25:41][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:25:48][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.294 seconds (JVM running for 8.37)
+[2020/08/08-20:28:51][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
+[2020/08/08-20:28:51][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 14
+[2020/08/08-20:28:58][http-nio-8081-exec-8][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/08-20:31:05][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:31:05][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8120 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:31:05][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:31:11][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 5.859 seconds (JVM running for 6.79)
+[2020/08/08-20:31:20][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/08-20:31:21][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 1e7564c01d840d48f40bfe30ab3b5cc2
+[2020/08/08-20:31:21][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJjaHVhbiIsInJvbGVzIjoicm9sZV9ub3JtYWwiLCJzaWduIjoiTExMTCIsImlkIjoiNzQxNjI2NzYxODQ1OTMyMDMyIiwiYXZhdGFyIjoiaHR0cHM6Ly9hdmF0YXJzMC5naXRodWJ1c2VyY29udGVudC5jb20vdS80MjI5Mzc1OD9zPTQ2MCZ1PTIxYjY3MmZmZjZlMzQ3MTcyYjFkZjlkN2ViZjIxNmU5YzRjOWM5ZmImdj00IiwiZXhwIjoxNTk2ODg5ODgzLCJlbWFpbCI6InpoLWJlYm9wQG91dGxvb2suY29tIn0.L4zpy144hJr82J91V9pIICjwkUAMYME4CuBCEf064bk
+[2020/08/08-20:49:05][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:49:05][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16264 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:49:05][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:49:12][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.194 seconds (JVM running for 8.347)
+[2020/08/08-20:49:57][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 0
+[2020/08/08-20:49:57][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 6h5u8
+[2020/08/08-20:50:03][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 7
+[2020/08/08-20:50:03][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 14
+[2020/08/08-20:50:04][http-nio-8081-exec-10][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 1
+[2020/08/08-20:50:04][http-nio-8081-exec-10][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > pkf9x
+[2020/08/08-20:50:55][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...0
+[2020/08/08-20:54:58][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:54:58][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2056 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:54:58][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:55:04][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.404 seconds (JVM running for 7.555)
+[2020/08/08-20:55:06][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 6
+[2020/08/08-20:55:06][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > y3dmz
+[2020/08/08-20:55:15][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/08-20:55:23][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 568b82cdc1404665ad29f89ee7b13b51
+[2020/08/08-20:55:23][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTY4OTQ5MTUsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.72UvE3rIqf1hfa1zADJCUI3OKpL4jn3X8H-QCQ_b7_E
+[2020/08/08-20:56:40][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-20:56:41][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1668 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-20:56:41][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-20:56:46][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 5.993 seconds (JVM running for 7.157)
+[2020/08/08-20:56:48][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 568b82cdc1404665ad29f89ee7b13b51
+[2020/08/08-20:56:49][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTY4OTQ5MTUsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.72UvE3rIqf1hfa1zADJCUI3OKpL4jn3X8H-QCQ_b7_E
+[2020/08/08-20:56:55][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/08-20:57:17][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > ad9a42158a2fc7c8eeaea49a83625e6f
+[2020/08/08-20:57:17][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTY4OTUwMTUsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.cMZI8Syh3JTDPqrm6wq3V5C6kdlYRRoHBpN8lz-r2cQ
+[2020/08/08-20:57:18][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > ad9a42158a2fc7c8eeaea49a83625e6f
+[2020/08/08-20:57:18][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTY4OTUwMTUsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.cMZI8Syh3JTDPqrm6wq3V5C6kdlYRRoHBpN8lz-r2cQ
+[2020/08/08-21:00:48][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/08-21:00:49][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8852 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/08-21:00:49][main][INFO ][net.blog.BlogApplication]:No active profile set, falling back to default profiles: default
+[2020/08/08-21:00:54][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.005 seconds (JVM running for 7.002)
+[2020/08/08-21:00:57][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > ad9a42158a2fc7c8eeaea49a83625e6f
+[2020/08/08-21:00:58][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTY4OTUwMTUsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.cMZI8Syh3JTDPqrm6wq3V5C6kdlYRRoHBpN8lz-r2cQ

@@ -5,8 +5,9 @@ public enum ResponseState {
     JOIN_IN_SUCCESS(60001, true, "注册成功"),
     FAILED(20000, false, "操作失败"),
     PARAMS_ILL(30000, false, "参数错误"),
-    PERMISSION_DENIED(40000, false, "权限不够"),
-    NOT_LOGIN(50000, false, "账号未登录"),
+    ACCOUNT_NOT_LOGIN(40002, false, "账号未登录"),
+    PERMISSION_DENIED(40003, false, "权限不够"),
+    ACCOUNT_DENIED(40004, false, "账号禁止"),
     LOGIN_SUCCESS(60000, true, "登录成功");
 
     ResponseState(int code, boolean isSuccess, String message) {

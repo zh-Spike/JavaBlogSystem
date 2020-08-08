@@ -182,12 +182,12 @@ public class TestController {
         log.info("comment content == >" + content);
         String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
         if (tokenKey == null) {
-            return ResponseResult.FAILED("账号未登录");
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
         }
 
         User user = userService.checkUser(request, response);
         if (user == null) {
-            return ResponseResult.FAILED("账号未登录");
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
         }
         comment.setUserId(user.getId());
         comment.setUserAvatar(user.getAvatar());

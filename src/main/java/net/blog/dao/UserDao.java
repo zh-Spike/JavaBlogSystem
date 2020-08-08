@@ -3,6 +3,8 @@ package net.blog.dao;
 import net.blog.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 public interface UserDao extends JpaSpecificationExecutor<User>, JpaRepository<User, String> {
     /**
@@ -24,9 +26,19 @@ public interface UserDao extends JpaSpecificationExecutor<User>, JpaRepository<U
     /**
      * 通过UserId查找
      *
-     * @param UserId
+     * @param userId
      * @return
      */
-    User findOneById(String UserId);
+    User findOneById(String userId);
+
+    /**
+     * 修改用户状态
+     *
+     * @param userId
+     * @return
+     */
+    @Modifying
+    @Query(nativeQuery = true, value = "UPDATE tb_user SET state = '0' WHERE id = '741626761845932032' ")
+    int deleteUserByState(String userId);
 
 }
