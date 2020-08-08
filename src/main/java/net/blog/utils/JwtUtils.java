@@ -11,7 +11,7 @@ import java.util.Map;
 public class JwtUtils {
 
     //盐值
-    private static String key = "秘钥";
+    private static String key = "ad1284433d8e3356e7024009bf6add2ab";
 
     private static long ttl = Constants.TimeValue.HOUR_2;//2个小时
 

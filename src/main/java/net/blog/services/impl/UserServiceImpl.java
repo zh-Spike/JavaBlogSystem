@@ -48,11 +48,7 @@ public class UserServiceImpl implements IUserService {
     private RefreshTokenDao refreshTokenDao;
 
     @Autowired
-    private Random random;
-
-    @Autowired
-    private RedisUtils redisUtils;
-
+    private TaskService taskService;
 
     @Override
     public ResponseResult initManagerAccount(User user, HttpServletRequest request) {
@@ -104,6 +100,12 @@ public class UserServiceImpl implements IUserService {
 
         return ResponseResult.SUCCESS("初始化成功");
     }
+
+    @Autowired
+    private Random random;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     public static final int[] captcha_font_types = {Captcha.FONT_1
             , Captcha.FONT_2
@@ -307,8 +309,7 @@ public class UserServiceImpl implements IUserService {
     }
 
 
-    @Autowired
-    private TaskService taskService;
+
 
     @Override
     public ResponseResult doLogin(String captcha,
@@ -348,8 +349,6 @@ public class UserServiceImpl implements IUserService {
         if (!"1".equals(userFromDb.getState())) {
             return ResponseResult.FAILED("当前账号已被禁止.");
         }
-
-
         // 密码正确,生成Token
         Map<String, Object> claims = ClaimsUtils.user2Claims(userFromDb);
         // token有效2小时
@@ -374,5 +373,11 @@ public class UserServiceImpl implements IUserService {
         refreshTokenDao.save(refreshToken);
         return ResponseResult.SUCCESS("登录成功");
     }
+
+    @Override
+    public User checkUser(HttpServletRequest request, HttpServletResponse response) {
+        return null;
+    }
+
 
 }

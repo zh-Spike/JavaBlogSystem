@@ -10,6 +10,7 @@ import net.blog.pojo.Comment;
 import net.blog.pojo.Labels;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
+import net.blog.services.IUserService;
 import net.blog.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -167,6 +168,9 @@ public class TestController {
 
     @Autowired
     private CommentDao commentDao;
+
+    @Autowired
+    private IUserService userService;
 
     @PostMapping("/comment")
     public ResponseResult testComment(@RequestBody Comment comment, HttpServletRequest request) {

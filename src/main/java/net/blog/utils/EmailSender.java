@@ -23,7 +23,7 @@ public class EmailSender {
         private List<MimeBodyPart> attachments = new ArrayList<MimeBodyPart>();
 
         private EmailSender() {
-            EmailSender.config(EmailSender.SMTP_QQ(false), "zh_spike@foxmail.com", "ldtmaeueelnddeec");
+            EmailSender.config(EmailSender.SMTP_QQ(false), "zh_spike@foxmail.com", "hsdjwvgvqbtzddec");
         }
 
         public static Properties defaultConfig(Boolean debug) {
