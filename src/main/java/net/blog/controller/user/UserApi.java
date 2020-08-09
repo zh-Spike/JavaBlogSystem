@@ -136,9 +136,20 @@ public class UserApi {
         return userService.updateUserInfo(request, response, userId, user);
     }
 
+    /**
+     * 获取用户列表
+     * 权限：admin
+     *
+     * @param page
+     * @param size
+     * @return
+     */
     @GetMapping("/list")
-    public ResponseResult listUser(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return null;
+    public ResponseResult listUser(@RequestParam("page") int page,
+                                   @RequestParam("size") int size,
+                                   HttpServletRequest request,
+                                   HttpServletResponse response) {
+        return userService.listUsers(page, size, request, response);
     }
 
     /**

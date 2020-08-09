@@ -18,6 +18,10 @@ import net.blog.response.ResponseState;
 import net.blog.services.IUserService;
 import net.blog.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -538,6 +542,41 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    /**
+     * 权限：admin
+     *
+     * @param page
+     * @param size
+     * @param request
+     * @param response
+     * @return
+     */
+    @Override
+    public ResponseResult listUsers(int page, int size, HttpServletRequest request, HttpServletResponse response) {
+        User currentUser = checkUser(request, response);
+        if (currentUser == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        if (!Constants.User.ROLE_ADMIN.equals(currentUser.getRoles())) {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        // 可以操作
+        // 分页查询
+        if (page < Constants.Page.DEFAULT_PAGE) {
+            page = Constants.Page.DEFAULT_PAGE;
+        }
+        // size，一页不能少于5个
+
+        if (page < Constants.Page.MIN_SIZE) {
+            size = Constants.Page.MIN_SIZE;
+        }
+        // 根据注册日期来排序
+        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Page<User> all = userDao.listAllUserNoPassword(pageable);
+        return ResponseResult.SUCCESS("获取用户列表成功").setData(all);
+    }
+
     private User parseByTokenKey(String tokenKey) {
         String token = (String) redisUtils.get(Constants.User.KEY_TOKEN + tokenKey);
         log.info("parseByTokenKey token == >" + token);
@@ -546,7 +585,7 @@ public class UserServiceImpl implements IUserService {
                 Claims claims = JwtUtils.parseJWT(token);
                 return ClaimsUtils.claims2User(claims);
             } catch (Exception e) {
-                log.info("parseByTokenKey" + tokenKey + "expired");
+                log.info("parseByTokenKey == >" + tokenKey + "expired");
                 return null;
             }
         }

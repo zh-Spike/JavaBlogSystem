@@ -21,6 +21,10 @@ public interface Constants {
         String MANAGER_ACCOUNT_INIT_STATE = "manager_account_init_state";
     }
 
+    interface Page{
+        int  DEFAULT_PAGE = 1;
+        int MIN_SIZE = 10;
+    }
     /**
      * 单位是秒
      */

@@ -35,4 +35,5 @@ public interface IUserService {
 
     ResponseResult deleteUserById(String userId, HttpServletRequest request, HttpServletResponse response);
 
+    ResponseResult listUsers(int page, int size, HttpServletRequest request, HttpServletResponse response);
 }
