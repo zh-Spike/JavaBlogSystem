@@ -46,4 +46,13 @@ public interface UserDao extends JpaSpecificationExecutor<User>, JpaRepository<U
 
     @Query(value = "select new User(u.id,u.userName,u.roles,u.avatar,u.email,u.sign,u.state,u.regIp,u.loginIp,u.createTime,u.updateTime) from User as u")
     Page<User> listAllUserNoPassword(Pageable pageable);
+
+
+    @Modifying
+    @Query(nativeQuery = true, value = "UPDATE tb_user SET password = ? WHERE email = ? ")
+    int updatePasswordByEmail(String encode, String email);
+
+    @Modifying
+    @Query(nativeQuery = true, value = "UPDATE tb_user SET email = ? WHERE id = ? ")
+    int updateEmailById(String email, String id);
 }

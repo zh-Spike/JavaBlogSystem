@@ -28,6 +28,23 @@ public class ResponseResult {
         return new ResponseResult(ResponseState.ACCOUNT_DENIED);
     }
 
+    public static ResponseResult ERROR_403() {
+        return new ResponseResult(ResponseState.ERROR_403);
+    }
+
+    public static ResponseResult ERROR_404() {
+        return new ResponseResult(ResponseState.ERROR_404);
+    }
+
+    public static ResponseResult ERROR_504() {
+        return new ResponseResult(ResponseState.ERROR_504);
+    }
+
+    public static ResponseResult ERROR_505() {
+        return new ResponseResult(ResponseState.ERROR_505);
+    }
+
+
     public static ResponseResult SUCCESS(String message) {
         ResponseResult responseResult = new ResponseResult(ResponseState.SUCCESS);
         responseResult.setMessage(message);

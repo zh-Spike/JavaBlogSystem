@@ -7,6 +7,7 @@ import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -97,13 +98,25 @@ public class UserApi {
 
     /**
      * 修改密码 UpdatePassword
+     * 修改密码，找回密码
+     * 普通：旧密码对比来更新密码
+     * 找回：发送验证码到邮箱或手机，判断对应验证码是否正确 判断主人
+     * <p>
+     * 1. 获取邮箱
+     * 2. 用户获取验证码
+     * 3. 填写验证码
+     * 4. 填写新的密码
+     * 5. 提交数据 邮箱、新密码、验证码 type=forget
+     * <p>
+     * 验证码正确-->该账号是你的,可以修改密码
      *
      * @return
      */
 
-    @PutMapping("/password")
-    public ResponseResult updatePassword(@RequestBody User user) {
-        return null;
+    @PutMapping("/password/{verify_code}")
+    public ResponseResult updatePassword(@PathVariable("verify_code") String verify_code,
+                                         @RequestBody User user) {
+        return userService.updateUserPassword(verify_code, user);
     }
 
     /**
@@ -129,11 +142,9 @@ public class UserApi {
      * @return
      */
     @PutMapping("/{userId}")
-    public ResponseResult updateUserInfo(HttpServletRequest request,
-                                         HttpServletResponse response,
-                                         @PathVariable("userId") String userId,
+    public ResponseResult updateUserInfo(@PathVariable("userId") String userId,
                                          @RequestBody User user) {
-        return userService.updateUserInfo(request, response, userId, user);
+        return userService.updateUserInfo(userId, user);
     }
 
     /**
@@ -144,12 +155,11 @@ public class UserApi {
      * @param size
      * @return
      */
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/list")
     public ResponseResult listUser(@RequestParam("page") int page,
-                                   @RequestParam("size") int size,
-                                   HttpServletRequest request,
-                                   HttpServletResponse response) {
-        return userService.listUsers(page, size, request, response);
+                                   @RequestParam("size") int size) {
+        return userService.listUsers(page, size);
     }
 
     /**
@@ -158,14 +168,13 @@ public class UserApi {
      * @param userId
      * @return
      */
+    @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{userId}")
-    public ResponseResult deleteUser(HttpServletRequest request,
-                                     HttpServletResponse response,
-                                     @PathVariable("userId") String userId) {
+    public ResponseResult deleteUser(@PathVariable("userId") String userId) {
         // 判断当前用户
         // 根据当前用户角色来删除
         // 通过注解来控制权限
-        return userService.deleteUserById(userId, request, response);
+        return userService.deleteUserById(userId);
     }
 
     /**
@@ -197,6 +206,29 @@ public class UserApi {
     @GetMapping("/user_name")
     public ResponseResult checkUserName(@RequestParam("userName") String userName) {
         return userService.checkUserName(userName);
+    }
+
+    /**
+     * 1. 必须登录
+     * 2. 新邮箱未注册
+     * <p>
+     * 用户
+     * 1. 已经登陆
+     * 2. 输入新的邮箱地址
+     * 3. 获取验证码 type=update
+     * 4. 输入验证码
+     * 5. 提交数据
+     * <p>
+     * 1. 新邮箱地址
+     * 2. 新验证码
+     * 3. 其他从token读取
+     *
+     * @return
+     */
+    @PutMapping("/email")
+    public ResponseResult updateEmail(@RequestParam("email") String email,
+                                      @RequestParam("verify_code") String verifyCode) {
+        return userService.updateEmail(email, verifyCode);
     }
 }
 

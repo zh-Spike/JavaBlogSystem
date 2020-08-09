@@ -25,6 +25,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -400,12 +402,15 @@ public class UserServiceImpl implements IUserService {
     /**
      * 本质，通过token_key检查用户是否登录，如果有，则返回用户信息
      *
-     * @param request
-     * @param response
+     * @param
+     * @param
      * @return
      */
     @Override
-    public User checkUser(HttpServletRequest request, HttpServletResponse response) {
+    public User checkUser() {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletResponse response = requestAttributes.getResponse();
         String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
         log.info("checkUser tokenKey == > " + tokenKey);
         User user = parseByTokenKey(tokenKey);
@@ -474,15 +479,16 @@ public class UserServiceImpl implements IUserService {
     /**
      * 更新用户信息
      *
-     * @param request
-     * @param response
      * @param userId
      * @param user
      * @return
      */
     @Override
-    public ResponseResult updateUserInfo(HttpServletRequest request, HttpServletResponse response, String userId, User user) {
-        User userFromTokenKey = checkUser(request, response);
+    public ResponseResult updateUserInfo(String userId, User user) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletResponse response = requestAttributes.getResponse();
+        User userFromTokenKey = checkUser();
         // 从token中解析
         if (userFromTokenKey == null) {
             return ResponseResult.ACCOUNT_NOT_LOGIN();
@@ -519,20 +525,13 @@ public class UserServiceImpl implements IUserService {
      * 删除不是真的删除，改用户状态
      *
      * @param userId
-     * @param request
-     * @param response
      * @return
      */
     @Override
-    public ResponseResult deleteUserById(String userId, HttpServletRequest request, HttpServletResponse response) {
-        // 检验当前用户
-        User currentUser = checkUser(request, response);
-        if (currentUser == null) {
-            return ResponseResult.ACCOUNT_NOT_LOGIN();
-        }
-        if (!Constants.User.ROLE_ADMIN.equals(currentUser.getRoles())) {
-            return ResponseResult.PERMISSION_DENIED();
-        }
+    public ResponseResult deleteUserById(String userId) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletResponse response = requestAttributes.getResponse();
         // 可以操作
         int result = userDao.deleteUserByState(userId);
         if (result > 0) {
@@ -547,19 +546,13 @@ public class UserServiceImpl implements IUserService {
      *
      * @param page
      * @param size
-     * @param request
-     * @param response
      * @return
      */
     @Override
-    public ResponseResult listUsers(int page, int size, HttpServletRequest request, HttpServletResponse response) {
-        User currentUser = checkUser(request, response);
-        if (currentUser == null) {
-            return ResponseResult.ACCOUNT_NOT_LOGIN();
-        }
-        if (!Constants.User.ROLE_ADMIN.equals(currentUser.getRoles())) {
-            return ResponseResult.PERMISSION_DENIED();
-        }
+    public ResponseResult listUsers(int page, int size) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        HttpServletResponse response = requestAttributes.getResponse();
         // 可以操作
         // 分页查询
         if (page < Constants.Page.DEFAULT_PAGE) {
@@ -571,10 +564,61 @@ public class UserServiceImpl implements IUserService {
             size = Constants.Page.MIN_SIZE;
         }
         // 根据注册日期来排序
-        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<User> all = userDao.listAllUserNoPassword(pageable);
         return ResponseResult.SUCCESS("获取用户列表成功").setData(all);
+    }
+
+    /**
+     * 更新密码
+     *
+     * @param verifyCode
+     * @param user
+     * @return
+     */
+    @Override
+    public ResponseResult updateUserPassword(String verifyCode, User user) {
+        //检查邮箱是否有填写
+        String email = user.getEmail();
+        if (TextUtils.isEmpty(email)) {
+            return ResponseResult.FAILED("邮箱不可以为空.");
+        }
+        //根据邮箱去redis里拿验证
+        //进行对比
+        String redisVerifyCode = (String) redisUtils.get(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        if (redisVerifyCode == null || !redisVerifyCode.equals(verifyCode)) {
+            return ResponseResult.FAILED("验证码错误.");
+        }
+        redisUtils.del(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        int result = userDao.updatePasswordByEmail(bCryptPasswordEncoder.encode(user.getPassword()), email);
+        //修改密码
+        return result > 0 ? ResponseResult.SUCCESS("密码修改成功") : ResponseResult.FAILED("密码修改失败");
+    }
+
+    /**
+     * 更新邮箱
+     *
+     * @param email
+     * @param verifyCode
+     * @return
+     */
+    @Override
+    public ResponseResult updateEmail(String email, String verifyCode) {
+        //1、确保用户已经登录了
+        User user = this.checkUser();
+        //没有登录
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        //2、对比验证码，确保新的邮箱地址是属于当前用户的
+        String redisVerifyCode = (String) redisUtils.get(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        if (TextUtils.isEmpty(redisVerifyCode) || !redisVerifyCode.equals(verifyCode)) {
+            return ResponseResult.FAILED("验证码错误");
+        }
+        //可以修改邮箱
+        int result = userDao.updateEmailById(email, user.getId());
+        return result > 0 ? ResponseResult.SUCCESS("邮箱修改成功") : ResponseResult.FAILED("邮箱修改失败");
     }
 
     private User parseByTokenKey(String tokenKey) {
