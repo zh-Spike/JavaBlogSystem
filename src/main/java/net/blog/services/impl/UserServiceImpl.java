@@ -485,9 +485,6 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public ResponseResult updateUserInfo(String userId, User user) {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
         User userFromTokenKey = checkUser();
         // 从token中解析
         if (userFromTokenKey == null) {
@@ -515,6 +512,8 @@ public class UserServiceImpl implements IUserService {
         // 签名 可为空
         userFromDb.setSign(user.getSign());
         userDao.save(userFromDb);
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
         // 更新redis里的token
         String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
         redisUtils.del(tokenKey);
