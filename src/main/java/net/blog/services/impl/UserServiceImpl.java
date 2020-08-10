@@ -172,6 +172,10 @@ public class UserServiceImpl implements IUserService {
         String content = targetCaptcha.text().toLowerCase();
         log.info("captcha content == > " + content);
         // 存入redis
+        // 删除时机
+        // 1. 自然过期
+        // 2. 验证码用完就删
+        // 3.用完的情况：get
         redisUtils.set(Constants.User.KEY_CAPTCHA_CONTENT + key, content, 60 * 10);
         targetCaptcha.out(response.getOutputStream());
     }
@@ -334,6 +338,8 @@ public class UserServiceImpl implements IUserService {
         if (!captcha.equals(captchaValue)) {
             return ResponseResult.FAILED("图灵验证码不正确");
         }
+        // 验证成功，删除redis里的数据
+        redisUtils.del(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
         // 有可能是邮箱，也可能是用户名
         String userName = user.getUserName();
         if (TextUtils.isEmpty(userName)) {
@@ -408,10 +414,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public User checkUser() {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
-        String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
+
+        String tokenKey = CookieUtils.getCookie(getRequest(), Constants.User.COOKIE_TOKEN_KEY);
         log.info("checkUser tokenKey == > " + tokenKey);
         User user = parseByTokenKey(tokenKey);
         if (user == null) {
@@ -432,7 +436,7 @@ public class UserServiceImpl implements IUserService {
                 User userFromDb = userDao.findOneById(userId);
                 // 不能直接setPassword,会重置数据库密码
                 // 删除refreshToken记录
-                String newTokenKey = createToken(response, userFromDb);
+                String newTokenKey = createToken(getResponse(), userFromDb);
                 // 返回token
                 log.info("create new token and refresh token...");
                 return parseByTokenKey(newTokenKey);
@@ -512,14 +516,22 @@ public class UserServiceImpl implements IUserService {
         // 签名 可为空
         userFromDb.setSign(user.getSign());
         userDao.save(userFromDb);
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
         // 更新redis里的token
-        String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
+        String tokenKey = CookieUtils.getCookie(getRequest(), Constants.User.COOKIE_TOKEN_KEY);
         redisUtils.del(tokenKey);
         return ResponseResult.SUCCESS("用户更新成功");
     }
 
+    private HttpServletRequest getRequest() {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        return requestAttributes.getRequest();
+    }
+
+    private HttpServletResponse getResponse(){
+
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        return  requestAttributes.getResponse();
+    }
     /**
      * 删除不是真的删除，改用户状态
      *
@@ -528,9 +540,6 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public ResponseResult deleteUserById(String userId) {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
         // 可以操作
         int result = userDao.deleteUserByState(userId);
         if (result > 0) {
@@ -549,9 +558,6 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public ResponseResult listUsers(int page, int size) {
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = requestAttributes.getRequest();
-        HttpServletResponse response = requestAttributes.getResponse();
         // 可以操作
         // 分页查询
         if (page < Constants.Page.DEFAULT_PAGE) {
@@ -615,9 +621,27 @@ public class UserServiceImpl implements IUserService {
         if (TextUtils.isEmpty(redisVerifyCode) || !redisVerifyCode.equals(verifyCode)) {
             return ResponseResult.FAILED("验证码错误");
         }
+        // 正确，删除redis里的验证码
+        redisUtils.del(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+
         //可以修改邮箱
         int result = userDao.updateEmailById(email, user.getId());
         return result > 0 ? ResponseResult.SUCCESS("邮箱修改成功") : ResponseResult.FAILED("邮箱修改失败");
+    }
+
+    @Override
+    public ResponseResult doLogout() {
+        // 拿到一个token_key
+        String tokenKey = CookieUtils.getCookie(getRequest(),Constants.User.COOKIE_TOKEN_KEY);
+        if (TextUtils.isEmpty(tokenKey)) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        // 删除redisli里的token
+        redisUtils.del(Constants.User.KEY_TOKEN + tokenKey);
+        // 删除mysql里的refrshToken
+        // 删除cookie
+        CookieUtils.deleteCookie(getResponse(),Constants.User.COOKIE_TOKEN_KEY);
+        return ResponseResult.SUCCESS("退出登陆成功.");
     }
 
     private User parseByTokenKey(String tokenKey) {

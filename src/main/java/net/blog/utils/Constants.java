@@ -9,12 +9,13 @@ public interface Constants {
         String ROLE_NORMAL = "role_normal";
         String DEFAULT_AVATAR = "https://avatars0.githubusercontent.com/u/42293758?s=460&u=21b672fff6e347172b1df9d7ebf216e9c4c9c9fb&v=4";
         String DEFAULT_STATE = "1";
+        String COOKIE_TOKEN_KEY = "blog_token";
+        // redis的key
         String KEY_CAPTCHA_CONTENT = "key_captcha_content_";
         String KEY_EMAIL_CODE_CONTENT = "key_email_code_content_";
         String KEY_EMAIL_SEND_IP = "key_email_send_ip_";
         String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_";
         String KEY_TOKEN = "key_token_";
-        String COOKIE_TOKEN_KEY = "blog_token";
     }
 
     interface Settings {

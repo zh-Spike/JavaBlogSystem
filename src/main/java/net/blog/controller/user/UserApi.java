@@ -38,7 +38,7 @@ public class UserApi {
      * @param user
      * @return
      */
-    @PostMapping
+    @PostMapping("/sign_up")
     public ResponseResult register(@RequestBody User user,
                                    @RequestParam("email_code") String emailCode,
                                    @RequestParam("captcha_code") String captchaCode,
@@ -48,7 +48,7 @@ public class UserApi {
     }
 
     /**
-     * 登录sign-up
+     * 登录
      * 需要提交的数据
      * 1.账号、邮箱 唯一
      * 2.密码
@@ -60,7 +60,7 @@ public class UserApi {
      * @param captchaKey
      * @return
      */
-    @PostMapping("/{captcha}/{captcha_key}")
+    @PostMapping("/login/{captcha}/{captcha_key}")
     public ResponseResult login(@PathVariable("captcha") String captcha,
                                 @PathVariable("captcha_key") String captchaKey,
                                 @RequestBody User user,
@@ -131,7 +131,7 @@ public class UserApi {
      *
      * @return
      */
-    @GetMapping("/{userId}")
+    @GetMapping("/user_info/{userId}")
     public ResponseResult getUserInfo(@PathVariable("userId") String userId) {
         return userService.getUserInfo(userId);
     }
@@ -141,7 +141,7 @@ public class UserApi {
      *
      * @return
      */
-    @PutMapping("/{userId}")
+    @PutMapping("/user_info/{userId}")
     public ResponseResult updateUserInfo(@PathVariable("userId") String userId,
                                          @RequestBody User user) {
         return userService.updateUserInfo(userId, user);
@@ -229,6 +229,22 @@ public class UserApi {
     public ResponseResult updateEmail(@RequestParam("email") String email,
                                       @RequestParam("verify_code") String verifyCode) {
         return userService.updateEmail(email, verifyCode);
+    }
+
+    /**
+     * 退出登录
+     * <p>
+     * 拿到token_key
+     * -> 删除redis里对应的token
+     * -> 删除mysql里对应的refreshToken
+     * -> 删除cookie里的token_key
+     *
+     * @return
+     */
+    @GetMapping("/logout")
+    public ResponseResult logout() {
+        return userService.doLogout();
+
     }
 }
 
