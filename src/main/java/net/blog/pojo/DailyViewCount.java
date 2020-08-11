@@ -19,7 +19,6 @@ public class DailyViewCount {
     @Column(name = "update_time")
     private Date updateTime;
 
-
     public String getId() {
         return id;
     }
@@ -27,7 +26,6 @@ public class DailyViewCount {
     public void setId(String id) {
         this.id = id;
     }
-
 
     public long getView_count() {
         return view_count;
@@ -37,22 +35,19 @@ public class DailyViewCount {
         this.view_count = view_count;
     }
 
-
     public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(java.sql.Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(java.sql.Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-
 }

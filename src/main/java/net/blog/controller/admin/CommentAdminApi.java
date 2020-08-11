@@ -6,7 +6,7 @@ import org.springframework.web.servlet.handler.RequestMatchResult;
 
 @RestController
 @RequestMapping("/admin/comment")
-public class CommentApi {
+public class CommentAdminApi {
 
     @DeleteMapping("/{commentId}")
     public ResponseResult deleteComment(@PathVariable("commentId") String commentId) {

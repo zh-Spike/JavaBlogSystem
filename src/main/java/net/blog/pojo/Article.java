@@ -48,7 +48,6 @@ public class Article {
         this.id = id;
     }
 
-
     public String getTitle() {
         return title;
     }
@@ -56,7 +55,6 @@ public class Article {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public String getUserId() {
         return userId;
@@ -66,7 +64,6 @@ public class Article {
         this.userId = userId;
     }
 
-
     public String getUserAvatar() {
         return userAvatar;
     }
@@ -74,7 +71,6 @@ public class Article {
     public void setUserAvatar(String userAvatar) {
         this.userAvatar = userAvatar;
     }
-
 
     public String getUserName() {
         return userName;
@@ -84,7 +80,6 @@ public class Article {
         this.userName = userName;
     }
 
-
     public String getCategoryId() {
         return categoryId;
     }
@@ -92,7 +87,6 @@ public class Article {
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
-
 
     public String getContent() {
         return content;
@@ -102,7 +96,6 @@ public class Article {
         this.content = content;
     }
 
-
     public String getType() {
         return type;
     }
@@ -110,7 +103,6 @@ public class Article {
     public void setType(String type) {
         this.type = type;
     }
-
 
     public String getState() {
         return state;
@@ -120,7 +112,6 @@ public class Article {
         this.state = state;
     }
 
-
     public String getSummary() {
         return summary;
     }
@@ -128,7 +119,6 @@ public class Article {
     public void setSummary(String summary) {
         this.summary = summary;
     }
-
 
     public String getLabels() {
         return labels;
@@ -138,7 +128,6 @@ public class Article {
         this.labels = labels;
     }
 
-
     public long getViewCount() {
         return viewCount;
     }
@@ -147,22 +136,19 @@ public class Article {
         this.viewCount = viewCount;
     }
 
-
-    public Date getCreate_time() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreate_time(java.sql.Timestamp create_time) {
-        this.createTime = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-
-    public Date getUpdate_time() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdate_time(java.sql.Timestamp update_time) {
-        this.updateTime = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
-
 }

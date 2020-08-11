@@ -38,7 +38,7 @@ import java.util.Random;
 @Slf4j
 @Service
 @Transactional
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl extends BaseService implements IUserService {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -388,11 +388,11 @@ public class UserServiceImpl implements IUserService {
         // 前端访问取token的MD5key，从redis读取
         String tokenKey = DigestUtils.md5DigestAsHex(token.getBytes());
         // 保存token到redis,有效期2h，key为tokenKey
-        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey, token, Constants.TimeValue.HOUR_2);
+        redisUtils.set(Constants.User.KEY_TOKEN + tokenKey, token, Constants.TimeValueInSecond.HOUR_2);
         // 把tokenKey写到cookies
         CookieUtils.setUpCookie(response, Constants.User.COOKIE_TOKEN_KEY, tokenKey);
-        // 生成refreshToken
-        String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(), Constants.TimeValue.MONTH);
+        // 生成refreshToken 单位毫秒 * 1000
+        String refreshTokenValue = JwtUtils.createRefreshToken(userFromDb.getId(), Constants.TimeValueInMillions.MONTH);
         // 保存到数据库
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setId(idWorker.nextId() + "");
@@ -527,11 +527,12 @@ public class UserServiceImpl implements IUserService {
         return requestAttributes.getRequest();
     }
 
-    private HttpServletResponse getResponse(){
+    private HttpServletResponse getResponse() {
 
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        return  requestAttributes.getResponse();
+        return requestAttributes.getResponse();
     }
+
     /**
      * 删除不是真的删除，改用户状态
      *
@@ -560,14 +561,8 @@ public class UserServiceImpl implements IUserService {
     public ResponseResult listUsers(int page, int size) {
         // 可以操作
         // 分页查询
-        if (page < Constants.Page.DEFAULT_PAGE) {
-            page = Constants.Page.DEFAULT_PAGE;
-        }
-        // size，一页不能少于5个
-
-        if (page < Constants.Page.MIN_SIZE) {
-            size = Constants.Page.MIN_SIZE;
-        }
+        page = checkPage(page);
+        size = checkSize(size);
         // 根据注册日期来排序
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Pageable pageable = PageRequest.of(page - 1, size);
@@ -632,7 +627,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ResponseResult doLogout() {
         // 拿到一个token_key
-        String tokenKey = CookieUtils.getCookie(getRequest(),Constants.User.COOKIE_TOKEN_KEY);
+        String tokenKey = CookieUtils.getCookie(getRequest(), Constants.User.COOKIE_TOKEN_KEY);
         if (TextUtils.isEmpty(tokenKey)) {
             return ResponseResult.ACCOUNT_NOT_LOGIN();
         }
@@ -640,7 +635,7 @@ public class UserServiceImpl implements IUserService {
         redisUtils.del(Constants.User.KEY_TOKEN + tokenKey);
         // 删除mysql里的refrshToken
         // 删除cookie
-        CookieUtils.deleteCookie(getResponse(),Constants.User.COOKIE_TOKEN_KEY);
+        CookieUtils.deleteCookie(getResponse(), Constants.User.COOKIE_TOKEN_KEY);
         return ResponseResult.SUCCESS("退出登陆成功.");
     }
 

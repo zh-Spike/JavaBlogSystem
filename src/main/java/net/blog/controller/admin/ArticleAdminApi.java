@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/article")
-public class ArticleApi {
+public class ArticleAdminApi {
 
     @PostMapping
     public ResponseResult postArticle(@RequestBody Article article) {

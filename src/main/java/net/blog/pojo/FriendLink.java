@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_friendlink")
+@Table(name = "tb_friend_link")
 public class FriendLink {
 
     @Id
@@ -19,14 +19,13 @@ public class FriendLink {
     @Column(name = "url")
     private String url;
     @Column(name = "`order`")
-    private long order;
+    private long order = 1;
     @Column(name = "state")
-    private String state;
+    private String state = "1";
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
-
 
     public String getId() {
         return id;
@@ -36,7 +35,6 @@ public class FriendLink {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -44,7 +42,6 @@ public class FriendLink {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getLogo() {
         return logo;
@@ -54,7 +51,6 @@ public class FriendLink {
         this.logo = logo;
     }
 
-
     public String getUrl() {
         return url;
     }
@@ -62,7 +58,6 @@ public class FriendLink {
     public void setUrl(String url) {
         this.url = url;
     }
-
 
     public long getOrder() {
         return order;
@@ -72,7 +67,6 @@ public class FriendLink {
         this.order = order;
     }
 
-
     public String getState() {
         return state;
     }
@@ -81,21 +75,19 @@ public class FriendLink {
         this.state = state;
     }
 
-
     public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(java.sql.Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(java.sql.Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 

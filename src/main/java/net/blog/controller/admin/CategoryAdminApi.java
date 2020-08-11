@@ -2,6 +2,9 @@ package net.blog.controller.admin;
 
 import net.blog.pojo.Category;
 import net.blog.response.ResponseResult;
+import net.blog.services.ICategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -10,44 +13,73 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admin/category")
 public class CategoryAdminApi {
+
+    @Autowired
+    private ICategoryService categoryService;
+
     /**
      * 添加分类
+     * <p>
+     * admin
      */
+    @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult addCategory(@RequestBody Category category) {
-        return null;
+        return categoryService.addCategory(category);
     }
 
     /**
      * 删除分类
+     * <p>
+     * admin
+     * @param categoryId
+     * @return
      */
     @DeleteMapping("/{categoryId}")
     public ResponseResult deleteCategory(@PathVariable("categoryId") String categoryId) {
-        return null;
+        return categoryService.deleteCategory(categoryId);
     }
 
     /**
      * 更新分类
+     *
+     * @param categoryId
+     * @param category
+     * @return
      */
-    @PutMapping
+    @PreAuthorize("@permission.admin()")
+    @PutMapping("/{categoryId}")
     public ResponseResult updateCategory(@PathVariable("categoryId") String categoryId, @RequestBody Category category) {
-        return null;
+        return categoryService.updateCategory(categoryId, category);
     }
 
     /**
      * 获取分类
+     * <p>
+     * 使用case,获取一下，填充弹窗
+     * 不获取也可以，从列表中 获取数据
+     * <p>
+     * admin
      */
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/{categoryId}")
     public ResponseResult getCategory(@PathVariable("categoryId") String categoryId) {
-        return null;
+        return categoryService.getCategory(categoryId);
     }
 
     /**
-     * 分类列表
+     * 获取分类列表
+     * <p>
+     * admin
+     *
+     * @param page 页码
+     * @param size 每一页的item数量
+     * @return
      */
-    @GetMapping("/list")
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/list/{page}/{size}")
     public ResponseResult listCategories(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return null;
+        return categoryService.listCategories(page, size);
     }
 
 }
