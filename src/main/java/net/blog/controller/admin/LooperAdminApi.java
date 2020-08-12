@@ -28,8 +28,8 @@ public class LooperAdminApi {
 
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{loopId}")
-    public ResponseResult updateLooper(@PathVariable("loopId") String loopId,@RequestBody Looper looper) {
-        return looperService.updateLooper(loopId,looper);
+    public ResponseResult updateLooper(@PathVariable("loopId") String loopId, @RequestBody Looper looper) {
+        return looperService.updateLooper(loopId, looper);
     }
 
     @PreAuthorize("@permission.admin()")
@@ -41,6 +41,6 @@ public class LooperAdminApi {
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listLoops(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return looperService.listLoops(page,size);
+        return looperService.listLoops(page, size);
     }
 }
