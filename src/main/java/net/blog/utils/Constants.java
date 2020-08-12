@@ -18,7 +18,7 @@ public interface Constants {
         String KEY_TOKEN = "key_token_";
     }
 
-    interface ImageType{
+    interface ImageType {
         String PREFIX = "image/";
         String TYPE_JPG = "jpg";
         String TYPE_PNG = "png";
@@ -30,6 +30,10 @@ public interface Constants {
 
     interface Settings {
         String MANAGER_ACCOUNT_INIT_STATE = "manager_account_init_state";
+        String WEBSITE_TITLE = "website_title";
+        String WEBSITE_DESCRIPTION = "website_description";
+        String WEBSITE_KEYWORDS = "website_keywords";
+        String WEBSITE_VIEW_COUNT = "website_view_count";
     }
 
     interface Page {
@@ -49,6 +53,7 @@ public interface Constants {
         int WEEK = 7 * DAY;
         int MONTH = 30 * DAY;
     }
+
     /**
      * 单位是毫秒
      */
@@ -60,4 +65,6 @@ public interface Constants {
         long WEEK = 7 * DAY;
         long MONTH = 30 * DAY;
     }
+
+
 }

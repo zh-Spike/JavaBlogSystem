@@ -21,7 +21,6 @@ public class Settings {
     @Column(name = "update_time")
     private Date updateTime;
 
-
     public String getId() {
         return id;
     }
@@ -46,19 +45,19 @@ public class Settings {
         this.value = value;
     }
 
-    public Date getCreate_time() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.createTime = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdate_time() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdate_time(Date update_time) {
-        this.updateTime = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

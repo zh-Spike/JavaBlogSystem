@@ -18,7 +18,7 @@ import java.util.Date;
 
 @Service
 @Transactional
-public class FriendLinkServiceImpl  extends BaseService implements IFriendLinkService {
+public class FriendLinkServiceImpl extends BaseService implements IFriendLinkService {
 
     @Autowired
     private SnowflakeIdWorker idWorker;

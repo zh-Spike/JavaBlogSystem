@@ -65,8 +65,8 @@ public class LooperServiceImpl extends BaseService implements ILooperService {
     public ResponseResult listLoops(int page, int size) {
         page = checkPage(page);
         size = checkSize(size);
-        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
-        Pageable pageable = PageRequest.of(page -1,size,sort);
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<Looper> all = loopDao.findAll(pageable);
         return ResponseResult.SUCCESS("获取轮播图列表成功").setData(all);
     }

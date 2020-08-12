@@ -107,8 +107,8 @@ public class UserServiceImpl extends BaseService implements IUserService {
         Settings settings = new Settings();
         settings.setId(idWorker.nextId() + "");
         settings.setKey(Constants.Settings.MANAGER_ACCOUNT_INIT_STATE);
-        settings.setCreate_time(new Date());
-        settings.setUpdate_time(new Date());
+        settings.setCreateTime(new Date());
+        settings.setUpdateTime(new Date());
         settings.setValue("1");
         settingsDao.save(settings);
 
