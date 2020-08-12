@@ -20,21 +20,35 @@ public class ArticleAdminApi {
         return articleService.postArticle(article);
     }
 
+    /**
+     * 如果是多用户的话，用户不可以删除 只是修改状态
+     * admin可以删除
+     * <p>
+     * <p>
+     * 真的删除
+     *
+     * @param articleId
+     * @return
+     */
+    @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{articleId}")
     public ResponseResult deleteArticle(@PathVariable("articleId") String articleId) {
-        return null;
+        return articleService.deleteArticleById(articleId);
     }
 
+    @PreAuthorize("@permission.admin()")
     @PutMapping("/{articleId}")
-    public ResponseResult updateArticle(@PathVariable("articleId") String articleId) {
-        return null;
+    public ResponseResult updateArticle(@PathVariable("articleId") String articleId, @RequestBody Article article) {
+        return articleService.updateArticle(articleId, article);
     }
 
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/{articleId}")
     public ResponseResult getArticle(@PathVariable("articleId") String articleId) {
-        return null;
+        return articleService.getArticleById(articleId);
     }
 
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listArticles(@PathVariable("page") int page,
                                        @PathVariable("size") int size,
@@ -44,13 +58,15 @@ public class ArticleAdminApi {
         return articleService.listArticle(page, size, state, keyword, categoryId);
     }
 
-    @PutMapping("/sate/{articleId}/{state}")
-    public ResponseResult updateArticleState(@PathVariable("articleId") String articleId, @PathVariable("state") String state) {
-        return null;
+    @PreAuthorize("@permission.admin()")
+    @DeleteMapping("/sate/{articleId}")
+    public ResponseResult updateArticleByUpdateState(@PathVariable("articleId") String articleId) {
+        return articleService.deleteArticleByState(articleId);
     }
 
+    @PreAuthorize("@permission.admin()")
     @PutMapping("/top/{articleId}")
     public ResponseResult updateArticleState(@PathVariable("articleId") String articleId) {
-        return null;
+        return articleService.topArticle(articleId);
     }
 }

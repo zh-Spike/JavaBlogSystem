@@ -10,9 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.RefreshTokenDao;
 import net.blog.dao.SettingsDao;
 import net.blog.dao.UserDao;
+import net.blog.dao.UserNoPasswordDao;
 import net.blog.pojo.RefreshToken;
 import net.blog.pojo.Settings;
 import net.blog.pojo.User;
+import net.blog.pojo.UserNoPassword;
 import net.blog.response.ResponseResult;
 import net.blog.response.ResponseState;
 import net.blog.services.IUserService;
@@ -558,6 +560,8 @@ public class UserServiceImpl extends BaseService implements IUserService {
      * @param size
      * @return
      */
+    @Autowired
+    private UserNoPasswordDao userNoPasswordDao;
     @Override
     public ResponseResult listUsers(int page, int size) {
         // 可以操作
@@ -567,7 +571,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         // 根据注册日期来排序
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         Pageable pageable = PageRequest.of(page - 1, size);
-        Page<User> all = userDao.listAllUserNoPassword(pageable);
+        Page<UserNoPassword> all = userNoPasswordDao.findAll(pageable);
         return ResponseResult.SUCCESS("获取用户列表成功").setData(all);
     }
 

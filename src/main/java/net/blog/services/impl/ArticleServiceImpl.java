@@ -112,7 +112,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
             if (summary.length() > Constants.Article.SUMMARY_MAX_LENGTH) {
                 return ResponseResult.FAILED("摘要不能超过" + Constants.Article.SUMMARY_MAX_LENGTH + "个字符");
             }
-            String labels = article.getLabels();
+            String labels = article.getLabel();
             // 标签-标签1-标签2
             if (TextUtils.isEmpty(labels)) {
                 return ResponseResult.FAILED("标签不能为空");
@@ -187,5 +187,131 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         }, pageable);
         // 处理查询条件
         return ResponseResult.SUCCESS("获取列表成功").setData(all);
+    }
+
+    /**
+     * 如果有审核机制 审核的文章只能管理员和作者自己才能看
+     * 草稿、删除、置顶、发布
+     * 删除的不能获取,其他都可以
+     *
+     * @param articleId
+     * @return
+     */
+    @Override
+    public ResponseResult getArticleById(String articleId) {
+        // 查询文章
+        Article article = articleDao.findOneById(articleId);
+        if (article == null) {
+            return ResponseResult.FAILED("文章不存在");
+        }
+        // 判断文章状态
+        String state = article.getState();
+        if (Constants.Article.STATE_PUBLISH.equals(state) ||
+                Constants.Article.STATE_TOP.equals(state)) {
+            // 可以返回
+            return ResponseResult.SUCCESS("获取文章成功").setData(article);
+        }
+        // 如果删除/草稿,需要admin
+        User user = userService.checkUser();
+        String roles = user.getRoles();
+        if (!Constants.User.ROLE_ADMIN.equals(roles)) {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        // 返回结果
+        return ResponseResult.SUCCESS("获取文章成功").setData(article);
+    }
+
+    /**
+     * 更新文章内容
+     * 只支持修改 标题 内容 标签 分类 摘要
+     *
+     * @param articleId 更新文章的ID
+     * @param article   文章
+     * @return
+     */
+    @Override
+    public ResponseResult updateArticle(String articleId, Article article) {
+        // 找出来
+        Article articleFromDb = articleDao.findOneById(articleId);
+        if (articleFromDb == null) {
+            return ResponseResult.FAILED("文章不存在");
+        }
+        // 内容修改
+        String title = article.getTitle();
+        if (!TextUtils.isEmpty(title)) {
+            articleFromDb.setTitle(title);
+        }
+        String summary = article.getSummary();
+        if (!TextUtils.isEmpty(summary)) {
+            articleFromDb.setSummary(summary);
+        }
+        String content = article.getContent();
+        if (!TextUtils.isEmpty(content)) {
+            articleFromDb.setContent(content);
+        }
+        String label = article.getLabel();
+        if (!TextUtils.isEmpty(label)) {
+            articleFromDb.setLabel(label);
+        }
+        String categoryid = article.getCategoryId();
+        if (!TextUtils.isEmpty(categoryid)) {
+            articleFromDb.setCategoryId(categoryid);
+        }
+        articleFromDb.setCover(article.getCover());
+        articleFromDb.setUpdateTime(new Date());
+        articleDao.save(articleFromDb);
+        // 返回接口
+        return ResponseResult.SUCCESS("文章更新成功");
+    }
+
+    /**
+     * 删除 物理
+     *
+     * @param articleId
+     * @return
+     */
+    @Override
+    public ResponseResult deleteArticleById(String articleId) {
+        int result = articleDao.deleteAllById(articleId);
+        if (result > 0) {
+            return ResponseResult.SUCCESS("文章删除成功");
+        }
+        return ResponseResult.FAILED("文章不存在");
+    }
+
+    /**
+     * 通过修改状态删除 标记删除
+     *
+     * @param articleId
+     * @return
+     */
+    @Override
+    public ResponseResult deleteArticleByState(String articleId) {
+        int result = articleDao.deleteArticleByState(articleId);
+        if (result > 0) {
+            return ResponseResult.SUCCESS("文章删除成功");
+        }
+        return ResponseResult.FAILED("文章不存在");
+    }
+
+    @Override
+    public ResponseResult topArticle(String articleId) {
+        // 必须是已经发布的才能置顶
+        Article article = articleDao.findOneById(articleId);
+        if (article == null) {
+            return ResponseResult.FAILED("文章不存在");
+        }
+        String state = article.getState();
+        if (Constants.Article.STATE_PUBLISH.equals(state)) {
+            article.setState(Constants.Article.STATE_TOP);
+            articleDao.save(article);
+            return ResponseResult.SUCCESS("置顶成功");
+        }
+        if(Constants.Article.STATE_TOP.equals(state)){
+            article.setState(Constants.Article.STATE_PUBLISH);
+            articleDao.save(article);
+            return ResponseResult.SUCCESS("取消置顶");
+        }
+        return ResponseResult.FAILED("不支持该操作");
     }
 }

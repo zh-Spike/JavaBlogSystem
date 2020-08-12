@@ -9,4 +9,13 @@ public interface IArticleService {
     ResponseResult listArticle(int page, int size, String state,
                                String keyword, String categoryId);
 
+    ResponseResult getArticleById(String articleId);
+
+    ResponseResult updateArticle(String articleId, Article article);
+
+    ResponseResult deleteArticleById(String articleId);
+
+    ResponseResult deleteArticleByState(String articleId);
+
+    ResponseResult topArticle(String articleId);
 }

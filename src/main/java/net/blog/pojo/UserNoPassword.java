@@ -1,21 +1,19 @@
 package net.blog.pojo;
 
-import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
 @Table(name = "tb_user")
-public class User {
+public class UserNoPassword {
 
     @Id
     private String id;
     @Column(name = "user_name")
     private String userName;
-    @Column(name = "password")
-    private String password;
     @Column(name = "roles")
     private String roles;
     @Column(name = "avatar")
@@ -49,14 +47,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getRoles() {
