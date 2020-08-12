@@ -8,6 +8,7 @@ import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,12 +26,14 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
     @Autowired
     private SnowflakeIdWorker idWorker;
 
+    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult getWebsiteTitle() {
         Settings title = settingDao.findOneByKey(Constants.Settings.WEBSITE_TITLE);
         return ResponseResult.SUCCESS("获取网站title成功").setData(title);
     }
 
+    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult putWebSiteTitle(String title) {
         if (TextUtils.isEmpty(title)) {
@@ -49,6 +52,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
         return ResponseResult.SUCCESS("网站title更新成功");
     }
 
+    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult getSeoInfo() {
         Settings description = settingDao.findOneByKey(Constants.Settings.WEBSITE_DESCRIPTION);
@@ -59,6 +63,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
         return ResponseResult.SUCCESS("获取SEO信息成功").setData(result);
     }
 
+    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult putSeoInfo(String keywords, String description) {
         if (TextUtils.isEmpty(description)) {
@@ -96,6 +101,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
      *
      * @return 浏览量
      */
+    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult getWebsiteViewCount() {
         Settings viewCountFromDb = settingDao.findOneByKey(Constants.Settings.WEBSITE_VIEW_COUNT);
