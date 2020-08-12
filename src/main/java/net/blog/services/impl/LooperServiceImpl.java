@@ -71,6 +71,7 @@ public class LooperServiceImpl extends BaseService implements ILooperService {
         return ResponseResult.SUCCESS("获取轮播图列表成功").setData(all);
     }
 
+
     @Override
     public ResponseResult updateLooper(String loopId, Looper looper) {
         // 查找所有数据
