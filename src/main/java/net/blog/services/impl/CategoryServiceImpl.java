@@ -2,8 +2,11 @@ package net.blog.services.impl;
 
 import net.blog.dao.CategoryDao;
 import net.blog.pojo.Category;
+import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.ICategoryService;
+import net.blog.services.IUserService;
+import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -25,6 +29,9 @@ public class CategoryServiceImpl extends BaseService implements ICategoryService
 
     @Autowired
     private CategoryDao categoryDao;
+
+    @Autowired
+    private IUserService userService;
 
     @Override
     public ResponseResult addCategory(Category category) {
@@ -61,17 +68,22 @@ public class CategoryServiceImpl extends BaseService implements ICategoryService
     }
 
     @Override
-    public ResponseResult listCategories(int page, int size) {
+    public ResponseResult listCategories() {
         // 参数检查
-        page = checkPage(page);
-        size = checkSize(size);
         // 创建条件
         Sort sort = new Sort(Sort.Direction.DESC, "createTime", "order");
-        Pageable pageable = PageRequest.of(page - 1, size, sort);
-        // 查询
-        Page<Category> all = categoryDao.findAll(pageable);
+        // 判断用户 普通/未登录用户  admin权限拉满
+        User user = userService.checkUser();
+        List<Category> categories;
+        if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
+            // 只能获取正常的category
+            categories = categoryDao.listCategoryByState("1");
+        } else {
+            // 查询
+            categories = categoryDao.findAll(sort);
+        }
         //返回结果
-        return ResponseResult.SUCCESS("获取分类列表成功").setData(all);
+        return ResponseResult.SUCCESS("获取分类列表成功").setData(categories);
     }
 
     @Override

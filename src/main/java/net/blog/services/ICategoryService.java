@@ -9,7 +9,7 @@ public interface ICategoryService {
 
     ResponseResult getCategory(String categoryId);
 
-    ResponseResult listCategories(int page, int size);
+    ResponseResult listCategories();
 
     ResponseResult updateCategory(String categoryId, Category category);
 

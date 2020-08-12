@@ -1,6 +1,8 @@
 package net.blog.controller.portal;
 
 import net.blog.response.ResponseResult;
+import net.blog.services.ICategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/portal/web_site_info")
 public class WebSiteInfoPortalApi {
 
+    @Autowired
+    private ICategoryService categoryService;
+
     @GetMapping("/categories")
     public ResponseResult getCategories() {
-        return null;
+        return categoryService.listCategories();
     }
 
     @GetMapping("/title")

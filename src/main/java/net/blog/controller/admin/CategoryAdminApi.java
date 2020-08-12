@@ -74,14 +74,12 @@ public class CategoryAdminApi {
      * <p>
      * admin
      *
-     * @param page 页码
-     * @param size 每一页的item数量
      * @return
      */
     @PreAuthorize("@permission.admin()")
-    @GetMapping("/list/{page}/{size}")
-    public ResponseResult listCategories(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return categoryService.listCategories(page, size);
+    @GetMapping("/list")
+    public ResponseResult listCategories() {
+        return categoryService.listCategories();
     }
 
 }
