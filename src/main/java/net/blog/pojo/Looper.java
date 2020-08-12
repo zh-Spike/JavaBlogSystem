@@ -15,13 +15,13 @@ public class Looper {
     @Column(name = "title")
     private String title;
     @Column(name = "`order`")
-    private long order;
+    private long order = 1;
     @Column(name = "state")
-    private String state;
+    private String state = "1";
     @Column(name = "target_url")
-    private String target_url;
+    private String targetUrl;
     @Column(name = "image_url")
-    private String image_url;
+    private String imageUrl;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
@@ -59,20 +59,20 @@ public class Looper {
         this.state = state;
     }
 
-    public String getTarget_url() {
-        return target_url;
+    public String getTargetUrl() {
+        return targetUrl;
     }
 
-    public void setTarget_url(String target_url) {
-        this.target_url = target_url;
+    public void setTargetUrl(String targetUrl) {
+        this.targetUrl = targetUrl;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Date getCreateTime() {

@@ -116,6 +116,7 @@ public class FriendLinkServiceImpl  extends BaseService implements IFriendLinkSe
             friendLinkFromDb.setUrl(url);
         }
         friendLinkFromDb.setOrder(friendLink.getOrder());
+        friendLinkFromDb.setUpdateTime(new Date());
         // 保存数据
         friendLinkDao.save(friendLinkFromDb);
         return ResponseResult.SUCCESS("更新成功");

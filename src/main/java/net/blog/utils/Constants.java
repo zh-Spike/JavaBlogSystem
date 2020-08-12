@@ -53,7 +53,7 @@ public interface Constants {
      * 单位是毫秒
      */
     interface TimeValueInMillions {
-        long MIN = 60;
+        long MIN = 60 * 1000;
         long HOUR = 60 * MIN;
         long HOUR_2 = 60 * MIN;
         long DAY = 24 * HOUR;

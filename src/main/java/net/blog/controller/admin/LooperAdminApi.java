@@ -2,34 +2,45 @@ package net.blog.controller.admin;
 
 import net.blog.pojo.Looper;
 import net.blog.response.ResponseResult;
+import net.blog.services.ILooperService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/loop")
 public class LooperAdminApi {
 
+    @Autowired
+    private ILooperService looperService;
+
+    @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult addLoop(@RequestBody Looper looper) {
-        return null;
+        return looperService.addLoop(looper);
     }
 
+    @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{loopId}")
     public ResponseResult deleteLooper(@PathVariable("loorId") String loopId) {
-        return null;
+        return looperService.deleteLooper(loopId);
     }
 
+    @PreAuthorize("@permission.admin()")
     @PutMapping("/{loopId}")
-    public ResponseResult updateLooper(@PathVariable("loopId") String loopId) {
-        return null;
+    public ResponseResult updateLooper(@PathVariable("loopId") String loopId,@RequestBody Looper looper) {
+        return looperService.updateLooper(loopId,looper);
     }
 
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/{loopId}")
     public ResponseResult getLoop(@PathVariable("loopId") String loopId) {
-        return null;
+        return looperService.getLoop(loopId);
     }
 
-    @GetMapping("/list")
-    public ResponseResult listLoops(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return null;
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/list/{page}/{size}")
+    public ResponseResult listLoops(@PathVariable("page") int page, @PathVariable("size") int size) {
+        return looperService.listLoops(page,size);
     }
 }

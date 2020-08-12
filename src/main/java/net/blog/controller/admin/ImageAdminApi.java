@@ -43,7 +43,7 @@ public class ImageAdminApi {
     public void getImage(HttpServletResponse response,
                          @PathVariable("imageId") String imageId) {
         try {
-            imageService.viewImage(response,imageId);
+            imageService.viewImage(response, imageId);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class ImageAdminApi {
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listImages(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return imageService.listImages(page,size);
+        return imageService.listImages(page, size);
     }
 
 }

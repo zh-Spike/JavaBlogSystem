@@ -213,13 +213,13 @@ public class ImageServiceImpl extends BaseService implements IImageService {
         page = checkPage(page);
         size = checkSize(size);
         User user = userService.checkUser();
-        if (user == null){
+        if (user == null) {
             return ResponseResult.ACCOUNT_NOT_LOGIN();
         }
         // 创建分页条件
-        Sort sort = new Sort(Sort.Direction.DESC,"createTime");
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
         // 查询
-        Pageable pageable = PageRequest.of(page -1,size,sort);
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
         // 返回结果
         final String userId = user.getId();
         Page<Image> all = imageDao.findAll(new Specification<Image>() {
@@ -229,22 +229,23 @@ public class ImageServiceImpl extends BaseService implements IImageService {
                 Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
                 // 根据状态
                 Predicate statePre = criteriaBuilder.equal(root.get("state").as(String.class), "1");
-                return criteriaBuilder.and(userIdPre,statePre);
+                return criteriaBuilder.and(userIdPre, statePre);
             }
-        },pageable);
+        }, pageable);
         return ResponseResult.SUCCESS("获取图片列表成功").setData(all);
     }
 
     /**
      * 删除图片
      * 改变状态
+     *
      * @param imageId
      * @return
      */
     @Override
     public ResponseResult deleteById(String imageId) {
         int result = imageDao.deleteByIdUpdateState(imageId);
-        if (result >0) {
+        if (result > 0) {
             return ResponseResult.FAILED("删除成功");
         }
         return ResponseResult.FAILED("图片不存在");

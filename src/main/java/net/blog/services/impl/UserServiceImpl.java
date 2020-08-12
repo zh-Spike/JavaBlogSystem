@@ -430,7 +430,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
             }
             // 3.存在,解析refreshToken
             try {
-                Claims claims = JwtUtils.parseJWT(refreshToken.getRefreshToken());
+                JwtUtils.parseJWT(refreshToken.getRefreshToken());
                 // 4.如果refreshToken有效，创建新的token和refreshToken
                 String userId = refreshToken.getUserId();
                 User userFromDb = userDao.findOneById(userId);
@@ -513,6 +513,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         if (!TextUtils.isEmpty(user.getAvatar())) {
             userFromDb.setAvatar(user.getAvatar());
         }
+        userFromDb.setUpdateTime(new Date());
         // 签名 可为空
         userFromDb.setSign(user.getSign());
         userDao.save(userFromDb);
