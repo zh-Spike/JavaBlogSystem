@@ -1,28 +1,28 @@
 package net.blog.controller;
 
 import net.blog.response.ResponseResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ErrorPageController {
 
-    @GetMapping("/403")
+    @RequestMapping("/403")
     public ResponseResult page403() {
         return ResponseResult.ERROR_403();
     }
 
-    @GetMapping("/404")
+    @RequestMapping("/404")
     public ResponseResult page404() {
         return ResponseResult.ERROR_404();
     }
 
-    @GetMapping("/504")
+    @RequestMapping("/504")
     public ResponseResult page504() {
         return ResponseResult.ERROR_504();
     }
 
-    @GetMapping("/505")
+    @RequestMapping("/505")
     public ResponseResult page505() {
         return ResponseResult.ERROR_505();
     }

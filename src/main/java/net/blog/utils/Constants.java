@@ -66,5 +66,15 @@ public interface Constants {
         long MONTH = 30 * DAY;
     }
 
+    interface Article {
+        int TITLE_MAX_LENGTH = 128;
+        int SUMMARY_MAX_LENGTH = 256;
+        // 0删除 1正常发布 2草稿 3置顶
+        String STATE_DELETE = "0";
+        String STATE_PUBLISH = "1";
+        String STATE_DRAFT = "2";
+        String STATE_TOP = "3";
+    }
+
 
 }

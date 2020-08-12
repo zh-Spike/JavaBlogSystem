@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tb_article")
-public class Article {
+public class ArticleNoContent {
 
     @Id
     private String id;
@@ -22,8 +22,6 @@ public class Article {
     private String userName;
     @Column(name = "category_id")
     private String categoryId;
-    @Column(name = "content")
-    private String content;
     // 类型 0表示富文本，1表示markdown
     @Column(name = "type")
     private String type;
@@ -98,14 +96,6 @@ public class Article {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getType() {
