@@ -53,9 +53,9 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
     public ResponseResult getSeoInfo() {
         Settings description = settingDao.findOneByKey(Constants.Settings.WEBSITE_DESCRIPTION);
         Settings keyWords = settingDao.findOneByKey(Constants.Settings.WEBSITE_KEYWORDS);
-        Map<String,String> result = new HashMap<>();
-        result.put(description.getKey(),description.getValue());
-        result.put(keyWords.getKey(),keyWords.getValue());
+        Map<String, String> result = new HashMap<>();
+        result.put(description.getKey(), description.getValue());
+        result.put(keyWords.getKey(), keyWords.getValue());
         return ResponseResult.SUCCESS("获取SEO信息成功").setData(result);
     }
 
@@ -70,7 +70,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
         Settings descriptionFromDb = settingDao.findOneByKey(Constants.Settings.WEBSITE_DESCRIPTION);
         if (descriptionFromDb == null) {
             descriptionFromDb = new Settings();
-            descriptionFromDb.setId(idWorker.nextId()+"");
+            descriptionFromDb.setId(idWorker.nextId() + "");
             descriptionFromDb.setCreateTime(new Date());
             descriptionFromDb.setUpdateTime(new Date());
             descriptionFromDb.setKey(Constants.Settings.WEBSITE_DESCRIPTION);
@@ -80,7 +80,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
         Settings keyWordsFromDb = settingDao.findOneByKey(Constants.Settings.WEBSITE_KEYWORDS);
         if (keyWordsFromDb == null) {
             keyWordsFromDb = new Settings();
-            keyWordsFromDb.setId(idWorker.nextId()+"");
+            keyWordsFromDb.setId(idWorker.nextId() + "");
             keyWordsFromDb.setCreateTime(new Date());
             keyWordsFromDb.setUpdateTime(new Date());
             keyWordsFromDb.setKey(Constants.Settings.WEBSITE_KEYWORDS);
@@ -93,6 +93,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
     /**
      * 网站访问量，细的话还分来源
      * 只统计浏览量 提供一个接口 页面级
+     *
      * @return 浏览量
      */
     @Override
@@ -100,14 +101,14 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
         Settings viewCountFromDb = settingDao.findOneByKey(Constants.Settings.WEBSITE_VIEW_COUNT);
         if (viewCountFromDb == null) {
             viewCountFromDb = new Settings();
-            viewCountFromDb.setId(idWorker.nextId()+"");
+            viewCountFromDb.setId(idWorker.nextId() + "");
             viewCountFromDb.setCreateTime(new Date());
             viewCountFromDb.setUpdateTime(new Date());
             viewCountFromDb.setKey(Constants.Settings.WEBSITE_VIEW_COUNT);
             viewCountFromDb.setValue("1");
             settingDao.save(viewCountFromDb);
         }
-        Map<String, Integer> result =new HashMap<>();
+        Map<String, Integer> result = new HashMap<>();
         result.put(viewCountFromDb.getKey(), Integer.valueOf(viewCountFromDb.getValue()));
         return ResponseResult.SUCCESS("获取网站浏览量成功").setData(result);
     }
