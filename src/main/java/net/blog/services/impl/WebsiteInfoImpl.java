@@ -8,7 +8,6 @@ import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,7 +25,6 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
     @Autowired
     private SnowflakeIdWorker idWorker;
 
-    @PreAuthorize("@permission.admin()")
     @Override
     public ResponseResult getWebsiteTitle() {
         Settings title = settingDao.findOneByKey(Constants.Settings.WEBSITE_TITLE);
