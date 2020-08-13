@@ -1,5 +1,6 @@
 package net.blog.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.ArticleDao;
 import net.blog.dao.ArticleNoContentDao;
 import net.blog.pojo.Article;
@@ -24,10 +25,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
+@Slf4j
 @Service
 @Transactional
 public class ArticleServiceImpl extends BaseService implements IArticleService {
@@ -213,8 +213,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         }
         // 如果删除/草稿,需要admin
         User user = userService.checkUser();
-        String roles = user.getRoles();
-        if (!Constants.User.ROLE_ADMIN.equals(roles)) {
+        if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
             return ResponseResult.PERMISSION_DENIED();
         }
         // 返回结果
@@ -307,11 +306,65 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
             articleDao.save(article);
             return ResponseResult.SUCCESS("置顶成功");
         }
-        if(Constants.Article.STATE_TOP.equals(state)){
+        if (Constants.Article.STATE_TOP.equals(state)) {
             article.setState(Constants.Article.STATE_PUBLISH);
             articleDao.save(article);
             return ResponseResult.SUCCESS("取消置顶");
         }
         return ResponseResult.FAILED("不支持该操作");
+    }
+
+    /**
+     * 获取置顶文章
+     * 与权限无关
+     * 状态必须置顶
+     *
+     * @return
+     */
+    @Override
+    public ResponseResult listTopArticles() {
+        List<Article> result = articleDao.findAll(new Specification<Article>() {
+            @Override
+            public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("state").as(String.class), Constants.Article.STATE_TOP);
+            }
+        });
+        return ResponseResult.SUCCESS("获取置顶文章成功").setData(result);
+    }
+
+    @Autowired
+    private Random random;
+
+    /**
+     * 获取推荐文章 通过标签来计算
+     *
+     * @param articleId
+     * @param size
+     * @return
+     */
+    @Override
+    public ResponseResult listRecommendArticle(String articleId, int size) {
+        // 查询文章 不需要文章内容 只要标签
+        String labels = articleDao.listArticleLabelsById(articleId);
+        // 分割标签
+        List<String> labelList = new ArrayList<>();
+        if (!labels.contains("-")) {
+            labelList.add(labels);
+        } else {
+            labelList.addAll(Arrays.asList(labels.split("-")));
+        }
+        // 从列表中随机获取标签来查询相似的内容
+        String targetLabel = labelList.get(random.nextInt(labelList.size()));
+        log.info("targetLabel == >" +targetLabel);
+        List<ArticleNoContent> likeResultList = articleNoContentDao.listArticleByLikeLabel("%" + targetLabel + "%", articleId, size);
+        // 判断长度
+        if (likeResultList.size() < size) {
+            // 说明长度不够,用最新文章补充
+            int dxSize = size - likeResultList.size();
+            List<ArticleNoContent> dxList = articleNoContentDao.listLastArticleBySize(articleId, dxSize);
+            // 会把前面找到的也找进来
+            likeResultList.addAll(dxList);
+        }
+        return ResponseResult.SUCCESS("获取推荐文章成功").setData(likeResultList);
     }
 }

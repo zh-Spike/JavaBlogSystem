@@ -28,3 +28,95 @@
 [2020/08/13-12:44:26][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14188 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
 [2020/08/13-12:44:26][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
 [2020/08/13-12:44:33][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.542 seconds (JVM running for 8.635)
+[2020/08/13-12:55:10][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-12:55:11][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 12528 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-12:55:11][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-12:55:18][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.918 seconds (JVM running for 9.055)
+[2020/08/13-12:57:39][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 6
+[2020/08/13-12:57:39][http-nio-8081-exec-7][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > pkphe
+[2020/08/13-12:58:04][http-nio-8081-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/13-12:58:39][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-12:58:40][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11892 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-12:58:40][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-12:58:46][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.449 seconds (JVM running for 7.457)
+[2020/08/13-12:58:57][http-nio-8081-exec-10][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > f2ea356e20ff0f553227560a62fc8e77
+[2020/08/13-12:58:58][http-nio-8081-exec-10][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTcyOTgyODQsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.1iOPBR0_ti1u0aDi6lyMx5nDP4AOB3ccAVKsbsG1L6A
+[2020/08/13-12:59:25][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > f2ea356e20ff0f553227560a62fc8e77
+[2020/08/13-12:59:25][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTcyOTgyODQsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.1iOPBR0_ti1u0aDi6lyMx5nDP4AOB3ccAVKsbsG1L6A
+[2020/08/13-12:59:37][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/13-12:59:37][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/08/13-12:59:37][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-12:59:37][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/13-13:01:12][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:01:13][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3244 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:01:13][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:01:21][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.1 seconds (JVM running for 9.293)
+[2020/08/13-13:01:22][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/13-13:01:22][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/08/13-13:01:23][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-13:01:23][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/13-13:01:29][http-nio-8081-exec-3][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/13-13:01:29][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/08/13-13:01:29][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-13:01:29][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/13-13:01:31][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/13-13:01:31][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/08/13-13:01:31][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-13:01:31][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/13-13:06:31][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:06:32][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8496 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:06:32][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:06:39][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.58 seconds (JVM running for 8.748)
+[2020/08/13-13:10:42][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:10:42][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5684 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:10:42][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:10:49][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.154 seconds (JVM running for 8.237)
+[2020/08/13-13:15:11][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:15:12][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6724 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:15:12][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:15:19][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.688 seconds (JVM running for 8.88)
+[2020/08/13-13:20:03][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:20:03][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15568 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:20:03][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:20:11][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.808 seconds (JVM running for 8.907)
+[2020/08/13-13:21:54][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > f2ea356e20ff0f553227560a62fc8e77
+[2020/08/13-13:21:55][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTcyOTgyODQsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.1iOPBR0_ti1u0aDi6lyMx5nDP4AOB3ccAVKsbsG1L6A
+[2020/08/13-13:23:05][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:23:06][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 4176 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:23:06][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:23:13][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.132 seconds (JVM running for 9.312)
+[2020/08/13-13:32:11][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:32:12][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1388 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:32:12][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:32:19][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.941 seconds (JVM running for 9.102)
+[2020/08/13-13:59:41][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-13:59:42][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2708 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-13:59:42][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-13:59:49][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.403 seconds (JVM running for 8.516)
+[2020/08/13-14:02:34][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:02:34][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 13576 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:02:34][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:02:41][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.495 seconds (JVM running for 8.647)
+[2020/08/13-14:03:47][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:03:48][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 13016 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:03:48][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:03:54][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.232 seconds (JVM running for 8.248)
+[2020/08/13-14:15:26][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:15:27][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3736 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:15:27][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:15:33][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.853 seconds (JVM running for 7.915)
+[2020/08/13-14:17:42][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:17:43][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 7320 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:17:43][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:17:49][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.911 seconds (JVM running for 8.077)
+[2020/08/13-14:20:20][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:20:21][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14600 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:20:21][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:20:28][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.454 seconds (JVM running for 8.57)
+[2020/08/13-14:20:50][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ArticleServiceImpl]:targetLabel == >ao-cai
+[2020/08/13-14:22:00][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-14:22:00][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5684 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-14:22:00][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-14:22:07][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.994 seconds (JVM running for 8.08)
+[2020/08/13-14:22:13][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ArticleServiceImpl]:targetLabel == >cai
+[2020/08/13-14:22:23][http-nio-8081-exec-2][INFO ][net.blog.services.impl.ArticleServiceImpl]:targetLabel == >ao
