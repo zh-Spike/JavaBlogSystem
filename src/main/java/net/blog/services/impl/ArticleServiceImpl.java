@@ -355,7 +355,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         }
         // 从列表中随机获取标签来查询相似的内容
         String targetLabel = labelList.get(random.nextInt(labelList.size()));
-        log.info("targetLabel == >" +targetLabel);
+        log.info("targetLabel == >" + targetLabel);
         List<ArticleNoContent> likeResultList = articleNoContentDao.listArticleByLikeLabel("%" + targetLabel + "%", articleId, size);
         // 判断长度
         if (likeResultList.size() < size) {

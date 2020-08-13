@@ -87,6 +87,6 @@ public class ArticlePortalApi {
     @GetMapping("/recommend/{articleId}/{size}")
     public ResponseResult getRecommendArticles(@PathVariable("articleId") String articleId,
                                                @PathVariable("size") int size) {
-        return articleService.listRecommendArticle(articleId,size);
+        return articleService.listRecommendArticle(articleId, size);
     }
 }
