@@ -150,13 +150,13 @@ public class ImageServiceImpl extends BaseService implements IImageService {
     private String getType(String contentType, String name) {
         String type = null;
         if (Constants.ImageType.TYPE_PNG_WITH_PREFIX.equals(contentType)
-                && name.endsWith(Constants.ImageType.TYPE_PNG)) {
+                && name.toLowerCase().endsWith(Constants.ImageType.TYPE_PNG)) {
             type = Constants.ImageType.TYPE_PNG;
         } else if (Constants.ImageType.TYPE_GIF_WITH_PREFIX.equals(contentType)
-                && name.endsWith(Constants.ImageType.TYPE_GIF)) {
+                && name.toLowerCase().endsWith(Constants.ImageType.TYPE_GIF)) {
             type = Constants.ImageType.TYPE_GIF;
         } else if (Constants.ImageType.TYPE_JPG_WITH_PREFIX.equals(contentType)
-                && name.endsWith(Constants.ImageType.TYPE_JPG)) {
+                && name.toLowerCase().endsWith(Constants.ImageType.TYPE_JPG)) {
             type = Constants.ImageType.TYPE_JPG;
         }
         return type;

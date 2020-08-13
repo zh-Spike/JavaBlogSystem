@@ -2,25 +2,31 @@ package net.blog.controller.portal;
 
 import net.blog.pojo.Comment;
 import net.blog.response.ResponseResult;
+import net.blog.services.ICommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/portal/comment")
 public class CommentPortalApi {
 
+    @Autowired
+    private ICommentService commentService;
+
     @PostMapping
     public ResponseResult postComment(@RequestBody Comment comment) {
-        return null;
+        return commentService.postComment(comment);
     }
 
     @DeleteMapping("/{commentId}")
     public ResponseResult deleteComment(@PathVariable("commentId") String commentId) {
-        return null;
+        return commentService.deleteCommentById(commentId);
     }
 
-    @GetMapping("/list/{commentId}")
-    public ResponseResult listComments(@PathVariable("commentId") String commentId) {
-        return null;
-
+    @GetMapping("/list/{commentId}/{page}/{size}")
+    public ResponseResult listComments(@PathVariable("commentId") String commentId,
+                                       @PathVariable("page") int page,
+                                       @PathVariable("size") int size) {
+        return commentService.listCommentByArticleId(commentId, page, size);
     }
 }

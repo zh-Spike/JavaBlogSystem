@@ -207,3 +207,39 @@
 [2020/08/13-17:02:06][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1996 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
 [2020/08/13-17:02:06][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
 [2020/08/13-17:02:14][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.133 seconds (JVM running for 9.42)
+[2020/08/13-20:15:52][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-20:15:52][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15352 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-20:15:52][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-20:15:59][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.123 seconds (JVM running for 8.237)
+[2020/08/13-20:16:45][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 75c736da67a3b396196983d4a93c8044
+[2020/08/13-20:16:46][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-20:16:46][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/13-20:16:46][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:create new token and refresh token...
+[2020/08/13-20:16:46][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTczMjQ2MDYsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.l01A8J8lAWcSY29oTSxCIWVEXNM-OiPRue3AbzodsbQ
+[2020/08/13-20:18:12][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-20:18:13][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15440 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-20:18:13][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-20:18:19][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.598 seconds (JVM running for 8.71)
+[2020/08/13-20:18:29][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 37112f7ef54af98b5cbee8ed6c464862
+[2020/08/13-20:18:29][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTczMjQ2MDYsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.l01A8J8lAWcSY29oTSxCIWVEXNM-OiPRue3AbzodsbQ
+[2020/08/13-20:20:28][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 37112f7ef54af98b5cbee8ed6c464862
+[2020/08/13-20:20:28][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTczMjQ2MDYsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.l01A8J8lAWcSY29oTSxCIWVEXNM-OiPRue3AbzodsbQ
+[2020/08/13-20:36:07][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-20:36:08][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5704 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-20:36:08][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-20:36:15][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.469 seconds (JVM running for 8.51)
+[2020/08/13-20:49:29][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-20:49:30][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-20:49:31][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15768 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-20:49:31][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1484 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-20:49:31][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-20:49:31][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-20:49:42][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 11.795 seconds (JVM running for 13.432)
+[2020/08/13-20:49:44][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 37112f7ef54af98b5cbee8ed6c464862
+[2020/08/13-20:49:45][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTczMjQ2MDYsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.l01A8J8lAWcSY29oTSxCIWVEXNM-OiPRue3AbzodsbQ
+[2020/08/13-20:50:00][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 37112f7ef54af98b5cbee8ed6c464862
+[2020/08/13-20:50:00][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTczMjQ2MDYsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.l01A8J8lAWcSY29oTSxCIWVEXNM-OiPRue3AbzodsbQ
+[2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
