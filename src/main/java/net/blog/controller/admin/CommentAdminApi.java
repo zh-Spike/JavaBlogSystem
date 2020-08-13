@@ -1,30 +1,33 @@
 package net.blog.controller.admin;
 
 import net.blog.response.ResponseResult;
+import net.blog.services.ICommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.handler.RequestMatchResult;
 
 @RestController
 @RequestMapping("/admin/comment")
 public class CommentAdminApi {
 
+    @Autowired
+    private ICommentService commentService;
+
+    @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{commentId}")
     public ResponseResult deleteComment(@PathVariable("commentId") String commentId) {
-        return null;
+        return commentService.deleteCommentById(commentId);
     }
 
-    @GetMapping("/{commentId}")
-    public ResponseResult getComment(@PathVariable("commentId") String commentId) {
-        return null;
-    }
-
+    @PreAuthorize("@permission.admin()")
     @GetMapping("/list")
     public ResponseResult listComments(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return null;
+        return commentService.listComments(page,size);
     }
 
+    @PreAuthorize("@permission.admin()")
     @PutMapping("/top/{commentId}")
-    public RequestMatchResult topComment(@PathVariable("commentId") String commentId) {
-        return null;
+    public ResponseResult topComment(@PathVariable("commentId") String commentId) {
+        return commentService.topComment(commentId);
     }
 }

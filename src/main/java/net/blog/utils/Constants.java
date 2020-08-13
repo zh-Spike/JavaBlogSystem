@@ -76,5 +76,11 @@ public interface Constants {
         String STATE_TOP = "3";
     }
 
+    interface Comment {
+        // 0删除 1正常发布 2草稿 3置顶
+        String STATE_PUBLISH = "1";
+        String STATE_TOP = "3";
+    }
+
 
 }

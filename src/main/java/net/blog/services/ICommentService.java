@@ -9,4 +9,8 @@ public interface ICommentService {
     ResponseResult listCommentByArticleId(String commentId, int page, int size);
 
     ResponseResult deleteCommentById(String commentId);
+
+    ResponseResult listComments(int page, int size);
+
+    ResponseResult topComment(String commentId);
 }

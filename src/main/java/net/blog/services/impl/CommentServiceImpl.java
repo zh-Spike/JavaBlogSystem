@@ -14,6 +14,8 @@ import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -89,7 +91,8 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
     public ResponseResult listCommentByArticleId(String commentId, int page, int size) {
         page = checkPage(page);
         size = checkSize(size);
-        PageRequest pageable = PageRequest.of(page - 1, size);
+        Sort sort = new Sort(Sort.Direction.DESC, "state","createTime");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<Comment> all = commentDao.findAll(pageable);
         return ResponseResult.SUCCESS("评论列表获取成功").setData(all);
     }
@@ -115,6 +118,34 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
             return ResponseResult.SUCCESS("评论删除成功");
         } else {
             return ResponseResult.PERMISSION_DENIED();
+        }
+    }
+
+    @Override
+    public ResponseResult listComments(int page, int size) {
+        page = checkPage(page);
+        size = checkSize(size);
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<Comment> all = commentDao.findAll(pageable);
+        return ResponseResult.SUCCESS("获取评论列表成功").setData(all);
+    }
+
+    @Override
+    public ResponseResult topComment(String commentId) {
+        Comment comment = commentDao.findOneById(commentId);
+        if (comment == null) {
+            return ResponseResult.FAILED("评论不存在");
+        }
+        String state = comment.getState();
+        if (Constants.Comment.STATE_PUBLISH.equals(state)) {
+            comment.setState(Constants.Comment.STATE_TOP);
+            return ResponseResult.SUCCESS("置顶成功");
+        } else if (Constants.Comment.STATE_TOP.equals(state)) {
+            comment.setState(Constants.Comment.STATE_PUBLISH);
+            return ResponseResult.SUCCESS("取消置顶成功");
+        }else {
+            return ResponseResult.FAILED("评论状态非法");
         }
     }
 }
