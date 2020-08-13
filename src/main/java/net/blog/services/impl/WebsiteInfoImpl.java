@@ -5,6 +5,7 @@ import net.blog.pojo.Settings;
 import net.blog.response.ResponseResult;
 import net.blog.services.IWebSiteInfoService;
 import net.blog.utils.Constants;
+import net.blog.utils.RedisUtils;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,18 +99,59 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
      */
     @Override
     public ResponseResult getWebsiteViewCount() {
-        Settings viewCountFromDb = settingDao.findOneByKey(Constants.Settings.WEBSITE_VIEW_COUNT);
-        if (viewCountFromDb == null) {
-            viewCountFromDb = new Settings();
-            viewCountFromDb.setId(idWorker.nextId() + "");
-            viewCountFromDb.setCreateTime(new Date());
-            viewCountFromDb.setUpdateTime(new Date());
-            viewCountFromDb.setKey(Constants.Settings.WEBSITE_VIEW_COUNT);
-            viewCountFromDb.setValue("1");
-            settingDao.save(viewCountFromDb);
+        // 先从redis里拿
+        String viewCountStr = (String) redisUtils.get(Constants.Settings.WEBSITE_VIEW_COUNT);
+        Settings viewCount = settingDao.findOneByKey(Constants.Settings.WEBSITE_VIEW_COUNT);
+        if (viewCount == null) {
+            viewCount = this.initViewItem();
+            settingDao.save(viewCount);
+        }
+        if (TextUtils.isEmpty(viewCountStr)) {
+            viewCountStr = viewCount.getValue();
+            redisUtils.set(Constants.Settings.WEBSITE_VIEW_COUNT, viewCountStr);
+        } else {
+            // 把redis里保存到数据库里
+            viewCount.setValue(viewCountStr);
+            settingDao.save(viewCount);
         }
         Map<String, Integer> result = new HashMap<>();
-        result.put(viewCountFromDb.getKey(), Integer.valueOf(viewCountFromDb.getValue()));
+        result.put(viewCount.getKey(), Integer.valueOf(viewCount.getValue()));
         return ResponseResult.SUCCESS("获取网站浏览量成功").setData(result);
+    }
+
+    private Settings initViewItem() {
+        Settings viewCount = new Settings();
+        viewCount = new Settings();
+        viewCount.setId(idWorker.nextId() + "");
+        viewCount.setCreateTime(new Date());
+        viewCount.setUpdateTime(new Date());
+        viewCount.setKey(Constants.Settings.WEBSITE_VIEW_COUNT);
+        viewCount.setValue("1");
+        return viewCount;
+    }
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    /**
+     * 1. 并发量
+     * 2. 过滤相同IP or ID
+     * 3. 防止攻击
+     */
+    @Override
+    public void updateViewCount() {
+        // redis更新时机
+        Object viewCount = redisUtils.get(Constants.Settings.WEBSITE_VIEW_COUNT);
+        if (viewCount == null) {
+            Settings setting = settingDao.findOneByKey(Constants.Settings.WEBSITE_VIEW_COUNT);
+            if (setting == null) {
+                setting = this.initViewItem();
+                settingDao.save(setting);
+            }
+            redisUtils.set(Constants.Settings.WEBSITE_VIEW_COUNT, setting.getValue());
+        } else {
+            // 自增
+            redisUtils.incr(Constants.Settings.WEBSITE_VIEW_COUNT, 1);
+        }
     }
 }

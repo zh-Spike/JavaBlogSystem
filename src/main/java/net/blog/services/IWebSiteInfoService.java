@@ -12,4 +12,7 @@ public interface IWebSiteInfoService {
     ResponseResult putSeoInfo(String keywords, String description);
 
     ResponseResult getWebsiteViewCount();
+
+    void updateViewCount();
+
 }

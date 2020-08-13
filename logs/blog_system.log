@@ -243,3 +243,34 @@
 [2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
 [2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
 [2020/08/13-20:50:36][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/13-21:07:23][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:07:23][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14372 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:07:23][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:07:30][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.479 seconds (JVM running for 8.558)
+[2020/08/13-21:12:12][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:12:13][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 4684 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:12:13][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:13:08][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:13:09][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5416 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:13:09][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:13:16][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.755 seconds (JVM running for 8.845)
+[2020/08/13-21:14:21][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:14:21][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 7568 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:14:21][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:14:29][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.483 seconds (JVM running for 8.546)
+[2020/08/13-21:22:10][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:22:10][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2500 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:22:10][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:22:18][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.924 seconds (JVM running for 9.234)
+[2020/08/13-21:26:18][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:26:18][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1640 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:26:18][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:26:25][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.205 seconds (JVM running for 8.286)
+[2020/08/13-21:28:24][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:28:25][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 3272 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:28:25][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:28:32][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.815 seconds (JVM running for 8.963)
+[2020/08/13-21:28:54][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/13-21:28:55][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 1828 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/13-21:28:55][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/13-21:29:02][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.058 seconds (JVM running for 8.155)
