@@ -2,6 +2,9 @@ package net.blog.controller.portal;
 
 import net.blog.response.ResponseResult;
 import net.blog.services.ICategoryService;
+import net.blog.services.IFriendLinkService;
+import net.blog.services.ILooperService;
+import net.blog.services.IWebSiteInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,15 @@ public class WebSiteInfoPortalApi {
     @Autowired
     private ICategoryService categoryService;
 
+    @Autowired
+    private IFriendLinkService friendLinkService;
+
+    @Autowired
+    private ILooperService looperService;
+
+    @Autowired
+    private IWebSiteInfoService webSiteInfoService;
+
     @GetMapping("/categories")
     public ResponseResult getCategories() {
         return categoryService.listCategories();
@@ -21,26 +33,26 @@ public class WebSiteInfoPortalApi {
 
     @GetMapping("/title")
     public ResponseResult getWebSiteTitle() {
-        return null;
+        return webSiteInfoService.getWebsiteTitle();
     }
 
     @GetMapping("/view_count")
     public ResponseResult getWebSiteViewCount() {
-        return null;
+        return webSiteInfoService.getWebsiteViewCount();
     }
 
     @GetMapping("/seo")
     public ResponseResult getSeo() {
-        return null;
+        return webSiteInfoService.getSeoInfo();
     }
 
     @GetMapping("/loop")
     public ResponseResult getLoops() {
-        return null;
+        return looperService.listLoops();
     }
 
     @GetMapping("/friend_link")
     public ResponseResult getFriendLink() {
-        return null;
+        return friendLinkService.listFriendLinks();
     }
 }

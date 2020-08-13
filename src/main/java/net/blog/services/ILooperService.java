@@ -8,7 +8,7 @@ public interface ILooperService {
 
     ResponseResult getLoop(String loopId);
 
-    ResponseResult listLoops(int page, int size);
+    ResponseResult listLoops();
 
     ResponseResult deleteLooper(String loopId);
 

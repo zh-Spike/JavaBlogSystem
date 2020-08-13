@@ -2,19 +2,20 @@ package net.blog.services.impl;
 
 import net.blog.dao.LoopDao;
 import net.blog.pojo.Looper;
+import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.ILooperService;
+import net.blog.services.IUserService;
+import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -61,13 +62,21 @@ public class LooperServiceImpl extends BaseService implements ILooperService {
         return ResponseResult.SUCCESS("轮播图获取成功").setData(looper);
     }
 
+    @Autowired
+    private IUserService userService;
+
     @Override
-    public ResponseResult listLoops(int page, int size) {
-        page = checkPage(page);
-        size = checkSize(size);
+    public ResponseResult listLoops() {
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
-        Pageable pageable = PageRequest.of(page - 1, size, sort);
-        Page<Looper> all = loopDao.findAll(pageable);
+        User user = userService.checkUser();
+        List<Looper> all;
+        if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
+            // 只能获取正常的category
+            all = loopDao.listLoopByState("1");
+        } else {
+            // 查询
+            all = loopDao.findAll(sort);
+        }
         return ResponseResult.SUCCESS("获取轮播图列表成功").setData(all);
     }
 
