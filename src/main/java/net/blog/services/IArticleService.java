@@ -6,8 +6,8 @@ import net.blog.response.ResponseResult;
 public interface IArticleService {
     ResponseResult postArticle(Article article);
 
-    ResponseResult listArticle(int page, int size, String state,
-                               String keyword, String categoryId);
+    ResponseResult listArticles(int page, int size, String state,
+                                String keyword, String categoryId);
 
     ResponseResult getArticleById(String articleId);
 
@@ -22,4 +22,8 @@ public interface IArticleService {
     ResponseResult listTopArticles();
 
     ResponseResult listRecommendArticle(String articleId, int size);
+
+    ResponseResult listArticlesByLabel(int page, int size, String label);
+
+    ResponseResult listLabels(int size);
 }

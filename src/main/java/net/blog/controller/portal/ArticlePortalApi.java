@@ -27,14 +27,14 @@ public class ArticlePortalApi {
      */
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listArticle(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return articleService.listArticle(page, size, Constants.Article.STATE_PUBLISH, null, null);
+        return articleService.listArticles(page, size, Constants.Article.STATE_PUBLISH, null, null);
     }
 
     @GetMapping("/list/{categoryId}/{page}/{size}")
     public ResponseResult listArticleByCategoryId(@PathVariable("categoryId") String categoryId,
                                                   @PathVariable("page") int page,
                                                   @PathVariable("size") int size) {
-        return articleService.listArticle(page, size, Constants.Article.STATE_PUBLISH, null, categoryId);
+        return articleService.listArticles(page, size, Constants.Article.STATE_PUBLISH, null, categoryId);
     }
 
     /**
@@ -59,20 +59,21 @@ public class ArticlePortalApi {
 
     /**
      * 获取标签云 用户点击标签，通过标签获取相关文章列表
+     * 任意用户
      *
      * @param size
      * @return
      */
     @GetMapping("/label/{size}")
     public ResponseResult getLabels(@PathVariable("size") int size) {
-        return null;
+        return articleService.listLabels(size);
     }
 
     @GetMapping("/list/label/{label}/{page}/{size}")
-    public ResponseResult listArticleByLabel(@PathVariable("label") String label,
-                                             @PathVariable("page") int page,
-                                             @PathVariable("size") int size) {
-        return null;
+    public ResponseResult listArticleByLabel(@PathVariable("page") int page,
+                                             @PathVariable("size") int size,
+                                             @PathVariable("label") String label) {
+        return articleService.listArticlesByLabel(page, size, label);
     }
 
     /**

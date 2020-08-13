@@ -55,7 +55,7 @@ public class ArticleAdminApi {
                                        @RequestParam(value = "state", required = false) String state,
                                        @RequestParam(value = "keyword", required = false) String keyword,
                                        @RequestParam(value = "categoryId", required = false) String categoryId) {
-        return articleService.listArticle(page, size, state, keyword, categoryId);
+        return articleService.listArticles(page, size, state, keyword, categoryId);
     }
 
     @PreAuthorize("@permission.admin()")
