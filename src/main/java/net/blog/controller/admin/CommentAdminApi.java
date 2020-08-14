@@ -22,7 +22,7 @@ public class CommentAdminApi {
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list")
     public ResponseResult listComments(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return commentService.listComments(page,size);
+        return commentService.listComments(page, size);
     }
 
     @PreAuthorize("@permission.admin()")

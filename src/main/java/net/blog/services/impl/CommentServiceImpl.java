@@ -91,7 +91,7 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
     public ResponseResult listCommentByArticleId(String commentId, int page, int size) {
         page = checkPage(page);
         size = checkSize(size);
-        Sort sort = new Sort(Sort.Direction.DESC, "state","createTime");
+        Sort sort = new Sort(Sort.Direction.DESC, "state", "createTime");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<Comment> all = commentDao.findAll(pageable);
         return ResponseResult.SUCCESS("评论列表获取成功").setData(all);
@@ -144,7 +144,7 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
         } else if (Constants.Comment.STATE_TOP.equals(state)) {
             comment.setState(Constants.Comment.STATE_PUBLISH);
             return ResponseResult.SUCCESS("取消置顶成功");
-        }else {
+        } else {
             return ResponseResult.FAILED("评论状态非法");
         }
     }
