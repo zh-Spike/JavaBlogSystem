@@ -66,3 +66,7 @@
 [2020/08/14-12:50:54][http-nio-8081-exec-10][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_08_14\jpg\743813212725575680.jpg
 [2020/08/14-12:51:01][http-nio-8081-exec-6][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_08_14
 [2020/08/14-12:51:01][http-nio-8081-exec-6][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_08_14\jpg\743813212725575680.jpg
+[2020/08/14-21:34:43][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/14-21:34:43][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6472 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/14-21:34:43][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/14-21:34:51][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.935 seconds (JVM running for 9.045)

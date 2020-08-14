@@ -10,6 +10,9 @@ spring:
     port: 6379
     host: 192.168.106.128
     password: 123456
+  data:
+    solr:
+      host: http://192.168.106.128:8983/solr/blog_core
 
 server:
   port: 8081
