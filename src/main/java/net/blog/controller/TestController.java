@@ -10,6 +10,7 @@ import net.blog.pojo.Labels;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IUserService;
+import net.blog.services.impl.SolrTestService;
 import net.blog.utils.Constants;
 import net.blog.utils.CookieUtils;
 import net.blog.utils.RedisUtils;
@@ -197,6 +198,14 @@ public class TestController {
         comment.setId(idWorker.nextId() + "");
         commentDao.save(comment);
         return ResponseResult.SUCCESS("评论成功");
+    }
+
+    @Autowired
+    private SolrTestService solrTestService;
+    @PostMapping("/solr")
+    public ResponseResult solrAddTest(){
+        solrTestService.add();
+        return ResponseResult.SUCCESS("添加成功");
     }
 }
 
