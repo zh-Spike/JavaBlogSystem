@@ -202,10 +202,35 @@ public class TestController {
 
     @Autowired
     private SolrTestService solrTestService;
+
     @PostMapping("/solr")
-    public ResponseResult solrAddTest(){
+    public ResponseResult solrAddTest() {
         solrTestService.add();
         return ResponseResult.SUCCESS("添加成功");
+    }
+
+    @PostMapping("/solr/all")
+    public ResponseResult solrAddAllTest() {
+        solrTestService.importAll();
+        return ResponseResult.SUCCESS("添加全部成功");
+    }
+
+    @PutMapping("/solr")
+    public ResponseResult solrUpdateTest() {
+        solrTestService.update();
+        return ResponseResult.SUCCESS("更新成功");
+    }
+
+    @DeleteMapping("/solr")
+    public ResponseResult solrDeleteTest() {
+        solrTestService.delete();
+        return ResponseResult.SUCCESS("删除成功");
+    }
+
+    @DeleteMapping("/solr/all")
+    public ResponseResult solrDeleteAllTest() {
+        solrTestService.deleteAll();
+        return ResponseResult.SUCCESS("删除全部成功");
     }
 }
 
