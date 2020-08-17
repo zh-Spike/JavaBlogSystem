@@ -1,10 +1,19 @@
 package net.blog.services.impl;
 
+import com.vladsch.flexmark.ext.jekyll.tag.JekyllTagExtension;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.SimTocExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Node;
+import com.vladsch.flexmark.util.data.MutableDataSet;
 import net.blog.dao.ArticleDao;
 import net.blog.pojo.Article;
 import net.blog.utils.Constants;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.common.SolrInputDocument;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,6 +93,7 @@ public class SolrTestService {
             // 再从html == > 纯文本
             // 如果type == 0 == > 纯文本
             String type = article.getType();
+            String html;
             if (Constants.Article.TYPE_MARKDOWN.equals(type)) {
                 // 转成html
                 // markdown to html
@@ -95,9 +105,15 @@ public class SolrTestService {
                 ));
                 Parser parser = Parser.builder(options).build();
                 HtmlRenderer renderer = HtmlRenderer.builder(options).build();
-
+                Node document = parser.parse(article.getContent());
+                html = renderer.render(document);
+            } else {
+                html = article.getContent();
             }
-            doc.addField("blog_content", article.getContent());
+            // 到这里不管是原来时什么内容 都变成html
+            // html ==> text
+            String content = Jsoup.parse(html).text();
+            doc.addField("blog_content", content);
             doc.addField("blog_create_time", article.getCreateTime());
             doc.addField("blog_labels", article.getLabel());
             doc.addField("blog_url", "https://chuancai.com");
