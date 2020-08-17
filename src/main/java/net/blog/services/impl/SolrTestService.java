@@ -113,6 +113,7 @@ public class SolrTestService {
             // 到这里不管是原来时什么内容 都变成html
             // html ==> text
             String content = Jsoup.parse(html).text();
+
             doc.addField("blog_content", content);
             doc.addField("blog_create_time", article.getCreateTime());
             doc.addField("blog_labels", article.getLabel());
