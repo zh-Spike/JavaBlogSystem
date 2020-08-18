@@ -67,7 +67,6 @@ public class SolrTestService {
         try {
             // 删除一条的记录
             solrClient.deleteById("743100766356504576");
-
             // 删除所有
             // solrClient.deleteByQuery("*");
             solrClient.commit();

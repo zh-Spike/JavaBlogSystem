@@ -1,8 +1,10 @@
 package net.blog.services.impl;
 
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.ArticleDao;
 import net.blog.dao.ArticleNoContentDao;
+import net.blog.dao.CommentDao;
 import net.blog.dao.LabelDao;
 import net.blog.pojo.Article;
 import net.blog.pojo.ArticleNoContent;
@@ -10,8 +12,10 @@ import net.blog.pojo.Labels;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IArticleService;
+import net.blog.services.ISolrService;
 import net.blog.services.IUserService;
 import net.blog.utils.Constants;
+import net.blog.utils.RedisUtils;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +49,9 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
 
     @Autowired
     private ArticleNoContentDao articleNoContentDao;
+
+    @Autowired
+    private ISolrService solrService;
 
     /**
      * TODO: 1. 定时发布功能 2.多人博客审核 -- > 通知是否通过
@@ -139,7 +146,8 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         article.setUpdateTime(new Date());
         // 保存到数据库
         articleDao.save(article);
-        // TODO: 保存到搜索的数据库
+        // 保存到搜索的数据库
+        solrService.addArticle(article);
         // 打散标签 入库 统计
         this.setLabels(article.getLabel());
         // 返回,只有一种case才使用到ID
@@ -230,16 +238,40 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         return ResponseResult.SUCCESS("获取列表成功").setData(all);
     }
 
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Autowired
+    private Gson gson;
+
     /**
      * 如果有审核机制 审核的文章只能管理员和作者自己才能看
      * 草稿、删除、置顶、发布
      * 删除的不能获取,其他都可以
+     * <p>
+     * 统计文章阅读量
+     * 精确:对IP进行处理 如果是同个IP则不保存
+     * <p>
+     * 先把阅读量保存到redis里更新
+     * 文章也在redis里缓存一份 10 minutes
+     * 当文章消失时 从mysql中提取,同时更新阅读量
+     * 10分钟后在下一次访问更新阅读量
      *
      * @param articleId
      * @return
      */
     @Override
     public ResponseResult getArticleById(String articleId) {
+        // 先从redis里获取
+        // 如果没有再从mysql
+        String articleJson = (String) redisUtils.get(Constants.Article.KEY_ARTICLE_CACHE + articleId);
+        if (!TextUtils.isEmpty(articleJson)) {
+            log.info("article detail from redis");
+            Article article = gson.fromJson(articleJson, Article.class);
+            // 增加阅读数量
+            redisUtils.incr(Constants.Article.KEY_ARTICLE_VIEW_COUNT + articleId, 1);
+            return ResponseResult.SUCCESS("获取文章成功").setData(article);
+        }
         // 查询文章
         Article article = articleDao.findOneById(articleId);
         if (article == null) {
@@ -249,6 +281,22 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         String state = article.getState();
         if (Constants.Article.STATE_PUBLISH.equals(state) ||
                 Constants.Article.STATE_TOP.equals(state)) {
+            // 正常发布才能增加阅读量
+            redisUtils.set(Constants.Article.KEY_ARTICLE_CACHE + articleId,
+                    gson.toJson(article), Constants.TimeValueInSecond.MIN_5);
+            // 设置阅读量的key 先从redis里获取,如果redis里没有就从article中获取,并且再添加到redis里
+            String viewCount = (String) redisUtils.get(Constants.Article.KEY_ARTICLE_VIEW_COUNT + articleId);
+            if (TextUtils.isEmpty(viewCount)) {
+                long newCount = article.getViewCount() + 1;
+                redisUtils.set(Constants.Article.KEY_ARTICLE_VIEW_COUNT + articleId, String.valueOf(newCount));
+            } else {
+                // 有的话就更新到mysql里
+                long newCount = redisUtils.incr(Constants.Article.KEY_ARTICLE_VIEW_COUNT + articleId, 1);
+                article.setViewCount(newCount);
+                articleDao.save(article);
+                // 更新solr里的阅读量
+                solrService.updateArticle(articleId,article);
+            }
             // 可以返回
             return ResponseResult.SUCCESS("获取文章成功").setData(article);
         }
@@ -304,6 +352,9 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         return ResponseResult.SUCCESS("文章更新成功");
     }
 
+    @Autowired
+    private CommentDao commentDao;
+
     /**
      * 删除 物理
      *
@@ -312,8 +363,13 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
      */
     @Override
     public ResponseResult deleteArticleById(String articleId) {
+        // 先删除评论 评论的articleId,外键是article的Id
+        commentDao.deleteAllByArticleId(articleId);
         int result = articleDao.deleteAllById(articleId);
         if (result > 0) {
+            redisUtils.del(Constants.Article.KEY_ARTICLE_CACHE + articleId);
+            // 删除搜索库中的内容
+            solrService.deleteArticle(articleId);
             return ResponseResult.SUCCESS("文章删除成功");
         }
         return ResponseResult.FAILED("文章不存在");
@@ -329,6 +385,9 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
     public ResponseResult deleteArticleByState(String articleId) {
         int result = articleDao.deleteArticleByState(articleId);
         if (result > 0) {
+            redisUtils.del(Constants.Article.KEY_ARTICLE_CACHE + articleId);
+            // 删除搜索库中的内容
+            solrService.deleteArticle(articleId);
             return ResponseResult.SUCCESS("文章删除成功");
         }
         return ResponseResult.FAILED("文章不存在");
