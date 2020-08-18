@@ -1,8 +1,15 @@
 package net.blog.pojo;
 
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public class PageList<T> {
+
+    public PageList() {
+
+    }
+
     public PageList(long currentPage, long totalCount, long pageSize) {
         this.currentPage = currentPage;
         this.totalCount = totalCount;
@@ -85,5 +92,15 @@ public class PageList<T> {
 
     public void setContents(List<T> contents) {
         this.contents = contents;
+    }
+
+    public void parsePage(Page<T> all) {
+        setContents(all.getContent());
+        setFirst(all.isFirst());
+        setLast(all.isLast());
+        setCurrentPage(all.getNumber() + 1);
+        setTotalCount(all.getTotalElements());
+        setTotalPage(all.getTotalPages());
+        setPageSize(all.getSize());
     }
 }

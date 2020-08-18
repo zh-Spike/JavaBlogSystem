@@ -85,6 +85,7 @@ public interface Constants {
         // 0删除 1正常发布 2草稿 3置顶
         String STATE_PUBLISH = "1";
         String STATE_TOP = "3";
+        String KEY_COMMENT_FIRST_PAGE_CACHE = "key_comment_first_page_cache_";
     }
 
 

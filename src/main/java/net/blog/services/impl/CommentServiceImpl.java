@@ -1,14 +1,19 @@
 package net.blog.services.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.ArticleNoContentDao;
 import net.blog.dao.CommentDao;
 import net.blog.pojo.ArticleNoContent;
 import net.blog.pojo.Comment;
+import net.blog.pojo.PageList;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.ICommentService;
 import net.blog.services.IUserService;
 import net.blog.utils.Constants;
+import net.blog.utils.RedisUtils;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +26,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 
+@Slf4j
 @Service
 @Transactional
 public class CommentServiceImpl extends BaseService implements ICommentService {
@@ -71,9 +77,17 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
         comment.setUserId(user.getId());
         // 保存入库
         commentDao.save(comment);
+        // 清除对应文章的评论缓存
+        redisUtils.del(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE+comment.getArticleId());
         // 返回结果
         return ResponseResult.SUCCESS("评论成功");
     }
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Autowired
+    private Gson gson;
 
     /**
      * 获取文章评论
@@ -82,19 +96,39 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
      * 2. 置顶
      * 3. 后发表的 前单位时间排在前面 过了单位时间会按照点赞量和发表时间排序
      *
-     * @param commentId
+     * @param articleId
      * @param page
      * @param size
      * @return
      */
     @Override
-    public ResponseResult listCommentByArticleId(String commentId, int page, int size) {
+    public ResponseResult listCommentByArticleId(String articleId, int page, int size) {
         page = checkPage(page);
         size = checkSize(size);
+        if (page == 1) {
+            // 如果是第一页 我们先从缓存中返回
+            // 如果时就返回
+            String cacheJson = (String) redisUtils.get(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + articleId);
+            if (!TextUtils.isEmpty(cacheJson)) {
+                PageList<Comment> result = gson.fromJson(cacheJson, new TypeToken<PageList<Comment>>() {
+                }.getType());
+                log.info("comment list from redis");
+                return ResponseResult.SUCCESS("评论列表获取成功").setData(result);
+            }
+        }
+        // 如果不是就继续
         Sort sort = new Sort(Sort.Direction.DESC, "state", "createTime");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
         Page<Comment> all = commentDao.findAll(pageable);
-        return ResponseResult.SUCCESS("评论列表获取成功").setData(all);
+        // 把结果转成pageList
+        PageList<Comment> result = new PageList<>();
+        result.parsePage(all);
+        // 保存一份到缓存
+        if (page == 1) {
+            redisUtils.set(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + articleId, gson.toJson(result),
+                    Constants.TimeValueInSecond.MIN_5);
+        }
+        return ResponseResult.SUCCESS("评论列表获取成功").setData(result);
     }
 
     @Override

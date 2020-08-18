@@ -23,10 +23,10 @@ public class CommentPortalApi {
         return commentService.deleteCommentById(commentId);
     }
 
-    @GetMapping("/list/{commentId}/{page}/{size}")
-    public ResponseResult listComments(@PathVariable("commentId") String commentId,
+    @GetMapping("/list/{articleId}/{page}/{size}")
+    public ResponseResult listComments(@PathVariable("articleId") String articleId,
                                        @PathVariable("page") int page,
                                        @PathVariable("size") int size) {
-        return commentService.listCommentByArticleId(commentId, page, size);
+        return commentService.listCommentByArticleId(articleId, page, size);
     }
 }
