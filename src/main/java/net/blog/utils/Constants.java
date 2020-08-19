@@ -3,6 +3,8 @@ package net.blog.utils;
 public interface Constants {
 
     int DEFAULT_SIZE = 30;
+    String FORM_PC = "p_";
+    String FROM_MOBILE = "m_";
 
     interface User {
         String ROLE_ADMIN = "role_admin";

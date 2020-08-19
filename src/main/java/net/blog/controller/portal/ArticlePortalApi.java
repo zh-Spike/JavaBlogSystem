@@ -2,6 +2,7 @@ package net.blog.controller.portal;
 
 import net.blog.response.ResponseResult;
 import net.blog.services.IArticleService;
+import net.blog.services.ICategoryService;
 import net.blog.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/portal/article")
 public class ArticlePortalApi {
+
+    @Autowired
+    private ICategoryService categoryService;
 
     @Autowired
     private IArticleService articleService;
@@ -90,4 +94,11 @@ public class ArticlePortalApi {
                                                @PathVariable("size") int size) {
         return articleService.listRecommendArticle(articleId, size);
     }
+
+
+    @GetMapping("/categories")
+    public ResponseResult getCategories() {
+        return categoryService.listCategories();
+    }
+
 }

@@ -1,7 +1,6 @@
 package net.blog.controller.portal;
 
 import net.blog.response.ResponseResult;
-import net.blog.services.ICategoryService;
 import net.blog.services.IFriendLinkService;
 import net.blog.services.ILooperService;
 import net.blog.services.IWebSiteInfoService;
@@ -16,9 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSiteInfoPortalApi {
 
     @Autowired
-    private ICategoryService categoryService;
-
-    @Autowired
     private IFriendLinkService friendLinkService;
 
     @Autowired
@@ -26,11 +22,6 @@ public class WebSiteInfoPortalApi {
 
     @Autowired
     private IWebSiteInfoService webSiteInfoService;
-
-    @GetMapping("/categories")
-    public ResponseResult getCategories() {
-        return categoryService.listCategories();
-    }
 
     @GetMapping("/title")
     public ResponseResult getWebSiteTitle() {

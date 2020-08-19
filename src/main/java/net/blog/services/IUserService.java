@@ -18,8 +18,7 @@ public interface IUserService {
                             String captchaKey, HttpServletRequest request);
 
     ResponseResult doLogin(String captcha, String captchaKey,
-                           User user, HttpServletRequest request,
-                           HttpServletResponse response);
+                           User user, String from);
 
     User checkUser();
 

@@ -18,11 +18,20 @@ public class RefreshToken {
     private String userId;
     @Column(name = "token_key")
     private String tokenKey;
+    @Column(name = "mobile_token_key")
+    private String mobileTokenKey;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
 
+    public String getMobileTokenKey() {
+        return mobileTokenKey;
+    }
+
+    public void setMobileTokenKey(String mobileTokenKey) {
+        this.mobileTokenKey = mobileTokenKey;
+    }
 
     public String getId() {
         return id;

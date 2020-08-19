@@ -38,11 +38,12 @@ public class ApiInterceptor extends HandlerInterceptorAdapter {
             log.info("method name == > " + name);
             CheckTooFrequentCommit methodAnnotation = handlerMethod.getMethodAnnotation(CheckTooFrequentCommit.class);
             if (methodAnnotation != null) {
+                String methodName = handlerMethod.getMethod().getName();
                 // 所有提交内容的方法必须是用户登录的 用token作为key来记录请求频率
                 String tokenKey = CookieUtils.getCookie(request, Constants.User.COOKIE_TOKEN_KEY);
                 log.info("tokenKey -||- >" + tokenKey);
                 if (!TextUtils.isEmpty(tokenKey)) {
-                    String hasCommit = (String) redisUtils.get(Constants.User.KEY_COMMIT_TOKEN_RECORD + tokenKey);
+                    String hasCommit = (String) redisUtils.get(Constants.User.KEY_COMMIT_TOKEN_RECORD + tokenKey + methodName);
                     if (!TextUtils.isEmpty(hasCommit)) {
                         // 从redis里读取 判断是否存在 如果存在则返回提交太频繁
                         response.setCharacterEncoding("UTF-8");
