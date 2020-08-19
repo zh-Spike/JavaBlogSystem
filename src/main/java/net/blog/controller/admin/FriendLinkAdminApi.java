@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.pojo.FriendLink;
 import net.blog.response.ResponseResult;
 import net.blog.services.IFriendLinkService;
@@ -14,6 +15,7 @@ public class FriendLinkAdminApi {
     @Autowired
     private IFriendLinkService friendLinkService;
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult addFriendLink(@RequestBody FriendLink friendLink) {
@@ -26,6 +28,7 @@ public class FriendLinkAdminApi {
         return friendLinkService.deleteFriendLink(friendLinkId);
     }
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{friendLinkId}")
     public ResponseResult updateFriendLink(@PathVariable("friendLinkId") String friendLinkId,

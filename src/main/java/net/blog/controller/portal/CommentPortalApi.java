@@ -1,5 +1,6 @@
 package net.blog.controller.portal;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.pojo.Comment;
 import net.blog.response.ResponseResult;
 import net.blog.services.ICommentService;
@@ -13,6 +14,7 @@ public class CommentPortalApi {
     @Autowired
     private ICommentService commentService;
 
+    @CheckTooFrequentCommit
     @PostMapping
     public ResponseResult postComment(@RequestBody Comment comment) {
         return commentService.postComment(comment);

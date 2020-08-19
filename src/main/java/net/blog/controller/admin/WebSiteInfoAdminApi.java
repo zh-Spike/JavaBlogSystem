@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.response.ResponseResult;
 import net.blog.services.IWebSiteInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class WebSiteInfoAdminApi {
         return webSiteInfoService.getWebsiteTitle();
     }
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/title")
     public ResponseResult putWebSiteTitle(@RequestParam("title") String title) {
@@ -31,6 +33,7 @@ public class WebSiteInfoAdminApi {
         return webSiteInfoService.getSeoInfo();
     }
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/seo")
     public ResponseResult putSeoInfo(@RequestParam("keywords") String keywords,

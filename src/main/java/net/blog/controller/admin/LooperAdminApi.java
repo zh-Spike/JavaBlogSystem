@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.pojo.Looper;
 import net.blog.response.ResponseResult;
 import net.blog.services.ILooperService;
@@ -14,6 +15,7 @@ public class LooperAdminApi {
     @Autowired
     private ILooperService looperService;
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult addLoop(@RequestBody Looper looper) {
@@ -26,6 +28,7 @@ public class LooperAdminApi {
         return looperService.deleteLooper(loopId);
     }
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{loopId}")
     public ResponseResult updateLooper(@PathVariable("loopId") String loopId, @RequestBody Looper looper) {

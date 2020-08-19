@@ -7,3 +7,106 @@
 [2020/08/19-13:47:27][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
 [2020/08/19-13:47:35][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.767 seconds (JVM running for 8.951)
 [2020/08/19-13:47:42][http-nio-8081-exec-2][INFO ][net.blog.services.impl.ArticleServiceImpl]:article list first page from redis
+[2020/08/19-19:27:16][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:27:16][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16424 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:27:16][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:27:24][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.298 seconds (JVM running for 9.474)
+[2020/08/19-19:28:05][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > doSearch
+[2020/08/19-19:34:37][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:34:37][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 12660 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:34:37][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:34:45][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.799 seconds (JVM running for 9.088)
+[2020/08/19-19:34:53][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:34:53][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8600 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:34:53][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:35:01][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.769 seconds (JVM running for 9.01)
+[2020/08/19-19:35:35][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:35:35][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/19-19:35:41][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:35:41][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/19-19:48:36][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:48:37][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11304 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:48:37][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:48:44][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.207 seconds (JVM running for 8.371)
+[2020/08/19-19:48:49][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:48:49][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:10][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:10][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:12][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:12][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:13][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:13][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:37][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:37][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:38][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:38][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:38][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:38][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:39][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:39][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:39][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:39][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:39][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:39][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:39][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:39][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:40][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:40][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:40][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:40][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:40][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:40][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:49:40][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:49:40][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:50:03][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:50:04][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 7448 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:50:04][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:50:10][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 6.875 seconds (JVM running for 7.923)
+[2020/08/19-19:50:21][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:21][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:50:21][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/19-19:50:21][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 7adfa8063031b3dd36627959765a6f92
+[2020/08/19-19:50:21][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/19-19:50:22][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:deleteResult of refresh token...1
+[2020/08/19-19:50:22][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:create new token and refresh token...
+[2020/08/19-19:50:22][http-nio-8081-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTc4NDE0MjIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.LHMRg6q_vrAWuLBHNgTT5fhNZ0doA0tY9EnWpH-Os9g
+[2020/08/19-19:50:24][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:24][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:24][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/19-19:50:24][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:24][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTc4NDE0MjIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.LHMRg6q_vrAWuLBHNgTT5fhNZ0doA0tY9EnWpH-Os9g
+[2020/08/19-19:50:25][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:25][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:26][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:26][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:26][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:26][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:59][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:50:59][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:59][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/19-19:50:59][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > 95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:50:59][http-nio-8081-exec-6][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTc4NDE0MjIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.LHMRg6q_vrAWuLBHNgTT5fhNZ0doA0tY9EnWpH-Os9g
+[2020/08/19-19:51:00][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:51:00][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:51:01][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:51:01][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:51:01][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:51:01][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:51:01][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:51:01][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:51:01][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > postComment
+[2020/08/19-19:51:01][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >95a7ef800e43cbedc6f555882892b4bf
+[2020/08/19-19:55:57][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/19-19:55:57][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 448 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/19-19:55:57][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/19-19:56:05][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.141 seconds (JVM running for 9.363)

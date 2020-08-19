@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.pojo.Category;
 import net.blog.response.ResponseResult;
 import net.blog.services.ICategoryService;
@@ -22,6 +23,7 @@ public class CategoryAdminApi {
      * <p>
      * admin
      */
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult addCategory(@RequestBody Category category) {
@@ -49,6 +51,7 @@ public class CategoryAdminApi {
      * @param category
      * @return
      */
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{categoryId}")
     public ResponseResult updateCategory(@PathVariable("categoryId") String categoryId, @RequestBody Category category) {

@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.response.ResponseResult;
 import net.blog.services.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class ImageAdminApi {
      * @param file
      * @return
      */
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult uploadImage(@RequestParam("file") MultipartFile file) {

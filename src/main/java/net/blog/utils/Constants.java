@@ -16,6 +16,7 @@ public interface Constants {
         String KEY_EMAIL_SEND_IP = "key_email_send_ip_";
         String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_";
         String KEY_TOKEN = "key_token_";
+        String KEY_COMMIT_TOKEN_RECORD = "key_commit_token_record_";
     }
 
     interface ImageType {
@@ -46,6 +47,8 @@ public interface Constants {
      */
 
     interface TimeValueInSecond {
+        int SECOND_10 = 10;
+        int HALF_MIN = 30;
         int MIN = 60;
         int MIN_5 = 60 * 5;
         int MIN_15 = 60 * 15;
@@ -80,7 +83,7 @@ public interface Constants {
         String STATE_TOP = "3";
         String KEY_ARTICLE_CACHE = "key_article_cache_";
         String KEY_ARTICLE_VIEW_COUNT = "key_article_view_count_";
-        String KEY_ARTICLE_LIST_FIRST_PAGE="key_article_list_first_page";
+        String KEY_ARTICLE_LIST_FIRST_PAGE = "key_article_list_first_page";
     }
 
     interface Comment {

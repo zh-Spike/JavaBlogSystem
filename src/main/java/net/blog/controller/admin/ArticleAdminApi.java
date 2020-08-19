@@ -1,5 +1,6 @@
 package net.blog.controller.admin;
 
+import net.blog.interceptor.CheckTooFrequentCommit;
 import net.blog.pojo.Article;
 import net.blog.response.ResponseResult;
 import net.blog.services.IArticleService;
@@ -14,6 +15,7 @@ public class ArticleAdminApi {
     @Autowired
     private IArticleService articleService;
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PostMapping
     public ResponseResult postArticle(@RequestBody Article article) {
@@ -36,6 +38,7 @@ public class ArticleAdminApi {
         return articleService.deleteArticleById(articleId);
     }
 
+    @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{articleId}")
     public ResponseResult updateArticle(@PathVariable("articleId") String articleId, @RequestBody Article article) {
