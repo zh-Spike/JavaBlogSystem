@@ -48,6 +48,7 @@ public interface Constants {
     interface TimeValueInSecond {
         int MIN = 60;
         int MIN_5 = 60 * 5;
+        int MIN_15 = 60 * 15;
         int HOUR = 60 * MIN;
         int HOUR_2 = 60 * MIN;
         int DAY = 24 * HOUR;
@@ -79,6 +80,7 @@ public interface Constants {
         String STATE_TOP = "3";
         String KEY_ARTICLE_CACHE = "key_article_cache_";
         String KEY_ARTICLE_VIEW_COUNT = "key_article_view_count_";
+        String KEY_ARTICLE_LIST_FIRST_PAGE="key_article_list_first_page";
     }
 
     interface Comment {

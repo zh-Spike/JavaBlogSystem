@@ -78,7 +78,7 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
         // 保存入库
         commentDao.save(comment);
         // 清除对应文章的评论缓存
-        redisUtils.del(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE+comment.getArticleId());
+        redisUtils.del(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + comment.getArticleId());
         // 返回结果
         return ResponseResult.SUCCESS("评论成功");
     }
@@ -105,16 +105,14 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
     public ResponseResult listCommentByArticleId(String articleId, int page, int size) {
         page = checkPage(page);
         size = checkSize(size);
-        if (page == 1) {
-            // 如果是第一页 我们先从缓存中返回
-            // 如果时就返回
-            String cacheJson = (String) redisUtils.get(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + articleId);
-            if (!TextUtils.isEmpty(cacheJson)) {
-                PageList<Comment> result = gson.fromJson(cacheJson, new TypeToken<PageList<Comment>>() {
-                }.getType());
-                log.info("comment list from redis");
-                return ResponseResult.SUCCESS("评论列表获取成功").setData(result);
-            }
+        // 如果是第一页 我们先从缓存中返回
+        // 如果时就返回
+        String cacheJson = (String) redisUtils.get(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + articleId);
+        if (!TextUtils.isEmpty(cacheJson) && page == 1) {
+            PageList<Comment> result = gson.fromJson(cacheJson, new TypeToken<PageList<Comment>>() {
+            }.getType());
+            log.info("comment list from redis");
+            return ResponseResult.SUCCESS("评论列表获取成功").setData(result);
         }
         // 如果不是就继续
         Sort sort = new Sort(Sort.Direction.DESC, "state", "createTime");
