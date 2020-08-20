@@ -117,7 +117,7 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
         // 如果不是就继续
         Sort sort = new Sort(Sort.Direction.DESC, "state", "createTime");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
-        Page<Comment> all = commentDao.findAll(pageable);
+        Page<Comment> all = commentDao.findAllByArticleId(articleId, pageable);
         // 把结果转成pageList
         PageList<Comment> result = new PageList<>();
         result.parsePage(all);

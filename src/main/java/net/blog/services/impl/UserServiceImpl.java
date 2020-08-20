@@ -374,7 +374,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
             return ResponseResult.ACCOUNT_DENIED();
         }
         // 修改更新时间和登录IP
-        userFromDb.setId(request.getRemoteAddr());
+        userFromDb.setLoginIp(request.getRemoteAddr());
         userFromDb.setUpdateTime(new Date());
         createToken(response, userFromDb, from);
         return ResponseResult.SUCCESS("登录成功");
@@ -392,6 +392,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         RefreshToken oldRefreshToken = refreshTokenDao.findOneByUserId(userFromDb.getId());
         // 根据来源删除refreshToken中对应的tokenKey
         if (Constants.FROM_MOBILE.equals(from)) {
+            // 单端登录删掉redis里的token
             if (oldRefreshToken != null) {
                 redisUtils.del(Constants.User.KEY_TOKEN + oldRefreshToken.getMobileTokenKey());
             }
