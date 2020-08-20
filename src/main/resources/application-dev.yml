@@ -20,5 +20,7 @@ server:
 blog.image.save-path: D:\Codes\BlogSystem\logs\images
 # 2MB
 blog.image.max-size: 2097152
+# swagger
+blog.swagger.enable: true
 
 
