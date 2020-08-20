@@ -52,7 +52,7 @@ public class CookieUtils {
      */
     public static String getCookie(HttpServletRequest request, String key) {
         Cookie[] cookies = request.getCookies();
-        if (cookies == null){
+        if (cookies == null) {
             log.info("cookie is null...");
             return null;
         }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -26,4 +27,12 @@ public class ImagePortalApi {
             e.printStackTrace();
         }
     }
+
+    @GetMapping("/qr_code/{code}")
+    public void getQrCodeImage(@PathVariable("code") String code,
+                               HttpServletResponse response,
+                               HttpServletRequest request) {
+        imageService.createQrCode(code, response,request);
+    }
+
 }

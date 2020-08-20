@@ -34,8 +34,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
@@ -696,6 +699,128 @@ public class UserServiceImpl extends BaseService implements IUserService {
         // 删除cookie
         CookieUtils.deleteCookie(getResponse(), Constants.User.COOKIE_TOKEN_KEY);
         return ResponseResult.SUCCESS("退出登陆成功.");
+    }
+
+    @Override
+    public ResponseResult getPLoginQrCodeInfo() {
+        // 尝试取出上次的loginId
+        String lastLoginId = CookieUtils.getCookie(getRequest(), Constants.User.LAST_REQUEST_LOGIN_ID);
+        if (!TextUtils.isEmpty(lastLoginId)) {
+            // 先删除redis
+            redisUtils.del(Constants.User.KEY_PC_LOGIN_ID + lastLoginId);
+            // 检查上次请求时间 太频繁直接拦截
+            Object lastGetTime = redisUtils.get(Constants.User.LAST_REQUEST_LOGIN_ID + lastLoginId);
+            if (lastGetTime != null) {
+                return ResponseResult.FAILED("服务器繁忙");
+            }
+        }
+        // 1. 生成一个唯一的ID
+        long code = idWorker.nextId();
+        // 2. 保存到redis 值为false 时间为5minutes 二维码的有效期
+        redisUtils.set(Constants.User.KEY_PC_LOGIN_ID + code, Constants.User.KEY_PC_LOGIN_STATE_FALSE,
+                Constants.TimeValueInSecond.MIN_5);
+        Map<String, Object> result = new HashMap<>();
+        String originalDomain = TextUtils.getDomain(getRequest());
+        result.put("code", code);
+        result.put("url", originalDomain + "/portal/image/qr_code/" + code);
+        CookieUtils.setUpCookie(getResponse(), Constants.User.LAST_REQUEST_LOGIN_ID, String.valueOf(code));
+        redisUtils.set(Constants.User.LAST_REQUEST_LOGIN_ID + String.valueOf(code),
+                "true", Constants.TimeValueInSecond.SECOND_10);
+        // 返回结果
+        return ResponseResult.SUCCESS("获取成功").setData(result);
+    }
+
+    @Autowired
+    private CountDownLatchManager countDownLatchManager;
+
+    /**
+     * 检查二维码的登录状态
+     * 结果有：
+     * 1、登录成功 loginId对应的值为有ID内容
+     * 2、等待扫描 loginId对应的值为false
+     * 3、二维码已经过期了 loginId对应的值为null
+     * <p>
+     * 是被PC端轮询调用的
+     *
+     * @param loginId
+     * @return
+     */
+    @Override
+    public ResponseResult checkQrCodeLoginState(String loginId) {
+        //从redis里取值出来
+        ResponseResult result = checkLoginIdState(loginId);
+        if (result != null) return result;
+        // 先等待一会 再去检查
+        // 超出这个时间我们就返回等待扫码
+        Callable<ResponseResult> callable = new Callable<ResponseResult>() {
+            @Override
+            public ResponseResult call() throws Exception {
+                try {
+                    log.info("start waiting for scan");
+                    // 先阻塞
+                    countDownLatchManager.getLatch(loginId).await(Constants.User.QR_CODE_STATE_CHECK_WAITING_TIME,
+                            TimeUnit.SECONDS);
+                    // 收到状态更新的通知后
+                    log.info("start check login state");
+                    ResponseResult checkResult = checkLoginIdState(loginId);
+                    if (checkResult != null) return checkResult;
+                    // 超时后返回等待扫描
+                    // 完事后删除对应latch
+                    return ResponseResult.WAITING_FOR_SCAN();
+                } finally {
+                    log.info("delete latch");
+                    countDownLatchManager.deleteLatch(loginId);
+                }
+            }
+        };
+        try {
+            return callable.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseResult.WAITING_FOR_SCAN();
+    }
+
+    /**
+     * 更新二维码的登录状态
+     *
+     * @param loginId
+     * @return
+     */
+    @Override
+    public ResponseResult updateQrCodeLoginState(String loginId) {
+        //1、检查用户是否登录
+        User User = checkUser();
+        if (User == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        //2、改变loginId对应的值=true
+        redisUtils.set(Constants.User.KEY_PC_LOGIN_ID + loginId, User.getId());
+        //2.1、通知正在等待的扫描任务
+        countDownLatchManager.onPhoneDoLogin(loginId);
+        //3、返回结果
+        return ResponseResult.SUCCESS("登录成功.");
+    }
+
+    private ResponseResult checkLoginIdState(String loginId) {
+        String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + loginId);
+        if (loginState == null) {
+            // 二维码过期
+            return ResponseResult.QR_CODE_DEPRECATE();
+        }
+        // 不为false 且状态不为空 那就是用户ID 登陆成功
+        if (!TextUtils.isEmpty(loginState) &&
+                !Constants.User.KEY_PC_LOGIN_STATE_FALSE.equals(loginState)) {
+            // 创建token 走PC端登录
+            User userFromDb = userDao.findOneById(loginState);
+            if (userFromDb == null) {
+                return ResponseResult.QR_CODE_DEPRECATE();
+            }
+            createToken(getResponse(), userFromDb, Constants.FORM_PC);
+            // 登录成功
+            return ResponseResult.LOG_IN_SUCCESS();
+        }
+        return null;
     }
 
     /**

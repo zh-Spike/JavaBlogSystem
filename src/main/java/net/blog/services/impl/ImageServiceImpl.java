@@ -7,9 +7,7 @@ import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IImageService;
 import net.blog.services.IUserService;
-import net.blog.utils.Constants;
-import net.blog.utils.SnowflakeIdWorker;
-import net.blog.utils.TextUtils;
+import net.blog.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -24,6 +22,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.File;
@@ -249,5 +249,42 @@ public class ImageServiceImpl extends BaseService implements IImageService {
             return ResponseResult.FAILED("删除成功");
         }
         return ResponseResult.FAILED("图片不存在");
+    }
+
+    @Autowired
+    private RedisUtils redisUtils;
+
+    @Override
+    public void createQrCode(String code, HttpServletResponse response, HttpServletRequest request) {
+        // 检查是否过期
+        String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + code);
+        if (TextUtils.isEmpty(loginState)) {
+            // 返回一张图片显示二维码已经过期
+            return;
+        }
+        String originalDomain = TextUtils.getDomain(request);
+/*      log.info("requestURI == > " + requestURI);
+        log.info("servletPath == > " + servletPath);
+        log.info("URL == > " + requestURL.toString());*/
+        // 生成二维码
+        // 1. 可以简单是个code
+        // 用自己的app来扫描可以识别和解释 请求对应端口
+        // 用第三方端口可以识别 但无法访问 只能显示code
+        // 2. 提供一个app下载地址+code,自己的app扫描就切割后面的code进行解析
+        // 请求对应接口,如果是第三方app就是网址 访问下载地址
+        // APP_DOWNLOAD_PATH/code
+        String content = originalDomain + Constants.APP_DOWNLOAD_PATH + "===" + code;
+        log.info("QR_code content == >" + content);
+        byte[] result = QrCodeUtils.encodeQRCode(content);
+        response.setContentType(QrCodeUtils.RESPONSE_CONTENT_TYPE);
+        try {
+            ServletOutputStream outputStream = response.getOutputStream();
+            outputStream.write(result);
+            outputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // http://localhost:8081/portal/app/===745950517162672128
+        // 第三方就访问这个地址
     }
 }

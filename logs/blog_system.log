@@ -117,3 +117,323 @@
 [2020/08/20-08:28:21][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
 [2020/08/20-08:28:30][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.736 seconds (JVM running for 12.153)
 [2020/08/20-08:29:23][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > listComments
+[2020/08/20-08:38:57][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-08:38:58][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16796 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-08:38:58][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-08:39:07][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 9.7 seconds (JVM running for 10.632)
+[2020/08/20-08:46:39][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/08/20-08:46:39][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/08/20-08:46:39][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/08/20-08:46:40][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-08:46:40][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-09:57:23][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-09:57:24][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 17184 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-09:57:24][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-09:57:34][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.679 seconds (JVM running for 11.758)
+[2020/08/20-09:58:00][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-09:58:58][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-09:58:59][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 10380 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-09:58:59][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-09:59:07][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.727 seconds (JVM running for 9.998)
+[2020/08/20-09:59:09][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-10:19:47][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-10:19:48][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 8104 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-10:19:48][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-10:19:56][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 9.527 seconds (JVM running for 10.476)
+[2020/08/20-10:19:59][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-10:20:02][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-10:20:51][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-10:20:52][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 17180 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-10:20:52][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-10:21:01][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.251 seconds (JVM running for 11.262)
+[2020/08/20-10:21:02][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-10:21:07][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-10:21:07][http-nio-8081-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >/portal/app/===745950517162672128
+[2020/08/20-10:24:32][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-10:24:32][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14532 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-10:24:32][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-10:24:42][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.57 seconds (JVM running for 11.552)
+[2020/08/20-10:31:44][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-10:31:45][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 17368 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-10:31:45][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-10:31:54][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 9.876 seconds (JVM running for 10.923)
+[2020/08/20-10:32:03][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-10:32:03][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:requestURI == > /portal/image/qr_code/745950517162672128
+[2020/08/20-10:32:03][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:servletPath == > /portal/image/qr_code/745950517162672128
+[2020/08/20-10:32:03][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:URL == > http://localhost:8081/portal/image/qr_code/745950517162672128
+[2020/08/20-10:32:03][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===745950517162672128
+[2020/08/20-14:01:03][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-14:01:04][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 18688 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-14:01:04][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-14:01:13][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.361 seconds (JVM running for 11.406)
+[2020/08/20-14:02:55][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:03:19][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-14:03:20][http-nio-8081-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746006358255468544
+[2020/08/20-14:03:32][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:03:32][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:start waiting for scan
+[2020/08/20-14:04:02][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:start check login state
+[2020/08/20-14:37:30][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-14:37:31][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16952 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-14:37:31][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-14:37:39][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.668 seconds (JVM running for 9.522)
+[2020/08/20-14:39:01][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/08/20-14:39:01][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/08/20-14:39:01][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/08/20-14:39:01][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:39:01][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:40:12][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getCaptcha
+[2020/08/20-14:40:12][http-nio-8081-exec-8][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 5
+[2020/08/20-14:40:12][http-nio-8081-exec-8][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > pdpbw
+[2020/08/20-14:40:21][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > login
+[2020/08/20-14:40:21][http-nio-8081-exec-5][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:40:38][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/08/20-14:40:38][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/08/20-14:40:38][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/08/20-14:40:38][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:40:38][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:41:23][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:41:39][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-14:41:39][http-nio-8081-exec-5][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746016035152330752
+[2020/08/20-14:42:18][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:20][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:31][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:32][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:32][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:32][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:32][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:42:44][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:42:50][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-14:42:50][http-nio-8081-exec-6][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746016377009078272
+[2020/08/20-14:43:20][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-14:43:40][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > updateQrCodeLoginState
+[2020/08/20-14:43:40][http-nio-8081-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_bc98f4ca5b9c3d05388b6b47f4530f41
+[2020/08/20-14:43:40][http-nio-8081-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJjaHVhbmNhaSIsInJvbGVzIjoicm9sZV9ub3JtYWwiLCJzaWduIjoid3VsaXRhb3RhbyIsImZyb20iOiJtXyIsImlkIjoiNzQxNjI2NzYxODQ1OTMyMDMyIiwiYXZhdGFyIjoiaHR0cHM6Ly9hdmF0YXJzMC5naXRodWJ1c2VyY29udGVudC5jb20vdS80MjI5Mzc1OD9zPTQ2MCZ1PTIxYjY3MmZmZjZlMzQ3MTcyYjFkZjlkN2ViZjIxNmU5YzRjOWM5ZmImdj00IiwiZXhwIjoxNTk3OTA5MjIxLCJlbWFpbCI6InpoLWJlYm9wQG91dGxvb2suY29tIn0.yI_hSfU3B89kGwOB6MXQeg0mZdHkGG3HMiONqzruk-E
+[2020/08/20-14:44:14][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > listArticles
+[2020/08/20-14:44:14][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_82c83fa4d4dd63947ebe632a14c86bc1
+[2020/08/20-14:44:14][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >null
+[2020/08/20-14:44:14][http-nio-8081-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:refresh token is null...
+[2020/08/20-14:44:14][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page403
+[2020/08/20-14:51:48][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-14:51:49][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 5204 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-14:51:49][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-14:51:56][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.665 seconds (JVM running for 8.37)
+[2020/08/20-14:51:57][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/08/20-14:51:57][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/08/20-14:51:57][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/08/20-14:51:57][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:51:57][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-14:52:31][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:31][http-nio-8081-exec-3][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:31][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:31][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:53][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:53][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:53][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:53][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:53][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:53][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:53][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:53][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:53][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:53][http-nio-8081-exec-6][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:53][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:53][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-8][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-5][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-7][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-9][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-10][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-3][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:54][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:54][http-nio-8081-exec-2][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:54][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:54][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:55][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:55][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:55][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:55][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:55][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:55][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:55][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:55][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-14:52:55][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-14:52:55][http-nio-8081-exec-6][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-14:52:55][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >null
+[2020/08/20-14:52:55][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/08/20-15:02:49][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:02:49][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 18152 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:02:50][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:02:57][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.892 seconds (JVM running for 8.647)
+[2020/08/20-15:03:02][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:02][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:03][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:04][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:04][http-nio-8081-exec-2][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:05][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:05][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:05][http-nio-8081-exec-3][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:05][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:05][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:05][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:05][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:05][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:05][http-nio-8081-exec-5][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:05][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-6][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-7][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-8][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-9][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-10][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:03:06][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:03:06][http-nio-8081-exec-1][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:03:06][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > error
+[2020/08/20-15:07:57][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:07:58][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 14536 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:07:58][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:08:05][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.419 seconds (JVM running for 8.087)
+[2020/08/20-15:08:09][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/08/20-15:08:09][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/08/20-15:08:09][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/08/20-15:08:09][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-15:08:09][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/08/20-15:08:21][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:21][http-nio-8081-exec-10][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:08:24][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:24][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:24][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:25][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:26][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:27][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:08:27][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:07][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:08][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:09][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:09][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:10:09][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:15:11][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:15:12][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2688 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:15:12][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:15:19][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.555 seconds (JVM running for 8.282)
+[2020/08/20-15:15:21][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:15:29][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-15:15:29][http-nio-8081-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746024587006836736
+[2020/08/20-15:21:37][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:21:38][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:22:24][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getCaptcha
+[2020/08/20-15:22:24][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 4
+[2020/08/20-15:22:25][http-nio-8081-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 0
+[2020/08/20-15:22:37][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > login
+[2020/08/20-15:22:38][http-nio-8081-exec-4][INFO ][net.blog.utils.CookieUtils]:cookie is null...
+[2020/08/20-15:23:33][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:23:40][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-15:23:40][http-nio-8081-exec-8][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746026648335286272
+[2020/08/20-15:24:14][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:24:16][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:24:16][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:24:16][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:24:17][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:24:17][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:25:43][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:26:00][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getQrCodeImage
+[2020/08/20-15:26:00][http-nio-8081-exec-8][INFO ][net.blog.services.impl.ImageServiceImpl]:QR_code content == >http://localhost:8081/portal/app/===746027195406745600
+[2020/08/20-15:26:10][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:32:19][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:32:20][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 13808 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:32:20][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:32:26][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.255 seconds (JVM running for 7.908)
+[2020/08/20-15:32:36][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:32:39][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:32:47][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:32:53][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:33:32][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:33:32][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 6552 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:33:32][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:33:39][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.33 seconds (JVM running for 8.041)
+[2020/08/20-15:33:40][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:33:47][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:22][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:23][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:23][http-nio-8081-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:23][http-nio-8081-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:24][http-nio-8081-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:24][http-nio-8081-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:24][http-nio-8081-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:34:48][http-nio-8081-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:35:13][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:35:17][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:35:22][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:37:00][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:37:00][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 2740 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:37:00][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:37:36][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 36.36 seconds (JVM running for 37.81)
+[2020/08/20-15:37:38][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:37:45][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:38:38][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:38:39][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 16008 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:38:39][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:38:53][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 14.005 seconds (JVM running for 15.191)
+[2020/08/20-15:39:00][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:39:05][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:43:31][http-nio-8081-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:43:38][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/08/20-15:43:39][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11584 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/08/20-15:43:39][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
+[2020/08/20-15:43:46][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 7.815 seconds (JVM running for 8.475)
+[2020/08/20-15:43:50][http-nio-8081-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getPLoginQrCode
+[2020/08/20-15:43:57][http-nio-8081-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > checkQrCodeLoginState
+[2020/08/20-15:43:57][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:start waiting for scan
+[2020/08/20-15:44:06][http-nio-8081-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > updateQrCodeLoginState
+[2020/08/20-15:44:06][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_f490c40b2989f202b577829d75d7dcaa
+[2020/08/20-15:44:06][http-nio-8081-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMwLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQyMjkzNzU4P3M9NDYwJnU9MjFiNjcyZmZmNmUzNDcxNzJiMWRmOWQ3ZWJmMjE2ZTljNGM5YzlmYiZ2PTQiLCJleHAiOjE1OTc5MTE3NTgsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.0phet2baG1Iwwo8MtSqXang-EssctKDgXs5LYrBY2VQ
+[2020/08/20-15:44:06][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:start check login state
+[2020/08/20-15:44:06][http-nio-8081-exec-2][INFO ][net.blog.services.impl.UserServiceImpl]:delete latch

@@ -243,7 +243,33 @@ public class UserApi {
     @GetMapping("/logout")
     public ResponseResult logout() {
         return userService.doLogout();
+    }
 
+    /**
+     * 获取二维码
+     * 二维码的图片路径
+     * 二维码的内容字符串
+     * TODO: 接口防止爆破
+     * @return
+     */
+    @GetMapping("/pc_login_qr_code")
+    public ResponseResult getPLoginQrCode() {
+        return userService.getPLoginQrCodeInfo();
+    }
+
+    /**
+     * 检查二维码的登录状态
+     *
+     * @return
+     */
+    @GetMapping("/qr_code_state/{loginId}")
+    public ResponseResult checkQrCodeLoginState(@PathVariable("loginId") String loginId) {
+        return userService.checkQrCodeLoginState(loginId);
+    }
+
+    @PutMapping("/qr_code_state/{loginId}")
+    public ResponseResult updateQrCodeLoginState(@PathVariable("loginId") String loginId) {
+        return userService.updateQrCodeLoginState(loginId);
     }
 }
 

@@ -6,6 +6,9 @@ public interface Constants {
     String FORM_PC = "p_";
     String FROM_MOBILE = "m_";
 
+    // app下载地址
+    String APP_DOWNLOAD_PATH = "/portal/app/";
+
     interface User {
         String ROLE_ADMIN = "role_admin";
         String ROLE_NORMAL = "role_normal";
@@ -19,6 +22,10 @@ public interface Constants {
         String KEY_EMAIL_SEND_ADDRESS = "key_email_send_address_";
         String KEY_TOKEN = "key_token_";
         String KEY_COMMIT_TOKEN_RECORD = "key_commit_token_record_";
+        String KEY_PC_LOGIN_ID = "key_pc_login_id_";
+        String KEY_PC_LOGIN_STATE_FALSE = "false";
+        int QR_CODE_STATE_CHECK_WAITING_TIME = 30;
+        String LAST_REQUEST_LOGIN_ID = "l_r_l_i";
     }
 
     interface ImageType {

@@ -39,4 +39,10 @@ public interface IUserService {
     ResponseResult updateEmail(String email, String verifyCode);
 
     ResponseResult doLogout();
+
+    ResponseResult getPLoginQrCodeInfo();
+
+    ResponseResult checkQrCodeLoginState(String loginId);
+
+    ResponseResult updateQrCodeLoginState(String loginId);
 }
