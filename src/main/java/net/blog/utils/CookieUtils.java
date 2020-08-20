@@ -28,7 +28,10 @@ public class CookieUtils {
     public static void setUpCookie(HttpServletResponse response, String key, String value, int age) {
         Cookie cookie = new Cookie(key, value);
         cookie.setPath("/");
-        cookie.setDomain(domain);
+        /**
+         * 域名: 如果是单点登录就是顶级域名
+         */
+        // cookie.setDomain(domain);
         cookie.setMaxAge(age);
         response.addCookie(cookie);
     }

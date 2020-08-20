@@ -23,6 +23,6 @@ blog.image.save-path: /usr/app/upload
 # 2MB
 blog.image.max-size: 2097152
 # swagger
-blog.swagger.enable: false
+blog.swagger.enable: true
 
 
