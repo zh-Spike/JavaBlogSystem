@@ -802,6 +802,15 @@ public class UserServiceImpl extends BaseService implements IUserService {
         return ResponseResult.SUCCESS("登录成功.");
     }
 
+    @Override
+    public ResponseResult parseToken() {
+        User user = checkUser();
+        if (user == null) {
+            return ResponseResult.FAILED("用户未登录");
+        }
+        return ResponseResult.SUCCESS("获取登录信息成功").setData(user);
+    }
+
     private ResponseResult checkLoginIdState(String loginId) {
         String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + loginId);
         if (loginState == null) {

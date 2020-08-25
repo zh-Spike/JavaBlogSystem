@@ -271,5 +271,10 @@ public class UserApi {
     public ResponseResult updateQrCodeLoginState(@PathVariable("loginId") String loginId) {
         return userService.updateQrCodeLoginState(loginId);
     }
+
+    @GetMapping("/check-token")
+    public ResponseResult parseToken(){
+        return userService.parseToken();
+    }
 }
 

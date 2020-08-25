@@ -45,4 +45,6 @@ public interface IUserService {
     ResponseResult checkQrCodeLoginState(String loginId);
 
     ResponseResult updateQrCodeLoginState(String loginId);
+
+    ResponseResult parseToken();
 }
