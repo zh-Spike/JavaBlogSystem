@@ -5,6 +5,8 @@ public interface Constants {
     int DEFAULT_SIZE = 30;
     String FORM_PC = "p_";
     String FROM_MOBILE = "m_";
+    int CAPTCHA_WIDTH = 120;
+    int CAPTCHA_HEIGHT = 60;
 
     // app下载地址
     String APP_DOWNLOAD_PATH = "/portal/app/";

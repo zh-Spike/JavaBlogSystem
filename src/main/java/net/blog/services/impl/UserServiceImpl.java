@@ -154,13 +154,13 @@ public class UserServiceImpl extends BaseService implements IUserService {
         Captcha targetCaptcha = null;
         if (captchaType == 0) {
             // 三个参数分别为宽、高、位数
-            targetCaptcha = new SpecCaptcha(200, 60, 5);
+            targetCaptcha = new SpecCaptcha(Constants.CAPTCHA_WIDTH, Constants.CAPTCHA_HEIGHT, 5);
         } else if (captchaType == 1) {
             // gif类
-            targetCaptcha = new GifCaptcha(200, 60);
+            targetCaptcha = new GifCaptcha(Constants.CAPTCHA_WIDTH, Constants.CAPTCHA_HEIGHT);
         } else {
             // 算术类
-            targetCaptcha = new ArithmeticCaptcha(200, 60);
+            targetCaptcha = new ArithmeticCaptcha(Constants.CAPTCHA_WIDTH,Constants.CAPTCHA_HEIGHT);
             targetCaptcha.setLen(2); // 几位数运算
         }
         // 设置字体
