@@ -10,9 +10,6 @@ import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -106,6 +103,7 @@ public class CategoryServiceImpl extends BaseService implements ICategoryService
         if (!TextUtils.isEmpty(description)) {
             categoryFromDb.setDescription(description);
         }
+        categoryFromDb.setStatus(category.getStatus());
         categoryFromDb.setOrder(category.getOrder());
         categoryFromDb.setUpdateTime(new Date());
         // 第三步:保存数据
