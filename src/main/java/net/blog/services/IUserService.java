@@ -32,7 +32,7 @@ public interface IUserService {
 
     ResponseResult deleteUserById(String userId);
 
-    ResponseResult listUsers(int page, int size);
+    ResponseResult listUsers(int page, int size,String userName,String email);
 
     ResponseResult updateUserPassword(String verifyCode, User user);
 

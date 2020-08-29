@@ -24,19 +24,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
@@ -160,7 +162,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
             targetCaptcha = new GifCaptcha(Constants.CAPTCHA_WIDTH, Constants.CAPTCHA_HEIGHT);
         } else {
             // 算术类
-            targetCaptcha = new ArithmeticCaptcha(Constants.CAPTCHA_WIDTH,Constants.CAPTCHA_HEIGHT);
+            targetCaptcha = new ArithmeticCaptcha(Constants.CAPTCHA_WIDTH, Constants.CAPTCHA_HEIGHT);
             targetCaptcha.setLen(2); // 几位数运算
         }
         // 设置字体
@@ -613,15 +615,31 @@ public class UserServiceImpl extends BaseService implements IUserService {
     private UserNoPasswordDao userNoPasswordDao;
 
     @Override
-    public ResponseResult listUsers(int page, int size) {
+    public ResponseResult listUsers(int page, int size, String userName, String email) {
         // 可以操作
         // 分页查询
         page = checkPage(page);
         size = checkSize(size);
         // 根据注册日期来排序
         Sort sort = new Sort(Sort.Direction.DESC, "createTime");
-        Pageable pageable = PageRequest.of(page - 1, size);
-        Page<UserNoPassword> all = userNoPasswordDao.findAll(pageable);
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        Page<UserNoPassword> all = userNoPasswordDao.findAll(new Specification<UserNoPassword>() {
+            @Override
+            public Predicate toPredicate(Root<UserNoPassword> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                if (!TextUtils.isEmpty(userName)) {
+                    Predicate preUser = criteriaBuilder.like(root.get("userName").as(String.class), "%" + userName + "%");
+                    predicates.add(preUser);
+                }
+                if (!TextUtils.isEmpty(email)) {
+                    Predicate preEmail = criteriaBuilder.like(root.get("email").as(String.class), email);
+                    predicates.add(preEmail);
+                }
+                Predicate[] preArray = new Predicate[predicates.size()];
+                predicates.toArray(preArray);
+                return criteriaBuilder.and(preArray);
+            }
+        }, pageable);
         return ResponseResult.SUCCESS("获取用户列表成功").setData(all);
     }
 

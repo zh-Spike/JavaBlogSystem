@@ -157,8 +157,10 @@ public class UserApi {
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list")
     public ResponseResult listUser(@RequestParam("page") int page,
-                                   @RequestParam("size") int size) {
-        return userService.listUsers(page, size);
+                                   @RequestParam("size") int size,
+                                   @RequestParam(value = "userName", required = false) String userName,
+                                   @RequestParam(value = "email", required = false) String email) {
+        return userService.listUsers(page, size, userName, email);
     }
 
     /**
@@ -250,6 +252,7 @@ public class UserApi {
      * 二维码的图片路径
      * 二维码的内容字符串
      * TODO: 接口防止爆破
+     *
      * @return
      */
     @GetMapping("/pc_login_qr_code")
@@ -273,7 +276,7 @@ public class UserApi {
     }
 
     @GetMapping("/check-token")
-    public ResponseResult parseToken(){
+    public ResponseResult parseToken() {
         return userService.parseToken();
     }
 }
