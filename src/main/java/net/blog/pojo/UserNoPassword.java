@@ -105,19 +105,19 @@ public class UserNoPassword {
         this.loginIp = loginIp;
     }
 
-    public Date getCreate_time() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date create_time) {
-        this.createTime = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date update_time) {
-        this.updateTime = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
