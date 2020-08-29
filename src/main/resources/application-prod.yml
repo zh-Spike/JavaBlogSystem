@@ -19,7 +19,8 @@ server:
 
 # docker部署
 # 应该是docker内部的路径 映射 /home/spike/docker/Blog/upload
-blog.image.save-path: /usr/app/upload
+# blog.image.save-path: /usr/app/upload
+blog.image.save-path: D:\Codes\BlogSystem\logs\images
 # 2MB
 blog.image.max-size: 2097152
 # swagger

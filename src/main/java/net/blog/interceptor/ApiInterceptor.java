@@ -55,10 +55,9 @@ public class ApiInterceptor extends HandlerInterceptorAdapter {
                         return false;
                     } else {
                         // 如果不存在则可以提交并记录此次提交 有效期为10s
-                        redisUtils.set(Constants.User.KEY_COMMIT_TOKEN_RECORD + tokenKey,
+                        redisUtils.set(Constants.User.KEY_COMMIT_TOKEN_RECORD + tokenKey + methodName,
                                 "true", Constants.TimeValueInSecond.SECOND_10);
                     }
-
                 }
 
                 // 判断是否提交太频繁了
