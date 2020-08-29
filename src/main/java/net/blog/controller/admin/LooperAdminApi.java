@@ -24,7 +24,7 @@ public class LooperAdminApi {
 
     @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{loopId}")
-    public ResponseResult deleteLooper(@PathVariable("loorId") String loopId) {
+    public ResponseResult deleteLooper(@PathVariable("loopId") String loopId) {
         return looperService.deleteLooper(loopId);
     }
 
