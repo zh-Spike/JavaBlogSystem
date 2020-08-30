@@ -20,8 +20,8 @@ public class Category {
     private String description;
     @Column(name = "`order`")
     private long order = 1;
-    @Column(name = "status")
-    private String status;
+    @Column(name = "state")
+    private String state;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
@@ -67,12 +67,12 @@ public class Category {
         this.order = order;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Date getCreateTime() {

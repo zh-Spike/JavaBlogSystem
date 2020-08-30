@@ -46,7 +46,7 @@ public class CategoryServiceImpl extends BaseService implements ICategoryService
         }
         // 补全数据
         category.setId(idWorker.nextId() + "");
-        category.setStatus("1");
+        category.setState("1");
         category.setCreateTime(new Date());
         category.setUpdateTime(new Date());
         // 保存数据
@@ -103,7 +103,7 @@ public class CategoryServiceImpl extends BaseService implements ICategoryService
         if (!TextUtils.isEmpty(description)) {
             categoryFromDb.setDescription(description);
         }
-        categoryFromDb.setStatus(category.getStatus());
+        categoryFromDb.setState(category.getState());
         categoryFromDb.setOrder(category.getOrder());
         categoryFromDb.setUpdateTime(new Date());
         // 第三步:保存数据
