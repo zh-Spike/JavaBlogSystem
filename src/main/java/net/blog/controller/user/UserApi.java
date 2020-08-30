@@ -275,9 +275,17 @@ public class UserApi {
         return userService.updateQrCodeLoginState(loginId);
     }
 
-    @GetMapping("/check-token")
+    @GetMapping("/check_token")
     public ResponseResult parseToken() {
         return userService.parseToken();
     }
+
+    @PreAuthorize("@permission.admin()")
+    @PutMapping("/reset_password/{userId}")
+    public ResponseResult resetPassword(@PathVariable("userId") String userId, @RequestParam("password") String password) {
+        return userService.resetPassword(userId,password);
+    }
+
+
 }
 

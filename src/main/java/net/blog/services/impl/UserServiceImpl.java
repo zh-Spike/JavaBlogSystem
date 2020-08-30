@@ -829,6 +829,21 @@ public class UserServiceImpl extends BaseService implements IUserService {
         return ResponseResult.SUCCESS("获取登录信息成功").setData(user);
     }
 
+    @Override
+    public ResponseResult resetPassword(String userId, String password) {
+        // 查询用户
+        User user=userDao.findOneById(userId);
+        // 判断用户是否存在
+        if (user==null) {
+            return ResponseResult.FAILED("用户不存在");
+        }
+        // 对密码进行加密
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        // 处理结果
+        userDao.save(user);
+        return ResponseResult.SUCCESS("密码重置成功");
+    }
+
     private ResponseResult checkLoginIdState(String loginId) {
         String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + loginId);
         if (loginState == null) {
@@ -884,6 +899,4 @@ public class UserServiceImpl extends BaseService implements IUserService {
         }
         return null;
     }
-
-
 }

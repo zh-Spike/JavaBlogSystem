@@ -47,4 +47,6 @@ public interface IUserService {
     ResponseResult updateQrCodeLoginState(String loginId);
 
     ResponseResult parseToken();
+
+    ResponseResult resetPassword(String userId, String password);
 }
