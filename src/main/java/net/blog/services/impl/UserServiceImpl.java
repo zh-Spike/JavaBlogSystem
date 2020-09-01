@@ -184,7 +184,6 @@ public class UserServiceImpl extends BaseService implements IUserService {
         targetCaptcha.out(response.getOutputStream());
     }
 
-
     /**
      * 发生邮件验证码
      * 注册、找回密码、修改邮箱
@@ -203,7 +202,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
             return ResponseResult.FAILED("邮箱地址不能为空");
         }
         // 根据类型查询邮箱是否存在
-        if ("regiser".equals(type) || "updtae".equals(type)) {
+        if ("register".equals(type) || "update".equals(type)) {
             User userByEmail = userDao.findOneByEmail(emailAddress);
             if (userByEmail != null) {
                 return ResponseResult.FAILED("该邮箱已注册");
@@ -221,8 +220,15 @@ public class UserServiceImpl extends BaseService implements IUserService {
             remoteAddr = remoteAddr.replaceAll(":", "_");
         }
         // 取，如果没有 通过
-        Integer ipSendTime = (Integer) redisUtils.get(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr);
-        if (ipSendTime != null && ipSendTime > 10) {
+        log.info("Constants.User.KEY_EMAIL_SEND_IP + remoteAddr == > " + Constants.User.KEY_EMAIL_SEND_IP + remoteAddr);
+        String ipSendTimeValue = (String) redisUtils.get(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr);
+        Integer ipSendTime;
+        if (ipSendTimeValue != null) {
+            ipSendTime = Integer.parseInt(ipSendTimeValue);
+        } else {
+            ipSendTime = 1;
+        }
+        if (ipSendTime > 10) {
             return ResponseResult.FAILED("验证码发的也太多了吧");
         }
         Object hasEmailSend = redisUtils.get(Constants.User.KEY_EMAIL_SEND_ADDRESS + emailAddress);
@@ -247,13 +253,13 @@ public class UserServiceImpl extends BaseService implements IUserService {
         }
         // 4.记录
         // 发送记录，code
-        //
+        //update
         if (ipSendTime == null) {
             ipSendTime = 0;
         }
         ipSendTime++;
         // 1小时有效期
-        redisUtils.set(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr, ipSendTime, 60 * 60);
+        redisUtils.set(Constants.User.KEY_EMAIL_SEND_IP + remoteAddr, String.valueOf(ipSendTime), 60 * 60);
         redisUtils.set(Constants.User.KEY_EMAIL_SEND_ADDRESS + emailAddress, "true", 30);
         // 保存code, 10分钟有效
         redisUtils.set(Constants.User.KEY_EMAIL_CODE_CONTENT + emailAddress, String.valueOf(code), 60 * 10);
@@ -832,9 +838,9 @@ public class UserServiceImpl extends BaseService implements IUserService {
     @Override
     public ResponseResult resetPassword(String userId, String password) {
         // 查询用户
-        User user=userDao.findOneById(userId);
+        User user = userDao.findOneById(userId);
         // 判断用户是否存在
-        if (user==null) {
+        if (user == null) {
             return ResponseResult.FAILED("用户不存在");
         }
         // 对密码进行加密

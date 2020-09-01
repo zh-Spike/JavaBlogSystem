@@ -18,7 +18,7 @@ public class TextUtils {
         return m.matches();
     }
 
-    public static String getDomain(HttpServletRequest request){
+    public static String getDomain(HttpServletRequest request) {
         StringBuffer requestURL = request.getRequestURL();
         String servletPath = request.getServletPath();
         return requestURL.toString().replace(servletPath, "");

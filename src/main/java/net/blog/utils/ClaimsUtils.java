@@ -24,7 +24,7 @@ public class ClaimsUtils {
         claims.put(AVATAR, user.getAvatar());
         claims.put(EMAIL, user.getEmail());
         claims.put(SIGN, user.getSign());
-        claims.put(FROM,from);
+        claims.put(FROM, from);
         return claims;
     }
 

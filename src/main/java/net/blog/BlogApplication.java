@@ -42,7 +42,7 @@ public class BlogApplication {
     }
 
     @Bean
-    public Gson createGson(){
+    public Gson createGson() {
         return new Gson();
     }
 }
