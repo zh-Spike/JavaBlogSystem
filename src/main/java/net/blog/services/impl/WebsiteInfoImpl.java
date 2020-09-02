@@ -61,7 +61,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
     }
 
     @Override
-    public ResponseResult putSeoInfo(String keywords, String description) {
+    public ResponseResult putSeoInfo(String description,String keywords) {
         if (TextUtils.isEmpty(description)) {
             return ResponseResult.FAILED("描述不能为空");
         }
@@ -86,7 +86,7 @@ public class WebsiteInfoImpl extends BaseService implements IWebSiteInfoService 
             keyWordsFromDb.setUpdateTime(new Date());
             keyWordsFromDb.setKey(Constants.Settings.WEBSITE_KEYWORDS);
         }
-        keyWordsFromDb.setValue(description);
+        keyWordsFromDb.setValue(keywords);
         settingDao.save(keyWordsFromDb);
         return ResponseResult.SUCCESS("更新SEO信息成功");
     }

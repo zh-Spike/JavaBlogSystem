@@ -9,7 +9,7 @@ public interface IWebSiteInfoService {
 
     ResponseResult getSeoInfo();
 
-    ResponseResult putSeoInfo(String keywords, String description);
+    ResponseResult putSeoInfo(String description, String keywords);
 
     ResponseResult getWebsiteViewCount();
 

@@ -36,9 +36,9 @@ public class WebSiteInfoAdminApi {
     @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
     @PutMapping("/seo")
-    public ResponseResult putSeoInfo(@RequestParam("keywords") String keywords,
-                                     @RequestParam("description") String description) {
-        return webSiteInfoService.putSeoInfo(keywords, description);
+    public ResponseResult putSeoInfo(@RequestParam("description") String description,
+                                     @RequestParam("keywords") String keywords) {
+        return webSiteInfoService.putSeoInfo(description, keywords);
     }
 
     @PreAuthorize("@permission.admin()")
