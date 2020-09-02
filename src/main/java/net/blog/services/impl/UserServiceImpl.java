@@ -536,7 +536,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
     @Override
     public ResponseResult checkUserName(String userName) {
         User user = userDao.findOneByUserName(userName);
-        return user == null ? ResponseResult.FAILED("该用户名未注册") : ResponseResult.SUCCESS("该用户名已注册");
+        return user == null ? ResponseResult.FAILED("该用户名未注册") : ResponseResult.SUCCESS("该用户名已存在");
     }
 
     /**
@@ -561,7 +561,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         }
         // 用户名
         String userName = user.getUserName();
-        if (!TextUtils.isEmpty(userName)) {
+        if (!TextUtils.isEmpty(userName) && !userName.equals(userFromTokenKey.getUserName())) {
             User userByUserName = userDao.findOneByUserName(userName);
             if (userByUserName != null) {
                 return ResponseResult.FAILED("该用户名已注册");
@@ -578,7 +578,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         userDao.save(userFromDb);
         // 更新redis里的token
         String tokenKey = CookieUtils.getCookie(getRequest(), Constants.User.COOKIE_TOKEN_KEY);
-        redisUtils.del(tokenKey);
+        redisUtils.del(Constants.User.KEY_TOKEN + tokenKey);
         return ResponseResult.SUCCESS("用户更新成功");
     }
 

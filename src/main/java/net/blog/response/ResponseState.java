@@ -4,7 +4,7 @@ public enum ResponseState {
     SUCCESS(10000, true, "操作成功"),
     JOIN_IN_SUCCESS(60001, true, "注册成功"),
     LOG_IN_SUCCESS(60002, true, "登录成功"),
-    FAILED(20000, false, "操作失败"),
+    FAILED(40000, false, "操作失败"),
     PARAMS_ILL(30000, false, "参数错误"),
     ACCOUNT_NOT_LOGIN(40002, false, "账号未登录"),
     PERMISSION_DENIED(40003, false, "权限不够"),
