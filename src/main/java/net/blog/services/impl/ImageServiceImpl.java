@@ -63,11 +63,12 @@ public class ImageServiceImpl extends BaseService implements IImageService {
      * 保存内容到数据库
      * ID/存储路径/url/原名称/用户ID/状态/创建日期/更新日期
      *
+     * @param original
      * @param file
      * @return
      */
     @Override
-    public ResponseResult uploadImage(MultipartFile file) {
+    public ResponseResult uploadImage(String original, MultipartFile file) {
         // 判断有无文件
         if (file == null) {
             return ResponseResult.FAILED("图片不可以为空");
@@ -133,6 +134,7 @@ public class ImageServiceImpl extends BaseService implements IImageService {
             image.setPath(targetFile.getPath());
             image.setName(originalFilename);
             image.setUrl(resultPath);
+            image.setOriginal(original);
             image.setState("1");
             User user = userService.checkUser();
             image.setUserId(user.getId());
@@ -208,7 +210,7 @@ public class ImageServiceImpl extends BaseService implements IImageService {
     }
 
     @Override
-    public ResponseResult listImages(int page, int size) {
+    public ResponseResult listImages(int page, int size, String original) {
         // 处理page和size
         page = checkPage(page);
         size = checkSize(size);
@@ -229,7 +231,14 @@ public class ImageServiceImpl extends BaseService implements IImageService {
                 Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
                 // 根据状态
                 Predicate statePre = criteriaBuilder.equal(root.get("state").as(String.class), "1");
-                return criteriaBuilder.and(userIdPre, statePre);
+                Predicate and;
+                if (!TextUtils.isEmpty(original)) {
+                    Predicate originalPre = criteriaBuilder.equal(root.get("original").as(String.class), original);
+                    and = criteriaBuilder.and(userIdPre, statePre, originalPre);
+                } else {
+                    and = criteriaBuilder.and(userIdPre, statePre);
+                }
+                return and;
             }
         }, pageable);
         return ResponseResult.SUCCESS("获取图片列表成功").setData(all);

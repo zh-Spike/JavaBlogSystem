@@ -28,6 +28,16 @@ public class Image {
 	private Date createTime;
   	@Column(name = "update_time" )
 	private Date updateTime;
+  	@Column(name="original")
+  	private String original;
+
+	public String getOriginal() {
+		return original;
+	}
+
+	public void setOriginal(String original) {
+		this.original = original;
+	}
 
 	public String getId() {
 		return id;

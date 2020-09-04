@@ -26,9 +26,10 @@ public class ImageAdminApi {
      */
     @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
-    @PostMapping
-    public ResponseResult uploadImage(@RequestParam("file") MultipartFile file) {
-        return imageService.uploadImage(file);
+    @PostMapping("/{original}")
+    public ResponseResult uploadImage(@PathVariable("original") String original,
+                                      @RequestParam("file") MultipartFile file) {
+        return imageService.uploadImage(original, file);
     }
 
     @PreAuthorize("@permission.admin()")
@@ -50,8 +51,10 @@ public class ImageAdminApi {
 
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
-    public ResponseResult listImages(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return imageService.listImages(page, size);
+    public ResponseResult listImages(@PathVariable("page") int page,
+                                     @PathVariable("size") int size,
+                                     @RequestParam(value = "original", required = false) String original) {
+        return imageService.listImages(page, size, original);
     }
 
 }
