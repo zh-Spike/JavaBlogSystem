@@ -55,7 +55,7 @@ public class FriendLinkServiceImpl extends BaseService implements IFriendLinkSer
         // 保存数据
         friendLinkDao.save(friendLink);
         // 返回结果
-        return ResponseResult.FAILED("添加成功");
+        return ResponseResult.SUCCESS("添加成功");
     }
 
     @Override
@@ -123,6 +123,9 @@ public class FriendLinkServiceImpl extends BaseService implements IFriendLinkSer
         String url = friendLink.getUrl();
         if (!TextUtils.isEmpty(url)) {
             friendLinkFromDb.setUrl(url);
+        }
+        if (!TextUtils.isEmpty(friendLink.getState())) {
+            friendLinkFromDb.setState(friendLink.getState());
         }
         friendLinkFromDb.setOrder(friendLink.getOrder());
         friendLinkFromDb.setUpdateTime(new Date());
