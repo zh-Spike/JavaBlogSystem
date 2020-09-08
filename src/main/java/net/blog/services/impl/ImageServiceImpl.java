@@ -40,7 +40,7 @@ import java.util.Map;
 @Transactional
 public class ImageServiceImpl extends BaseService implements IImageService {
 
-    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd");
+//    public SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd");
 
     @Value("${blog.image.save-path}")
     public String imagePath;
@@ -95,7 +95,7 @@ public class ImageServiceImpl extends BaseService implements IImageService {
         // 创建图片保存目录
         // 规则:配置目录/日期/类型/ID.类型
         long currentMillions = System.currentTimeMillis();
-        String currentDay = simpleDateFormat.format(currentMillions);
+        String currentDay = new SimpleDateFormat("yyyy_MM_dd").format(currentMillions);
         log.info("currentDay == >" + currentDay);
         String dayPath = imagePath + File.separator + currentDay;
         File dayPathFile = new File(dayPath);
@@ -164,6 +164,10 @@ public class ImageServiceImpl extends BaseService implements IImageService {
         return type;
     }
 
+//    // 日期不支持并发 线程不安全 加锁
+//    private final Object mLock = new Object();
+
+
     @Override
     public void viewImage(HttpServletResponse response, String imageId) throws IOException {
         // 已知配置目录
@@ -172,7 +176,13 @@ public class ImageServiceImpl extends BaseService implements IImageService {
         // 需要日期
         String[] paths = imageId.split("_");
         String dayValue = paths[0];
-        String format = simpleDateFormat.format(Long.parseLong(dayValue));
+        String format;
+//        synchronized (mLock) {
+//            format = simpleDateFormat.format(Long.parseLong(dayValue));
+//            log.info("viewImage format == >" + format);
+//        }
+        // 加锁当用户数量大的时候会影响效率 新建对象用空间换效率
+        format = new SimpleDateFormat("yyyy_MM_dd").format(Long.parseLong(dayValue));
         log.info("viewImage format == >" + format);
         // Id
         String name = paths[1];
