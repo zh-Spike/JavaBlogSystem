@@ -55,10 +55,10 @@ public class ArticleAdminApi {
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listArticles(@PathVariable("page") int page,
                                        @PathVariable("size") int size,
-                                       @RequestParam(value = "state", required = false) String state,
                                        @RequestParam(value = "keyword", required = false) String keyword,
-                                       @RequestParam(value = "categoryId", required = false) String categoryId) {
-        return articleService.listArticles(page, size, state, keyword, categoryId);
+                                       @RequestParam(value = "categoryId", required = false) String categoryId,
+                                       @RequestParam(value = "state", required = false) String state) {
+        return articleService.listArticles(page, size, keyword, categoryId, state);
     }
 
     @PreAuthorize("@permission.admin()")

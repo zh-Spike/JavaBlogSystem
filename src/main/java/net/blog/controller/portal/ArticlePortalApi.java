@@ -31,14 +31,14 @@ public class ArticlePortalApi {
      */
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listArticle(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return articleService.listArticles(page, size, Constants.Article.STATE_PUBLISH, null, null);
+        return articleService.listArticles(page, size, null, null, Constants.Article.STATE_PUBLISH);
     }
 
     @GetMapping("/list/{categoryId}/{page}/{size}")
-    public ResponseResult listArticleByCategoryId(@PathVariable("categoryId") String categoryId,
-                                                  @PathVariable("page") int page,
-                                                  @PathVariable("size") int size) {
-        return articleService.listArticles(page, size, Constants.Article.STATE_PUBLISH, null, categoryId);
+    public ResponseResult listArticleByCategoryId(@PathVariable("page") int page,
+                                                  @PathVariable("size") int size,
+                                                  @PathVariable("categoryId") String categoryId) {
+        return articleService.listArticles(page, size, null, categoryId, Constants.Article.STATE_PUBLISH);
     }
 
     /**

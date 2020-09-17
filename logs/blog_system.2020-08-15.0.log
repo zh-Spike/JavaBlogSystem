@@ -1,4 +1,0 @@
-[2020/08/15-20:35:44][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
-[2020/08/15-20:35:45][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11132 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
-[2020/08/15-20:35:45][main][INFO ][net.blog.BlogApplication]:The following profiles are active: dev
-[2020/08/15-20:35:53][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.716 seconds (JVM running for 10.293)

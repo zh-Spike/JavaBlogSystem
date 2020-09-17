@@ -6,8 +6,8 @@ import net.blog.response.ResponseResult;
 public interface IArticleService {
     ResponseResult postArticle(Article article);
 
-    ResponseResult listArticles(int page, int size, String state,
-                                String keyword, String categoryId);
+    ResponseResult listArticles(int page, int size,
+                                String keyword, String categoryId, String state);
 
     ResponseResult getArticleById(String articleId);
 

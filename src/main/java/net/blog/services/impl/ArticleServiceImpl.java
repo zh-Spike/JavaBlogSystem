@@ -204,14 +204,15 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
      * @return
      */
     @Override
-    public ResponseResult listArticles(int page, int size, String state,
-                                       String keyword, String categoryId) {
+    public ResponseResult listArticles(int page, int size,
+                                       String keyword, String categoryId, String state) {
         // 处理一下size page
         page = checkPage(page);
         size = checkSize(size);
         // 第一页内容做缓存
         String articleListJson = (String) redisUtils.get(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE);
-        if (!TextUtils.isEmpty(articleListJson) && page == 1) {
+        boolean isSearch = !TextUtils.isEmpty(keyword) || !TextUtils.isEmpty(categoryId) || !TextUtils.isEmpty(state);
+        if (!TextUtils.isEmpty(articleListJson) && page == 1 && !isSearch) {
             PageList<ArticleNoContent> result = gson.fromJson(articleListJson, new TypeToken<PageList<ArticleNoContent>>() {
             }.getType());
             log.info("article list first page from redis");
@@ -247,7 +248,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         // 解析page
         result.parsePage(all);
         // 保存到redis
-        if (page == 1) {
+        if (page == 1 && !isSearch) {
             redisUtils.set(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE, gson.toJson(result), Constants.TimeValueInSecond.MIN_15);
         }
         return ResponseResult.SUCCESS("获取列表成功").setData(all);
@@ -421,11 +422,13 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         if (Constants.Article.STATE_PUBLISH.equals(state)) {
             article.setState(Constants.Article.STATE_TOP);
             articleDao.save(article);
+            redisUtils.del(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE);
             return ResponseResult.SUCCESS("置顶成功");
         }
         if (Constants.Article.STATE_TOP.equals(state)) {
             article.setState(Constants.Article.STATE_PUBLISH);
             articleDao.save(article);
+            redisUtils.del(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE);
             return ResponseResult.SUCCESS("取消置顶");
         }
         return ResponseResult.FAILED("不支持该操作");
