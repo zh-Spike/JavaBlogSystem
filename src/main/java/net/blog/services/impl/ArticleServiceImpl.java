@@ -251,7 +251,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         if (page == 1 && !isSearch) {
             redisUtils.set(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE, gson.toJson(result), Constants.TimeValueInSecond.MIN_15);
         }
-        return ResponseResult.SUCCESS("获取列表成功").setData(all);
+        return ResponseResult.SUCCESS("获取列表成功").setData(result);
     }
 
     @Autowired
