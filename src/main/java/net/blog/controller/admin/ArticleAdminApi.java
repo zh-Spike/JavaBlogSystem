@@ -62,7 +62,7 @@ public class ArticleAdminApi {
     }
 
     @PreAuthorize("@permission.admin()")
-    @DeleteMapping("/sate/{articleId}")
+    @DeleteMapping("/state/{articleId}")
     public ResponseResult updateArticleByUpdateState(@PathVariable("articleId") String articleId) {
         return articleService.deleteArticleByState(articleId);
     }

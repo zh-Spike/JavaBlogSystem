@@ -144,15 +144,17 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         article.setUpdateTime(new Date());
         // 保存到数据库
         articleDao.save(article);
-        // 保存到搜索的数据库
-        solrService.addArticle(article);
+        if (Constants.Article.STATE_PUBLISH.equals(state)) {
+            // 保存到搜索的数据库 只有正式发布才能记录到数据库
+            solrService.addArticle(article);
+        }
         // 打散标签 入库 统计
         this.setLabels(article.getLabel());
         // 删除文章列表
         redisUtils.del(Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE);
         // 返回,只有一种case才使用到ID
         // 如果使用到自动保存成草稿，就要加上ID，否则会创建多个Item
-        return ResponseResult.SUCCESS(Constants.Article.STATE_DRAFT.equals(state) ? "草稿发布成功" :
+        return ResponseResult.SUCCESS(Constants.Article.STATE_DRAFT.equals(state) ? "草稿更新成功" :
                 "文章发布成功").setData(article.getId());
     }
 
@@ -357,6 +359,10 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         if (!TextUtils.isEmpty(label)) {
             articleFromDb.setLabel(label);
         }
+        String state = article.getState();
+        if (!TextUtils.isEmpty(state)) {
+            articleFromDb.setState(state);
+        }
         String categoryid = article.getCategoryId();
         if (!TextUtils.isEmpty(categoryid)) {
             articleFromDb.setCategoryId(categoryid);
@@ -364,6 +370,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         articleFromDb.setCover(article.getCover());
         articleFromDb.setUpdateTime(new Date());
         articleDao.save(articleFromDb);
+        redisUtils.del(Constants.Article.KEY_ARTICLE_CACHE + articleId, Constants.Article.KEY_ARTICLE_LIST_FIRST_PAGE);
         // 返回接口
         return ResponseResult.SUCCESS("文章更新成功");
     }
