@@ -20,8 +20,8 @@ public class CommentAdminApi {
     }
 
     @PreAuthorize("@permission.admin()")
-    @GetMapping("/list")
-    public ResponseResult listComments(@RequestParam("page") int page, @RequestParam("size") int size) {
+    @GetMapping("/list/{page}/{size}")
+    public ResponseResult listComments(@PathVariable("page") int page, @PathVariable("size") int size) {
         return commentService.listComments(page, size);
     }
 
