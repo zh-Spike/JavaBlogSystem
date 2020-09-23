@@ -522,4 +522,10 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         Page<Labels> all = labelDao.findAll(pageable);
         return ResponseResult.SUCCESS("获取标签成功").setData(all);
     }
+
+    @Override
+    public ResponseResult getArticleCount() {
+        long count = articleDao.count();
+        return ResponseResult.SUCCESS("获取文章总量成功").setData(count);
+    }
 }

@@ -26,4 +26,6 @@ public interface IArticleService {
     ResponseResult listArticlesByLabel(int page, int size, String label);
 
     ResponseResult listLabels(int size);
+
+    ResponseResult getArticleCount();
 }

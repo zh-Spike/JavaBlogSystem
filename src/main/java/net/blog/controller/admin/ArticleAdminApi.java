@@ -72,4 +72,10 @@ public class ArticleAdminApi {
     public ResponseResult updateArticleState(@PathVariable("articleId") String articleId) {
         return articleService.topArticle(articleId);
     }
+
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/count")
+    public ResponseResult getArticleCount() {
+        return articleService.getArticleCount();
+    }
 }

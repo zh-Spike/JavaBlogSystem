@@ -850,6 +850,12 @@ public class UserServiceImpl extends BaseService implements IUserService {
         return ResponseResult.SUCCESS("密码重置成功");
     }
 
+    @Override
+    public ResponseResult getRegisterCount() {
+        long count = userDao.count();
+        return ResponseResult.SUCCESS("获取用户总数成功").setData(count);
+    }
+
     private ResponseResult checkLoginIdState(String loginId) {
         String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + loginId);
         if (loginState == null) {

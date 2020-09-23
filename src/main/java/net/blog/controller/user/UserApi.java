@@ -283,9 +283,14 @@ public class UserApi {
     @PreAuthorize("@permission.admin()")
     @PutMapping("/reset_password/{userId}")
     public ResponseResult resetPassword(@PathVariable("userId") String userId, @RequestParam("password") String password) {
-        return userService.resetPassword(userId,password);
+        return userService.resetPassword(userId, password);
     }
 
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/register_count")
+    public ResponseResult getRegisterCount() {
+        return userService.getRegisterCount();
+    }
 
 }
 

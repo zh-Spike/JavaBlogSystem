@@ -180,4 +180,10 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
             return ResponseResult.FAILED("评论状态非法");
         }
     }
+
+    @Override
+    public ResponseResult getCommentCount() {
+        long count = commentDao.count();
+        return ResponseResult.SUCCESS("获取评论总量成功").setData(count);
+    }
 }

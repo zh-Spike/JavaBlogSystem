@@ -30,4 +30,10 @@ public class CommentAdminApi {
     public ResponseResult topComment(@PathVariable("commentId") String commentId) {
         return commentService.topComment(commentId);
     }
+
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/count")
+    public ResponseResult getCommentCount() {
+        return commentService.getCommentCount();
+    }
 }
