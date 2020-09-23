@@ -167,7 +167,6 @@ public class ImageServiceImpl extends BaseService implements IImageService {
 //    // 日期不支持并发 线程不安全 加锁
 //    private final Object mLock = new Object();
 
-
     @Override
     public void viewImage(HttpServletResponse response, String imageId) throws IOException {
         // 已知配置目录
@@ -265,7 +264,7 @@ public class ImageServiceImpl extends BaseService implements IImageService {
     public ResponseResult deleteById(String imageId) {
         int result = imageDao.deleteByIdUpdateState(imageId);
         if (result > 0) {
-            return ResponseResult.FAILED("删除成功");
+            return ResponseResult.SUCCESS("删除成功");
         }
         return ResponseResult.FAILED("图片不存在");
     }
