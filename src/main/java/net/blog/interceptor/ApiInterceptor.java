@@ -59,12 +59,10 @@ public class ApiInterceptor extends HandlerInterceptorAdapter {
                                 "true", Constants.TimeValueInSecond.SECOND_10);
                     }
                 }
-
                 // 判断是否提交太频繁了
                 log.info("check commit too frequent");
             }
         }
-
         // ture 放行
         // false 拦截
         return true;
