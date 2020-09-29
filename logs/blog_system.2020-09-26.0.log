@@ -1,0 +1,14 @@
+[2020/09/26-20:43:33][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/09/26-20:43:33][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15640 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/09/26-20:43:33][main][INFO ][net.blog.BlogApplication]:The following profiles are active: prod
+[2020/09/26-20:43:44][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 10.624 seconds (JVM running for 11.358)
+[2020/09/26-20:43:55][http-nio-8082-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/09/26-20:43:55][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/09/26-20:43:55][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/09/26-20:43:55][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/09/26-20:43:55][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/09/26-21:44:07][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/09/26-21:44:08][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/09/26-21:44:08][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/09/26-21:44:08][http-nio-8082-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/09/26-21:44:08][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
