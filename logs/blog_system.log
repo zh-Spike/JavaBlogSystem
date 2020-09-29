@@ -238,3 +238,8 @@
 [2020/09/29-23:39:11][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
 [2020/09/29-23:39:11][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
 [2020/09/29-23:39:11][http-nio-8082-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/09/29-23:45:26][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > uiConfiguration
+[2020/09/29-23:45:26][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > securityConfiguration
+[2020/09/29-23:45:26][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > swaggerResources
+[2020/09/29-23:45:26][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404
+[2020/09/29-23:45:27][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > page404

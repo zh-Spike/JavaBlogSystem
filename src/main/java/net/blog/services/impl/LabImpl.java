@@ -50,16 +50,16 @@ public class LabImpl extends BaseService implements ILabService {
         // 保存数据
         labDao.save(lab);
         // 返回结果
-        return ResponseResult.SUCCESS("添加成功");
+        return ResponseResult.SUCCESS("添加实验室信息成功");
     }
 
     @Override
     public ResponseResult deleteLab(String labId) {
         int result = labDao.deleteLabByUpdateState(labId);
         if (result == 0) {
-            return ResponseResult.FAILED("该分类不存在");
+            return ResponseResult.FAILED("该实验室信息不存在");
         }
-        return ResponseResult.SUCCESS("删除分类成功");
+        return ResponseResult.SUCCESS("删除实验室信息成功");
     }
 
     @Override
@@ -67,7 +67,7 @@ public class LabImpl extends BaseService implements ILabService {
         // 第一步:找出
         Lab labFromDb = labDao.findOneById(labId);
         if (labFromDb == null) {
-            return ResponseResult.FAILED("分类不存在");
+            return ResponseResult.FAILED("该实验室不存在");
         }
         // 第二步：对内容进行判断，有些字段不能为空
         String name = lab.getLabName();
@@ -85,16 +85,16 @@ public class LabImpl extends BaseService implements ILabService {
         // 第三步:保存数据
         labDao.save(labFromDb);
         // 返回结果
-        return ResponseResult.SUCCESS("分类更新成功");
+        return ResponseResult.SUCCESS("实验室信息更新成功");
     }
 
     @Override
     public ResponseResult getLab(String labId) {
         Lab lab = labDao.findOneById(labId);
         if (lab == null) {
-            return ResponseResult.FAILED("分类不存在");
+            return ResponseResult.FAILED("该实验室信息不存在");
         }
-        return ResponseResult.SUCCESS("获取分类成功").setData(lab);
+        return ResponseResult.SUCCESS("获取实验室信息成功").setData(lab);
     }
 
     @Override
