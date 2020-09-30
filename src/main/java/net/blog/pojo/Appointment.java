@@ -23,7 +23,7 @@ public class Appointment {
     @Column(name = "state")
     private String state;
     @Column(name = "appointment_number")
-    private long appointmentNumber;
+    private long appointmentNumber = 0;
     @Column(name = "user_name")
     private String userName;
     @Column(name = "user_avatar")
