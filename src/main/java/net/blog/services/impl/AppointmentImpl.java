@@ -124,9 +124,10 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
 //            log.info("labAvailNumber ==> " + labFromDb.getLabAvailable());
             if (appointmentFromDb.getAppointmentNumber() > labFromDb.getLabAvailable()) {
                 ResponseResult.FAILED("实验室人数已满");
-            } else {
-                labFromDb.setLabAvailable(labFromDb.getLabAvailable() - appointmentFromDb.getAppointmentNumber());
             }
+//            } else {
+//                labFromDb.setLabAvailable(labFromDb.getLabAvailable() - appointmentFromDb.getAppointmentNumber());
+//            }
         }
         // 第三步:保存数据
         appointmentDao.save(appointmentFromDb);
