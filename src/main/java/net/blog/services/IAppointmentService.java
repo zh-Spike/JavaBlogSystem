@@ -13,4 +13,6 @@ public interface IAppointmentService {
     ResponseResult getAppointment(String appointmentId);
 
     ResponseResult listAppointment(int page, int size, String userId, String state);
+
+    ResponseResult deleteAppointmentById(String appointmentId);
 }

@@ -8,6 +8,7 @@ import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IAppointmentService;
 import net.blog.services.IUserService;
+import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -160,5 +161,29 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         // 解析page
         result.parsePage(all);
         return ResponseResult.SUCCESS("获取预约列表成功").setData(all);
+    }
+
+    @Override
+    public ResponseResult deleteAppointmentById(String appointmentId) {
+        // 判断用户角色
+        User user = userService.checkUser();
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        // 查找评论 对比用户权限
+        Appointment appointment = appointmentDao.findOneById(appointmentId);
+        if (appointment == null) {
+            return ResponseResult.FAILED("预约不存在");
+        }
+        // 用户ID不一样只有管理员才能删除
+        // 如果用户ID一样 说明是当前用户
+        // 登录要判断角色
+        if (user.getId().equals(appointmentId) ||
+                Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
+            appointmentDao.deleteById(appointmentId);
+            return ResponseResult.SUCCESS("预约删除成功");
+        } else {
+            return ResponseResult.PERMISSION_DENIED();
+        }
     }
 }
