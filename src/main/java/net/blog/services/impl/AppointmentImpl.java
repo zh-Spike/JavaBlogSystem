@@ -62,6 +62,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (appointmentNumberStr.equals("0")) {
             return ResponseResult.FAILED("预约人数不能为空");
         }
+
 //        appointment.setStartTime(new Date(String.valueOf(appointment.getStartTime())));
 //        appointment.setEndTime(new Date(String.valueOf(appointment.getEndTime())));
         // 补全数据
@@ -95,7 +96,6 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
             return ResponseResult.FAILED("该预约不存在");
         }
         // 第二步：对内容进行判断，有些字段不能为空
-        appointmentFromDb.setUpdateTime(new Date());
         String state = appointment.getState();
         if (!TextUtils.isEmpty(state)) {
             appointmentFromDb.setState(state);
@@ -130,6 +130,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
 //            }
         }
         // 第三步:保存数据
+        appointmentFromDb.setUpdateTime(new Date());
         appointmentDao.save(appointmentFromDb);
         // 返回结果
         return ResponseResult.SUCCESS("预约审批成功");

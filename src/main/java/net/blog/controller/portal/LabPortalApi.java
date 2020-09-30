@@ -20,10 +20,4 @@ public class LabPortalApi {
     public ResponseResult getLab(@PathVariable("labId") String labId) {
         return labService.getLab(labId);
     }
-
-    @GetMapping("/{labId}/available_count")
-    public void updateAvailableNumber(@PathVariable("labId") String labId) {
-        labService.updateAvailableNumber(labId);
-    }
-
 }
