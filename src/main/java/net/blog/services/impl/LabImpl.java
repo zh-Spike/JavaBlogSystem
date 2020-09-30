@@ -47,6 +47,7 @@ public class LabImpl extends BaseService implements ILabService {
         lab.setState("1");
         lab.setCreateTime(new Date());
         lab.setUpdateTime(new Date());
+        lab.setLabAvailable(lab.getLabNumber());
         // 保存数据
         labDao.save(lab);
         // 返回结果
@@ -82,6 +83,7 @@ public class LabImpl extends BaseService implements ILabService {
         }
         labFromDb.setState(lab.getState());
         labFromDb.setUpdateTime(new Date());
+        labFromDb.setLabAvailable(lab.getLabNumber());
         // 第三步:保存数据
         labDao.save(labFromDb);
         // 返回结果
