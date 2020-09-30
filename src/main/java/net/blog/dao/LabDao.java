@@ -17,5 +17,4 @@ public interface LabDao extends JpaRepository<Lab, String>, JpaSpecificationExec
 
     @Query(nativeQuery = true, value = "SELECT * FROM tb_lab WHERE state = ? ORDER BY create_time DESC")
     List<Lab> listLabByState(String state);
-
 }

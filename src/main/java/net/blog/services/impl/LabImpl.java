@@ -120,4 +120,11 @@ public class LabImpl extends BaseService implements ILabService {
         //返回结果
         return ResponseResult.SUCCESS("获取实验室列表成功").setData(labs);
     }
+
+    @Override
+    public void updateAvailableNumber(String labId) {
+        Lab labFromDb = labDao.findOneById(labId);
+
+    }
+
 }

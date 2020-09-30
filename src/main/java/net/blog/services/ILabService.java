@@ -13,4 +13,6 @@ public interface ILabService {
     ResponseResult getLab(String labId);
 
     ResponseResult listLab();
+
+    void updateAvailableNumber(String labId);
 }
