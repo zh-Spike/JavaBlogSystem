@@ -88,16 +88,18 @@ public class SignServiceImpl extends BaseService implements ISignService {
         userService.checkUser();
         // 获得之前的人数
         String stateStr = String.valueOf(sign.getState());
+        String stateFromDbStr = String.valueOf(signFromDb.getState());
         Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
-        if (stateStr.equals("2")) {
+        if (stateStr.equals("2") && !stateFromDbStr.equals("3")) {
 //            log.info("labNum ==>" + labFromDb.getLabNumber());
 //            log.info("signNum ==>" + signFromDb.getNumber());
 //            log.info("labAvilNum ==>" + labFromDb.getLabAvailable());
             labFromDb.setLabAvailable(signFromDb.getNumber() + labFromDb.getLabAvailable());
-            signFromDb.setState(sign.getState());
+            signFromDb.setState("3");
         } else {
             return ResponseResult.FAILED("状态非法");
         }
+        // 多次点击会超过上限? 前端禁用按钮 (已解决)
         signFromDb.setUpdateTime(new Date());
         signDao.save(signFromDb);
         return ResponseResult.SUCCESS("签退成功");

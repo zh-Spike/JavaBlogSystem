@@ -1007,3 +1007,59 @@
 [2020/09/30-23:41:13][http-nio-8082-exec-2][INFO ][net.blog.services.impl.SignServiceImpl]:labNum ==>888
 [2020/09/30-23:41:13][http-nio-8082-exec-2][INFO ][net.blog.services.impl.SignServiceImpl]:signNum ==>5
 [2020/09/30-23:41:13][http-nio-8082-exec-2][INFO ][net.blog.services.impl.SignServiceImpl]:labAvilNum ==>883
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CMTIzIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcG9ydGFsL2ltYWdlLzE1OTkwMjE2MDg5NzJfNzUwNjk2NTY3NTUxMjk1NDg4LnBuZyIsImV4cCI6MTYwMTQ4MTUyMSwiZW1haWwiOiJldG5qbEBvdXRsb29rLmNvbSJ9.l7WTPQbtTIkmsp7o7K97u-_VvCMWP8UlXM1Ybozl7WE
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.services.impl.SignServiceImpl]:labNum ==>888
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.services.impl.SignServiceImpl]:signNum ==>5
+[2020/09/30-23:43:13][http-nio-8082-exec-4][INFO ][net.blog.services.impl.SignServiceImpl]:labAvilNum ==>888
+[2020/09/30-23:43:15][http-nio-8082-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:15][http-nio-8082-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:15][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:15][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:15][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:15][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:15][http-nio-8082-exec-10][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:43:16][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:43:16][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:46:58][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/09/30-23:46:59][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 15428 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/09/30-23:46:59][main][INFO ][net.blog.BlogApplication]:The following profiles are active: prod
+[2020/09/30-23:47:07][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.404 seconds (JVM running for 9.08)
+[2020/09/30-23:47:13][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:47:13][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:47:14][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/09/30-23:47:14][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:47:14][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CMTIzIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcG9ydGFsL2ltYWdlLzE1OTkwMjE2MDg5NzJfNzUwNjk2NTY3NTUxMjk1NDg4LnBuZyIsImV4cCI6MTYwMTQ4MTUyMSwiZW1haWwiOiJldG5qbEBvdXRsb29rLmNvbSJ9.l7WTPQbtTIkmsp7o7K97u-_VvCMWP8UlXM1Ybozl7WE
+[2020/09/30-23:49:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:49:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:49:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/09/30-23:49:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:49:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CMTIzIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcG9ydGFsL2ltYWdlLzE1OTkwMjE2MDg5NzJfNzUwNjk2NTY3NTUxMjk1NDg4LnBuZyIsImV4cCI6MTYwMTQ4MTUyMSwiZW1haWwiOiJldG5qbEBvdXRsb29rLmNvbSJ9.l7WTPQbtTIkmsp7o7K97u-_VvCMWP8UlXM1Ybozl7WE
+[2020/09/30-23:49:57][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:49:57][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:54:09][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/09/30-23:54:10][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 13764 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/09/30-23:54:10][main][INFO ][net.blog.BlogApplication]:The following profiles are active: prod
+[2020/09/30-23:54:18][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.185 seconds (JVM running for 8.876)
+[2020/09/30-23:54:39][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:54:39][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:54:40][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/09/30-23:54:41][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:54:41][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CMTIzIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcG9ydGFsL2ltYWdlLzE1OTkwMjE2MDg5NzJfNzUwNjk2NTY3NTUxMjk1NDg4LnBuZyIsImV4cCI6MTYwMTQ4MTUyMSwiZW1haWwiOiJldG5qbEBvdXRsb29rLmNvbSJ9.l7WTPQbtTIkmsp7o7K97u-_VvCMWP8UlXM1Ybozl7WE
+[2020/09/30-23:54:42][http-nio-8082-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:54:42][http-nio-8082-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:54:43][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:54:43][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:55:32][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > signOut
+[2020/09/30-23:55:32][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:tokenKey -||- >m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:55:32][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:check commit too frequent
+[2020/09/30-23:55:32][http-nio-8082-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > m_c5034f940087a8314befeab71216d509
+[2020/09/30-23:55:32][http-nio-8082-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:parseByTokenKey token == >eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJBZG1pbkNodWFuIiwicm9sZXMiOiJyb2xlX2FkbWluIiwic2lnbiI6IkxCV05CMTIzIiwiZnJvbSI6Im1fIiwiaWQiOiI3NDE2MjY0ODU1Mzc3Njc0MjQiLCJhdmF0YXIiOiJodHRwOi8vbG9jYWxob3N0OjgwODIvcG9ydGFsL2ltYWdlLzE1OTkwMjE2MDg5NzJfNzUwNjk2NTY3NTUxMjk1NDg4LnBuZyIsImV4cCI6MTYwMTQ4MTUyMSwiZW1haWwiOiJldG5qbEBvdXRsb29rLmNvbSJ9.l7WTPQbtTIkmsp7o7K97u-_VvCMWP8UlXM1Ybozl7WE
