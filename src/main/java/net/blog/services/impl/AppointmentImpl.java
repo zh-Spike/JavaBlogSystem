@@ -2,7 +2,9 @@ package net.blog.services.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.AppointmentDao;
+import net.blog.dao.LabDao;
 import net.blog.pojo.Appointment;
+import net.blog.pojo.Lab;
 import net.blog.pojo.PageList;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
@@ -38,6 +40,9 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
 
     @Autowired
     private SnowflakeIdWorker idWorker;
+
+    @Autowired
+    private LabDao labDao;
 
     @Autowired
     private AppointmentDao appointmentDao;
@@ -83,6 +88,9 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
     public ResponseResult updateAppointment(String appointmentId, Appointment appointment) {
         // 第一步:找出
         Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
+        String labId = appointmentFromDb.getLabId();
+//        log.info(labId);
+        Lab labFromDb = labDao.findOneById(labId);
         if (appointmentFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }
@@ -92,7 +100,6 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (!TextUtils.isEmpty(state)) {
             appointmentFromDb.setState(state);
         }
-        String labId = appointment.getLabId();
         if (!TextUtils.isEmpty(labId)) {
             appointmentFromDb.setLabId(labId);
         }
@@ -109,6 +116,17 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         String appointmentNumberStr = String.valueOf(appointment.getAppointmentNumber());
         if (!appointmentNumberStr.equals("0")) {
             appointmentFromDb.setAppointmentNumber(appointment.getAppointmentNumber());
+        }
+        // 如果审核通过 则减少实验室容量
+        String stateStr = String.valueOf(appointment.getState());
+        if (stateStr.equals("2")) {
+//            log.info("appNumber ==> " + appointmentFromDb.getAppointmentNumber());
+//            log.info("labAvailNumber ==> " + labFromDb.getLabAvailable());
+            if (appointmentFromDb.getAppointmentNumber() > labFromDb.getLabAvailable()) {
+                ResponseResult.FAILED("实验室人数已满");
+            } else {
+                labFromDb.setLabAvailable(labFromDb.getLabAvailable() - appointmentFromDb.getAppointmentNumber());
+            }
         }
         // 第三步:保存数据
         appointmentDao.save(appointmentFromDb);

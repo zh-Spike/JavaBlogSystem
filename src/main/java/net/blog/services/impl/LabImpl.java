@@ -76,14 +76,17 @@ public class LabImpl extends BaseService implements ILabService {
             labFromDb.setLabName(name);
         }
         // 判断实验室容量有点问题
-        String labNumberStrFromDb = String.valueOf(lab.getLabNumber());
-        long labNumberFromDb = lab.getLabNumber();
-        if (!labNumberStrFromDb.equals("0")) {
-            labFromDb.setLabNumber(labNumberFromDb);
+        String labNumberStr = String.valueOf(lab.getLabNumber());
+        if (!labNumberStr.equals("0")) {
+            labFromDb.setLabNumber(lab.getLabNumber());
         }
-        labFromDb.setState(lab.getState());
+        if (!lab.getState().equals("0")) {
+            labFromDb.setState(lab.getState());
+        }
+        if (!labNumberStr.equals("0")) {
+            labFromDb.setLabAvailable(lab.getLabNumber());
+        }
         labFromDb.setUpdateTime(new Date());
-        labFromDb.setLabAvailable(lab.getLabNumber());
         // 第三步:保存数据
         labDao.save(labFromDb);
         // 返回结果
