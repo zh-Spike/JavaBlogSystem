@@ -16,12 +16,23 @@ public class Lab {
     private String labName;
     @Column(name = "lab_number")
     private long labNumber = 0;
+    @Column(name = "lab_available")
+    private long labAvailable = 0;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
     @Column(name = "state")
     private String state = "1";
+
+
+    public long getLabAvailable() {
+        return labAvailable;
+    }
+
+    public void setLabAvailable(long labAvailable) {
+        this.labAvailable = labAvailable;
+    }
 
     public String getId() {
         return id;

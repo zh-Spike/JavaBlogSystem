@@ -1,5 +1,6 @@
 package net.blog.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.AppointmentDao;
 import net.blog.pojo.Appointment;
 import net.blog.pojo.User;
@@ -9,9 +10,23 @@ import net.blog.services.IUserService;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.util.Date;
 
+@Slf4j
+@Service
+@Transactional
 public class AppointmentImpl extends BaseService implements IAppointmentService {
 
     @Autowired
@@ -42,7 +57,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
 //        appointment.setEndTime(new Date(String.valueOf(appointment.getEndTime())));
         // 补全数据
         appointment.setId(idWorker.nextId() + "");
-        appointment.setState("2");
+        appointment.setState("1");
         appointment.setCreateTime(new Date());
         appointment.setUpdateTime(new Date());
         // 保存数据
@@ -63,27 +78,38 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
     @Override
     public ResponseResult updateAppointment(String appointmentId, Appointment appointment) {
         // 第一步:找出
-//        Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
-//        if (appointmentFromDb == null) {
-//            return ResponseResult.FAILED("分类不存在");
+        Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
+        if (appointmentFromDb == null) {
+            return ResponseResult.FAILED("该预约不存在");
+        }
+        // 第二步：对内容进行判断，有些字段不能为空
+        appointmentFromDb.setUpdateTime(new Date());
+        String state = appointment.getState();
+        if (!TextUtils.isEmpty(state)) {
+            appointmentFromDb.setState(state);
+        }
+        String labId = appointment.getLabId();
+        if (!TextUtils.isEmpty(labId)) {
+            appointmentFromDb.setLabId(labId);
+        }
+//        String startTimeStr = String.valueOf(appointment.getStartTime());
+//        if (!TextUtils.isEmpty(startTimeStr)) {
+//            Date startTime = appointment.getStartTime();
+//            appointmentFromDb.setStartTime(startTime);
 //        }
-//        // 第二步：对内容进行判断，有些字段不能为空
-//        String id = appointment.getId();
-//        if (!TextUtils.isEmpty(name)) {
-//            labFromDb.setLabName(name);
+//        String endTimeStr = String.valueOf(appointment.getEndTime());
+//        if (!TextUtils.isEmpty(endTimeStr)) {
+//            Date endTime = appointment.getEndTime();
+//            appointmentFromDb.setEndTime(endTime);
 //        }
-//        // 判断实验室容量有点问题
-//        String labNumberStrFromDb = String.valueOf(lab.getLabNumber());
-//        long labNumberFromDb = lab.getLabNumber();
-//        if (!labNumberStrFromDb.equals("0")) {
-//            labFromDb.setLabNumber(labNumberFromDb);
-//        }
-//        labFromDb.setState(lab.getState());
-//        labFromDb.setUpdateTime(new Date());
-//        // 第三步:保存数据
-//        labDao.save(labFromDb);
-//        // 返回结果
-        return ResponseResult.SUCCESS("分类更新成功");
+        String appointmentNumberStr = String.valueOf(appointment.getAppointmentNumber());
+        if (!appointmentNumberStr.equals("0")) {
+            appointmentFromDb.setAppointmentNumber(appointment.getAppointmentNumber());
+        }
+        // 第三步:保存数据
+        appointmentDao.save(appointmentFromDb);
+        // 返回结果
+        return ResponseResult.SUCCESS("预约审批成功");
     }
 
     @Override
@@ -96,23 +122,28 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
     }
 
     @Override
-    public ResponseResult listComments(int page, int size) {
-//        // 参数检查
-//        // 创建条件
-//        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
-//        // 判断用户 普通/未登录用户  admin权限拉满
-//        User user = userService.checkUser();
-//        List<Lab> labs;
-//        if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
-//            // 只能获取正常的lab
-//            labs = labDao.listLabByState("1");
-//        } else {
-//            // 查询
-//            labs = labDao.findAll(sort);
-//        }
-//        //返回结果
-//        return ResponseResult.SUCCESS("获取实验室列表成功").setData(appointments);
-        return null;
+    public ResponseResult listAppointment(int page, int size) {
+        // 参数检查
+        page = checkPage(page);
+        size = checkSize(size);
+        User user = userService.checkUser();
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        // 创建分页条件
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        // 查询
+        Pageable pageable = PageRequest.of(page - 1, size, sort);
+        // 返回结果
+        final String userId = user.getId();
+        Page<Appointment> all = appointmentDao.findAll(new Specification<Appointment>() {
+            @Override
+            public Predicate toPredicate(Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                // 根据用户ID
+                Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
+                return criteriaBuilder.and(userIdPre);
+            }
+        }, pageable);
+        return ResponseResult.SUCCESS("获取预约列表成功").setData(all);
     }
-
 }

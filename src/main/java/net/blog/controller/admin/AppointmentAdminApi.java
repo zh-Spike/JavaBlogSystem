@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/admin/appointment")
 public class AppointmentAdminApi {
+
     @Autowired
     private IAppointmentService appointmentService;
 
@@ -61,9 +62,7 @@ public class AppointmentAdminApi {
      */
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
-    public ResponseResult listAppointments(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return appointmentService.listComments(page, size);
+    public ResponseResult listAppointment(@PathVariable("page") int page, @PathVariable("size") int size) {
+        return appointmentService.listAppointment(page, size);
     }
-
-
 }

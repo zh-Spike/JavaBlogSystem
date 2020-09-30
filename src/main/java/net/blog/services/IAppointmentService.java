@@ -12,5 +12,5 @@ public interface IAppointmentService {
 
     ResponseResult getAppointment(String appointmentId);
 
-    ResponseResult listComments(int page, int size);
+    ResponseResult listAppointment(int page, int size);
 }
