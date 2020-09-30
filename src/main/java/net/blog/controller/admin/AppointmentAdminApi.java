@@ -62,7 +62,9 @@ public class AppointmentAdminApi {
      */
     @PreAuthorize("@permission.admin()")
     @GetMapping("/list/{page}/{size}")
-    public ResponseResult listAppointment(@PathVariable("page") int page, @PathVariable("size") int size) {
-        return appointmentService.listAppointment(page, size);
+    public ResponseResult listAppointment(@PathVariable("page") int page, @PathVariable("size") int size,
+                                          @RequestParam(value = "userId", required = false) String userId,
+                                          @RequestParam(value = "state", required = false) String state) {
+        return appointmentService.listAppointment(page, size, userId, state);
     }
 }

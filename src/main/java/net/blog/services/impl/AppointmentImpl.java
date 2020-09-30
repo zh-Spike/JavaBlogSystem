@@ -3,6 +3,7 @@ package net.blog.services.impl;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.AppointmentDao;
 import net.blog.pojo.Appointment;
+import net.blog.pojo.PageList;
 import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.IAppointmentService;
@@ -22,7 +23,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -122,7 +125,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
     }
 
     @Override
-    public ResponseResult listAppointment(int page, int size) {
+    public ResponseResult listAppointment(int page, int size, String userId, String state) {
         // 参数检查
         page = checkPage(page);
         size = checkSize(size);
@@ -135,15 +138,27 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         // 查询
         Pageable pageable = PageRequest.of(page - 1, size, sort);
         // 返回结果
-        final String userId = user.getId();
         Page<Appointment> all = appointmentDao.findAll(new Specification<Appointment>() {
             @Override
             public Predicate toPredicate(Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                // 根据用户ID
-                Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
-                return criteriaBuilder.and(userIdPre);
+                List<Predicate> predicates = new ArrayList<>();
+                if (!TextUtils.isEmpty(userId)) {
+                    Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
+                    predicates.add(userIdPre);
+                }
+                if (!TextUtils.isEmpty(state)) {
+                    Predicate statePre = criteriaBuilder.equal(root.get("state").as(String.class), state);
+                    predicates.add(statePre);
+                }
+                Predicate[] preArray = new Predicate[predicates.size()];
+                predicates.toArray(preArray);
+                return criteriaBuilder.and(preArray);
             }
         }, pageable);
+        // 处理查询条件
+        PageList<Appointment> result = new PageList<>();
+        // 解析page
+        result.parsePage(all);
         return ResponseResult.SUCCESS("获取预约列表成功").setData(all);
     }
 }
