@@ -58,7 +58,10 @@ public class SignServiceImpl extends BaseService implements ISignService {
         if (SignNumberStr.equals("0")) {
             return ResponseResult.FAILED("预约人数不能为空");
         }
-        String stateStr = String.valueOf(appointmentFromDb.getState());
+        String stateStr = appointmentFromDb.getState();
+        log.info("state ==>" + stateStr);
+        String isUsedStr = appointmentFromDb.getIsUsed();
+        log.info("user ==>" + isUsedStr);
         Lab labFromDb = labDao.findOneById(sign.getLabId());
         if (stateStr.equals("2")) {
 //            log.info("appNum ==>" + appointmentFromDb.getAppointmentNumber());
@@ -66,10 +69,14 @@ public class SignServiceImpl extends BaseService implements ISignService {
             labFromDb.setLabAvailable(labFromDb.getLabNumber() - appointmentFromDb.getAppointmentNumber());
             sign.setNumber(appointmentFromDb.getAppointmentNumber());
         } else {
-            ResponseResult.FAILED("审核未通过");
+            return ResponseResult.FAILED("审核未通过");
         }
+        if (!isUsedStr.equals("0")) {
+            return ResponseResult.FAILED("该申请已使用");
+        }
+        appointmentFromDb.setIsUsed("1");
         // 补全数据
-        sign.setId(idWorker.nextId() + "");
+        sign.setId(appointmentFromDb.getId());
         sign.setState("1");
         sign.setCreateTime(new Date());
         sign.setUpdateTime(new Date());

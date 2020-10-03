@@ -68,6 +68,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         // 补全数据
         appointment.setId(idWorker.nextId() + "");
         appointment.setState("1");
+        appointment.setIsUsed("0");
         appointment.setCreateTime(new Date());
         appointment.setUpdateTime(new Date());
         // 保存数据

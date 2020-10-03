@@ -32,6 +32,16 @@ public class Appointment {
     private Date startTime;
     @Column(name = "end_time")
     private Date endTime;
+    @Column(name = "isused")
+    private String isUsed;
+
+    public String getIsUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(String isUsed) {
+        this.isUsed = isUsed;
+    }
 
     public String getId() {
         return id;
