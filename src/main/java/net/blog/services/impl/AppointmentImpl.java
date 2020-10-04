@@ -134,7 +134,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         appointmentFromDb.setUpdateTime(new Date());
         appointmentDao.save(appointmentFromDb);
         // 返回结果
-        return ResponseResult.SUCCESS("预约审批成功");
+        return ResponseResult.SUCCESS("修改预约审批成功");
     }
 
     @Override
