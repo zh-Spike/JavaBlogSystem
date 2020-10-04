@@ -1,7 +1,6 @@
 package net.blog.controller.portal;
 
 import net.blog.interceptor.CheckTooFrequentCommit;
-import net.blog.pojo.Appointment;
 import net.blog.pojo.Sign;
 import net.blog.response.ResponseResult;
 import net.blog.services.ISignService;
@@ -23,7 +22,7 @@ public class SignPortalApi {
 
     @CheckTooFrequentCommit
     @PutMapping("/{signId}")
-    public ResponseResult signOut(@PathVariable("signId") String signId, @RequestBody Sign sign) {
-        return signService.signOut(signId, sign);
+    public ResponseResult signOut(@PathVariable("signId") String signId) {
+        return signService.signOut(signId);
     }
 }

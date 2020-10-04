@@ -104,5 +104,20 @@ public interface Constants {
         String KEY_COMMENT_FIRST_PAGE_CACHE = "key_comment_first_page_cache_";
     }
 
+    interface Sign {
+        String NOT_ACTIVE = "0";
+        String SIGN_IN = "1";
+        String SIGN_OUT = "2";
+    }
+
+    interface Appointment {
+        String REJECTED = "0";
+        String CHECKING = "1";
+        String PASSED = "2";
+        String NOT_USED = "0";
+        String IS_USED = "1";
+
+    }
+
 
 }

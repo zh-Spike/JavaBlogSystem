@@ -1,6 +1,5 @@
 package net.blog.controller.admin;
 
-import net.blog.pojo.Sign;
 import net.blog.response.ResponseResult;
 import net.blog.services.ISignService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,8 @@ public class SignAdminApi {
 
     @PreAuthorize("@permission.admin()")
     @PutMapping("/{signId}")
-    public ResponseResult updateAppointment(@PathVariable("signId") String signId, @RequestBody Sign sign) {
-        return signService.updateSign(signId, sign);
+    public ResponseResult updateSign(@PathVariable("signId") String signId) {
+        return signService.updateSign(signId);
     }
 
     @PreAuthorize("@permission.admin()")

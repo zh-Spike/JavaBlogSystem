@@ -12,7 +12,6 @@ import net.blog.response.ResponseResult;
 import net.blog.services.ISignService;
 import net.blog.services.IUserService;
 import net.blog.utils.Constants;
-import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -28,9 +27,6 @@ import java.util.List;
 public class SignServiceImpl extends BaseService implements ISignService {
     @Autowired
     private IUserService userService;
-
-    @Autowired
-    private SnowflakeIdWorker idWorker;
 
     @Autowired
     private LabDao labDao;
@@ -62,11 +58,11 @@ public class SignServiceImpl extends BaseService implements ISignService {
             return ResponseResult.FAILED("预约人数不能为空");
         }
         String stateStr = appointmentFromDb.getState();
-        log.info("state ==>" + stateStr);
+//        log.info("state ==>" + stateStr);
         String isUsedStr = appointmentFromDb.getIsUsed();
-        log.info("user ==>" + isUsedStr);
+//        log.info("user ==>" + isUsedStr);
         Lab labFromDb = labDao.findOneById(sign.getLabId());
-        if (stateStr.equals("2")) {
+        if (stateStr.equals(Constants.Appointment.PASSED)) {
 //            log.info("appNum ==>" + appointmentFromDb.getAppointmentNumber());
 //            log.info("labNum ==>" + labFromDb.getLabNumber());
             labFromDb.setLabAvailable(labFromDb.getLabNumber() - appointmentFromDb.getAppointmentNumber());
@@ -74,13 +70,14 @@ public class SignServiceImpl extends BaseService implements ISignService {
         } else {
             return ResponseResult.FAILED("审核未通过");
         }
-        if (!isUsedStr.equals("0")) {
+        if (!isUsedStr.equals(Constants.Appointment.IS_USED)) {
             return ResponseResult.FAILED("该申请已使用");
         }
-        appointmentFromDb.setIsUsed("1");
+        appointmentFromDb.setIsUsed(Constants.Appointment.IS_USED);
         // 补全数据
+        sign.setLabName(labFromDb.getLabName());
         sign.setId(appointmentFromDb.getId());
-        sign.setState("1");
+        sign.setState(Constants.Sign.SIGN_IN);
         sign.setCreateTime(new Date());
         sign.setUpdateTime(new Date());
         // 保存数据
@@ -90,22 +87,20 @@ public class SignServiceImpl extends BaseService implements ISignService {
     }
 
     @Override
-    public ResponseResult signOut(String signId, Sign sign) {
+    public ResponseResult signOut(String signId) {
         Sign signFromDb = signDao.findOneById(signId);
         if (signFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }
         userService.checkUser();
         // 获得之前的人数
-        String stateStr = String.valueOf(sign.getState());
-        String stateFromDbStr = String.valueOf(signFromDb.getState());
         Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
-        if (stateStr.equals("2") && !stateFromDbStr.equals("3")) {
+        if (signFromDb.getState().equals(Constants.Sign.SIGN_IN)) {
 //            log.info("labNum ==>" + labFromDb.getLabNumber());
 //            log.info("signNum ==>" + signFromDb.getNumber());
-//            log.info("labAvilNum ==>" + labFromDb.getLabAvailable());
+//            log.info("labAvailNum ==>" + labFromDb.getLabAvailable());
             labFromDb.setLabAvailable(signFromDb.getNumber() + labFromDb.getLabAvailable());
-            signFromDb.setState("3");
+            signFromDb.setState(Constants.Sign.SIGN_OUT);
         } else {
             return ResponseResult.FAILED("状态非法");
         }
@@ -116,12 +111,26 @@ public class SignServiceImpl extends BaseService implements ISignService {
     }
 
     @Override
-    public ResponseResult updateSign(String signId, Sign sign) {
+    public ResponseResult updateSign(String signId) {
         Sign signFromDb = signDao.findOneById(signId);
         if (signFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }
-        signFromDb.setState(sign.getState());
+        if (signFromDb.getState().equals(Constants.Sign.NOT_ACTIVE)) {
+            Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
+            Appointment appointmentFromDb = appointmentDao.findOneById(signFromDb.getAppointmentId());
+            labFromDb.setLabAvailable(labFromDb.getLabNumber() - appointmentFromDb.getAppointmentNumber());
+            signFromDb.setState(Constants.Sign.SIGN_IN);
+        }
+        // 这样的话不会修改lab人数?
+        // admin的签到签退一般没用啊
+        // 所以签退还是用signOut
+
+        if (signFromDb.getState().equals(Constants.Sign.SIGN_IN)) {
+            Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
+            labFromDb.setLabAvailable(signFromDb.getNumber() + labFromDb.getLabAvailable());
+            signFromDb.setState(Constants.Sign.SIGN_OUT);
+        }
         signFromDb.setUpdateTime(new Date());
         signDao.save(signFromDb);
         return ResponseResult.SUCCESS("签到状态修改成功");
