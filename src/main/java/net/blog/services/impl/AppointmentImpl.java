@@ -57,18 +57,23 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (TextUtils.isEmpty(appointment.getLabId())) {
             return ResponseResult.FAILED("实验室不可以为空");
         }
+        Lab labFormDb = labDao.findOneById(appointment.getId());
+        if (labFormDb.getState().equals(Constants.Lab.STATE_DELETE)) {
+            return ResponseResult.FAILED("当前实验室不可用");
+        }
         // 判断实验室容量有点问题
         String appointmentNumberStr = String.valueOf(appointment.getAppointmentNumber());
         if (appointmentNumberStr.equals("0")) {
             return ResponseResult.FAILED("预约人数不能为空");
+        } else if (appointment.getAppointmentNumber() > labFormDb.getLabAvailable()) {
+            return ResponseResult.FAILED("该实验室可用容量不足");
         }
-
 //        appointment.setStartTime(new Date(String.valueOf(appointment.getStartTime())));
 //        appointment.setEndTime(new Date(String.valueOf(appointment.getEndTime())));
         // 补全数据
         appointment.setId(idWorker.nextId() + "");
-        appointment.setState("1");
-        appointment.setIsUsed("0");
+        appointment.setState(Constants.Appointment.CHECKING);
+        appointment.setIsUsed(Constants.Appointment.NOT_USED);
         appointment.setCreateTime(new Date());
         appointment.setUpdateTime(new Date());
         // 保存数据
@@ -120,15 +125,14 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         }
         // 如果审核通过 则减少实验室容量
         String stateStr = String.valueOf(appointment.getState());
-        if (stateStr.equals("2")) {
+        if (stateStr.equals(Constants.Appointment.PASSED)) {
 //            log.info("appNumber ==> " + appointmentFromDb.getAppointmentNumber());
 //            log.info("labAvailNumber ==> " + labFromDb.getLabAvailable());
             if (appointmentFromDb.getAppointmentNumber() > labFromDb.getLabAvailable()) {
-                ResponseResult.FAILED("实验室人数已满");
+                return ResponseResult.FAILED("实验室人数已满");
             }
-//            } else {
-//                labFromDb.setLabAvailable(labFromDb.getLabAvailable() - appointmentFromDb.getAppointmentNumber());
-//            }
+        } else {
+            return ResponseResult.FAILED("审批未通过");
         }
         // 第三步:保存数据
         appointmentFromDb.setUpdateTime(new Date());

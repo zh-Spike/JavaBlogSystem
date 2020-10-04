@@ -116,7 +116,11 @@ public interface Constants {
         String PASSED = "2";
         String NOT_USED = "0";
         String IS_USED = "1";
+    }
 
+    interface Lab {
+        String STATE_DELETE = "0";
+        String STATE_ACTIVE = "1";
     }
 
 

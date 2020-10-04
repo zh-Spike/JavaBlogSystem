@@ -44,7 +44,7 @@ public class LabImpl extends BaseService implements ILabService {
         }
         // 补全数据
         lab.setId(idWorker.nextId() + "");
-        lab.setState("1");
+        lab.setState(Constants.Lab.STATE_ACTIVE);
         lab.setCreateTime(new Date());
         lab.setUpdateTime(new Date());
         lab.setLabAvailable(lab.getLabNumber());
@@ -112,7 +112,7 @@ public class LabImpl extends BaseService implements ILabService {
         List<Lab> labs;
         if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
             // 只能获取正常的lab
-            labs = labDao.listLabByState("1");
+            labs = labDao.listLabByState(Constants.Lab.STATE_ACTIVE);
         } else {
             // 查询
             labs = labDao.findAll(sort);
