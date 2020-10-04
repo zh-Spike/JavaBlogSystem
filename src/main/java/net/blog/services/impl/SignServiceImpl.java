@@ -11,13 +11,16 @@ import net.blog.pojo.User;
 import net.blog.response.ResponseResult;
 import net.blog.services.ISignService;
 import net.blog.services.IUserService;
+import net.blog.utils.Constants;
 import net.blog.utils.SnowflakeIdWorker;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -122,5 +125,22 @@ public class SignServiceImpl extends BaseService implements ISignService {
         signFromDb.setUpdateTime(new Date());
         signDao.save(signFromDb);
         return ResponseResult.SUCCESS("签到状态修改成功");
+    }
+
+    @Override
+    public ResponseResult listSigns() {
+        // 参数检查
+        // 创建条件
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        // 判断用户 普通/未登录用户  admin权限拉满
+        User user = userService.checkUser();
+        List<Sign> signs;
+        if (Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
+            signs = signDao.findAll(sort);
+        } else {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        //返回结果
+        return ResponseResult.SUCCESS("获取签到列表成功").setData(signs);
     }
 }

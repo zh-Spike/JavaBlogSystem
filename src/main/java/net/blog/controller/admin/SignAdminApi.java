@@ -19,4 +19,10 @@ public class SignAdminApi {
     public ResponseResult updateAppointment(@PathVariable("signId") String signId, @RequestBody Sign sign) {
         return signService.updateSign(signId, sign);
     }
+
+    @PreAuthorize("@permission.admin()")
+    @GetMapping("/list")
+    public ResponseResult listSigns() {
+        return signService.listSigns();
+    }
 }

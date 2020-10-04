@@ -9,4 +9,6 @@ public interface ISignService {
     ResponseResult signOut(String signId, Sign sign);
 
     ResponseResult updateSign(String signId, Sign sign);
+
+    ResponseResult listSigns();
 }
