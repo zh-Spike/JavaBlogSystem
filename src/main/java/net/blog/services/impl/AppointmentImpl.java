@@ -104,7 +104,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (!TextUtils.isEmpty(state)) {
             appointmentFromDb.setState(state);
         }
-        String labId = appointmentFromDb.getLabId();
+        String labId = appointment.getLabId();
         if (!TextUtils.isEmpty(labId)) {
             appointmentFromDb.setLabId(labId);
             Lab newLabFromDb = labDao.findOneById(labId);
