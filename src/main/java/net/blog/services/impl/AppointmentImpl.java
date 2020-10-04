@@ -214,4 +214,31 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
             return ResponseResult.PERMISSION_DENIED();
         }
     }
+
+    @Override
+    public ResponseResult checkAppointment(String appointmentId) {
+        Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
+        if (appointmentFromDb == null) {
+            return ResponseResult.FAILED("该预约不存在");
+        }
+        if (appointmentFromDb.getState().equals(Constants.Appointment.CHECKING)) {
+            Lab labFromDb = labDao.findOneById(appointmentFromDb.getLabId());
+            if (labFromDb.getLabAvailable() > appointmentFromDb.getAppointmentNumber()) {
+                appointmentFromDb.setState(Constants.Appointment.PASSED);
+                appointmentFromDb.setUpdateTime(new Date());
+                appointmentDao.save(appointmentFromDb);
+                return ResponseResult.SUCCESS("审批通过");
+            } else {
+                return ResponseResult.FAILED("实验室容量不足");
+            }
+        } else if (appointmentFromDb.getState().equals(Constants.Appointment.PASSED)) {
+            appointmentFromDb.setState(Constants.Appointment.REJECTED);
+            appointmentFromDb.setUpdateTime(new Date());
+            appointmentDao.save(appointmentFromDb);
+            return ResponseResult.SUCCESS("申请驳回");
+        }
+        appointmentFromDb.setState(Constants.Appointment.CHECKING);
+        appointmentDao.save(appointmentFromDb);
+        return ResponseResult.SUCCESS("再给机会");
+    }
 }

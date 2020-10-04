@@ -39,7 +39,7 @@ public class AppointmentAdminApi {
      */
     @CheckTooFrequentCommit
     @PreAuthorize("@permission.admin()")
-    @PutMapping("/{appointmentId}")
+    @PutMapping("/update/{appointmentId}")
     public ResponseResult updateAppointment(@PathVariable("appointmentId") String appointmentId, @RequestBody Appointment appointment) {
         return appointmentService.updateAppointment(appointmentId, appointment);
     }
@@ -67,4 +67,14 @@ public class AppointmentAdminApi {
                                           @RequestParam(value = "state", required = false) String state) {
         return appointmentService.listAppointment(page, size, userId, state);
     }
+
+    /**
+     * 审批预约
+     */
+    @PreAuthorize("@permission.admin()")
+    @PutMapping("/{appointmentId}")
+    public ResponseResult checkAppointment(@PathVariable("appointmentId") String appointmentId) {
+        return appointmentService.checkAppointment(appointmentId);
+    }
+
 }

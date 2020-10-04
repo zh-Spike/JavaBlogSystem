@@ -116,14 +116,13 @@ public class SignServiceImpl extends BaseService implements ISignService {
         if (signFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }
-
         // 这样的话不会修改lab人数?
         // admin的签到签退一般没用啊
         // 所以签退还是用signOut那个方法吧
         if (signFromDb.getState().equals(Constants.Sign.NOT_ACTIVE)) {
             Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
             Appointment appointmentFromDb = appointmentDao.findOneById(signFromDb.getAppointmentId());
-            labFromDb.setLabAvailable(labFromDb.getLabNumber() - appointmentFromDb.getAppointmentNumber());
+            labFromDb.setLabAvailable(labFromDb.getLabAvailable() - appointmentFromDb.getAppointmentNumber());
             signFromDb.setState(Constants.Sign.SIGN_IN);
         } else if (signFromDb.getState().equals(Constants.Sign.SIGN_IN)) {
             Lab labFromDb = labDao.findOneById(signFromDb.getLabId());
