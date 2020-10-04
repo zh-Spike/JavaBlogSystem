@@ -89,16 +89,13 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (result == 0) {
             return ResponseResult.FAILED("该预约不存在");
         }
-        return ResponseResult.SUCCESS("删除预约成功");
+        return ResponseResult.SUCCESS("驳回申请");
     }
 
     @Override
     public ResponseResult updateAppointment(String appointmentId, Appointment appointment) {
         // 第一步:找出
         Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
-        String labId = appointmentFromDb.getLabId();
-//        log.info(labId);
-        Lab labFromDb = labDao.findOneById(labId);
         if (appointmentFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }
@@ -107,6 +104,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (!TextUtils.isEmpty(state)) {
             appointmentFromDb.setState(state);
         }
+        String labId = appointmentFromDb.getLabId();
         if (!TextUtils.isEmpty(labId)) {
             appointmentFromDb.setLabId(labId);
             Lab newLabFromDb = labDao.findOneById(labId);
@@ -126,16 +124,11 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (!appointmentNumberStr.equals("0")) {
             appointmentFromDb.setAppointmentNumber(appointment.getAppointmentNumber());
         }
-        // 如果审核通过 则减少实验室容量
-        String stateStr = String.valueOf(appointment.getState());
-        if (stateStr.equals(Constants.Appointment.PASSED)) {
-//            log.info("appNumber ==> " + appointmentFromDb.getAppointmentNumber());
-//            log.info("labAvailNumber ==> " + labFromDb.getLabAvailable());
-            if (appointmentFromDb.getAppointmentNumber() > labFromDb.getLabAvailable()) {
-                return ResponseResult.FAILED("实验室人数已满");
-            }
-        } else {
-            return ResponseResult.FAILED("审批未通过");
+        if (appointmentFromDb.getStartTime() != null) {
+            appointmentFromDb.setStartTime(appointment.getStartTime());
+        }
+        if (appointmentFromDb.getEndTime() != null) {
+            appointmentFromDb.setEndTime(appointment.getEndTime());
         }
         // 第三步:保存数据
         appointmentFromDb.setUpdateTime(new Date());
@@ -231,12 +224,8 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
             } else {
                 return ResponseResult.FAILED("实验室容量不足");
             }
-        } else if (appointmentFromDb.getState().equals(Constants.Appointment.PASSED)) {
-            appointmentFromDb.setState(Constants.Appointment.REJECTED);
-            appointmentFromDb.setUpdateTime(new Date());
-            appointmentDao.save(appointmentFromDb);
-            return ResponseResult.SUCCESS("申请驳回");
         }
+        appointmentFromDb.setUpdateTime(new Date());
         appointmentFromDb.setState(Constants.Appointment.CHECKING);
         appointmentDao.save(appointmentFromDb);
         return ResponseResult.SUCCESS("再给机会");
