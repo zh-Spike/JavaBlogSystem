@@ -71,6 +71,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
 //        appointment.setStartTime(new Date(String.valueOf(appointment.getStartTime())));
 //        appointment.setEndTime(new Date(String.valueOf(appointment.getEndTime())));
         // 补全数据
+        appointment.setLabName(labFormDb.getLabName());
         appointment.setId(idWorker.nextId() + "");
         appointment.setState(Constants.Appointment.CHECKING);
         appointment.setIsUsed(Constants.Appointment.NOT_USED);
@@ -108,6 +109,8 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         }
         if (!TextUtils.isEmpty(labId)) {
             appointmentFromDb.setLabId(labId);
+            Lab newLabFromDb = labDao.findOneById(labId);
+            appointmentFromDb.setLabName(newLabFromDb.getLabName());
         }
 //        String startTimeStr = String.valueOf(appointment.getStartTime());
 //        if (!TextUtils.isEmpty(startTimeStr)) {

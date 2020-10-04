@@ -35,6 +35,17 @@ public class Appointment {
     @Column(name = "isused")
     private String isUsed;
 
+    public String getLabName() {
+        return labName;
+    }
+
+    public void setLabName(String labName) {
+        this.labName = labName;
+    }
+
+    @Column(name = "lab_name")
+    private String labName;
+
     public String getIsUsed() {
         return isUsed;
     }

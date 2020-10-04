@@ -30,7 +30,7 @@ public class AppointmentAdminApi {
      */
     @PreAuthorize("@permission.admin()")
     @DeleteMapping("/{appointmentId}")
-    public ResponseResult deleteAppointmentId(@PathVariable("appointmentId") String appointmentId) {
+    public ResponseResult deleteAppointment(@PathVariable("appointmentId") String appointmentId) {
         return appointmentService.deleteAppointment(appointmentId);
     }
 
