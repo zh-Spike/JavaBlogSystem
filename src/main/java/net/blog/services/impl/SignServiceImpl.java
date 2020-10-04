@@ -111,4 +111,16 @@ public class SignServiceImpl extends BaseService implements ISignService {
         signDao.save(signFromDb);
         return ResponseResult.SUCCESS("签退成功");
     }
+
+    @Override
+    public ResponseResult updateSign(String signId, Sign sign) {
+        Sign signFromDb = signDao.findOneById(signId);
+        if (signFromDb == null) {
+            return ResponseResult.FAILED("该预约不存在");
+        }
+        signFromDb.setState(sign.getState());
+        signFromDb.setUpdateTime(new Date());
+        signDao.save(signFromDb);
+        return ResponseResult.SUCCESS("签到状态修改成功");
+    }
 }
