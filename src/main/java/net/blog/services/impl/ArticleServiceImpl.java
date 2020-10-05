@@ -450,9 +450,9 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
      */
     @Override
     public ResponseResult listTopArticles() {
-        List<Article> result = articleDao.findAll(new Specification<Article>() {
+        List<ArticleNoContent> result = articleNoContentDao.findAll(new Specification<ArticleNoContent>() {
             @Override
-            public Predicate toPredicate(Root<Article> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+            public Predicate toPredicate(Root<ArticleNoContent> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 return criteriaBuilder.equal(root.get("state").as(String.class), Constants.Article.STATE_TOP);
             }
         });
