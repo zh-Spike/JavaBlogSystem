@@ -57,7 +57,7 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         if (TextUtils.isEmpty(appointment.getLabId())) {
             return ResponseResult.FAILED("实验室不可以为空");
         }
-        Lab labFormDb = labDao.findOneById(appointment.getId());
+        Lab labFormDb = labDao.findOneById(appointment.getLabId());
         if (labFormDb.getState().equals(Constants.Lab.STATE_DELETE)) {
             return ResponseResult.FAILED("当前实验室不可用");
         }

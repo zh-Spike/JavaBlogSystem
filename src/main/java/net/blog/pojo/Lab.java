@@ -1,7 +1,5 @@
 package net.blog.pojo;
 
-import net.blog.utils.Constants;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,7 +23,7 @@ public class Lab {
     @Column(name = "update_time")
     private Date updateTime;
     @Column(name = "state")
-    private String state = Constants.Lab.STATE_ACTIVE;
+    private String state;
 
 
     public long getLabAvailable() {
