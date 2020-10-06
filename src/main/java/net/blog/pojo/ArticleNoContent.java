@@ -1,10 +1,10 @@
 package net.blog.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_article")
@@ -30,7 +30,7 @@ public class ArticleNoContent {
     @Column(name = "summary")
     private String summary;
     @Column(name = "labels")
-    private String labels;
+    private String label;
     @Column(name = "view_count")
     private long viewCount = 0L;
     @Column(name = "create_time")
@@ -40,6 +40,13 @@ public class ArticleNoContent {
     @Column(name = "cover")
     private String cover;
 
+
+    @Transient
+    private List<String> labels = new ArrayList<>();
+
+    public List<String> getLabels() {
+        return labels;
+    }
 
     public String getCover() {
         return cover;
@@ -122,12 +129,23 @@ public class ArticleNoContent {
         this.summary = summary;
     }
 
-    public String getLabels() {
-        return labels;
+    public String getLabel() {
+        // 打散label
+        this.labels.clear();
+        if (this.label != null) {
+            if (!this.label.contains("-")) {
+                this.labels.add(this.label);
+            } else {
+                String[] split = this.label.split("-");
+                List<String> strings = Arrays.asList(split);
+                this.labels.addAll(strings);
+            }
+        }
+        return label;
     }
 
-    public void setLabels(String labels) {
-        this.labels = labels;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public long getViewCount() {
