@@ -230,4 +230,31 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         appointmentDao.save(appointmentFromDb);
         return ResponseResult.SUCCESS("再给机会");
     }
+
+    @Override
+    public ResponseResult listUserAppointment() {
+        User user = userService.checkUser();
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        String userId = user.getId();
+        // 创建分页条件
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        // 查询
+        // 返回结果
+        List<Appointment> all = appointmentDao.findAll(new Specification<Appointment>() {
+            @Override
+            public Predicate toPredicate(Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                if (!TextUtils.isEmpty(userId)) {
+                    Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
+                    predicates.add(userIdPre);
+                }
+                Predicate[] preArray = new Predicate[predicates.size()];
+                predicates.toArray(preArray);
+                return criteriaBuilder.and(preArray);
+            }
+        }, sort);
+        return ResponseResult.SUCCESS("获取预约列表成功").setData(all);
+    }
 }

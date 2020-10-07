@@ -17,4 +17,6 @@ public interface IAppointmentService {
     ResponseResult deleteAppointmentById(String appointmentId);
 
     ResponseResult checkAppointment(String appointmentId);
+
+    ResponseResult listUserAppointment();
 }

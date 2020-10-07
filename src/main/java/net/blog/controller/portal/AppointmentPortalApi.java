@@ -31,4 +31,9 @@ public class AppointmentPortalApi {
                                           @RequestParam(value = "state", required = false) String state) {
         return appointmentService.listAppointment(page, size, userId, state);
     }
+
+    @GetMapping("/list/{userId}")
+    public ResponseResult listUserAppointment() {
+        return appointmentService.listUserAppointment();
+    }
 }
