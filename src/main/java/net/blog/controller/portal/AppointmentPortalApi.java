@@ -32,7 +32,7 @@ public class AppointmentPortalApi {
         return appointmentService.listAppointment(page, size, userId, state);
     }
 
-    @GetMapping("/list/{userId}")
+    @GetMapping("/list")
     public ResponseResult listUserAppointment() {
         return appointmentService.listUserAppointment();
     }
