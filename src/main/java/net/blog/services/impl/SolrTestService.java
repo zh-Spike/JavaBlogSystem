@@ -81,6 +81,11 @@ public class SolrTestService {
     public void importAll() {
         List<Article> all = articleDao.findAll();
         for (Article article : all) {
+//            // 清空solr 用来重新更新数据
+//            if (Constants.Article.STATE_DRAFT.equals(article.getState()) ||
+//                    Constants.Article.STATE_DELETE.equals(article.getState())) {
+//                continue;
+//            }
             SolrInputDocument doc = new SolrInputDocument();
             doc.addField("id", article.getId());
             doc.addField("blog_view_count", article.getViewCount());
