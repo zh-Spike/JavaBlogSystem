@@ -107,10 +107,10 @@ public class SolrServiceImpl extends BaseService implements ISolrService {
             // 结果列表
             for (SearchResult item : resultList) {
                 Map<String, List<String>> stringListMap = highlighting.get(item.getId());
-                if (stringListMap != null) {
-                    // 到下一个循环
-                    continue;
-                }
+//                if (stringListMap == null) {
+//                    // 到下一个循环
+//                    continue;
+//                }
                 List<String> blogContent = stringListMap.get("blog_content");
                 if (blogContent != null) {
                     item.setBlogContent(blogContent.get(0));
