@@ -363,9 +363,9 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         if (!TextUtils.isEmpty(state)) {
             articleFromDb.setState(state);
         }
-        String categoryid = article.getCategoryId();
-        if (!TextUtils.isEmpty(categoryid)) {
-            articleFromDb.setCategoryId(categoryid);
+        String categoryId = article.getCategoryId();
+        if (!TextUtils.isEmpty(categoryId)) {
+            articleFromDb.setCategoryId(categoryId);
         }
         articleFromDb.setCover(article.getCover());
         articleFromDb.setUpdateTime(new Date());
