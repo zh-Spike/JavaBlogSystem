@@ -14,7 +14,9 @@ public class PageList<T> {
         this.currentPage = currentPage;
         this.totalCount = totalCount;
         this.pageSize = pageSize;
-        this.totalPage = this.totalCount / this.pageSize;
+        // 10 / 10 == 1.0 => 1.0 + 0.9 == 1.9 ==> 1
+        // 11 / 10 == 1.1 => 1.1 + 0.9 == 2.0 ==> 2
+        this.totalPage = (long) (this.totalCount / (this.pageSize * 1.0f) + 0.9f);
         // 是否第一页/最后一页
         // 第一页为0 最后一页为总的页码
         // 10, 一页有10个 == > 1

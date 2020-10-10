@@ -170,7 +170,7 @@ public class SolrServiceImpl extends BaseService implements ISolrService {
         doc.addField("blog_content", content);
         doc.addField("blog_create_time", article.getCreateTime());
         doc.addField("blog_labels", article.getLabel());
-        doc.addField("blog_url", "https://chuancai.com");
+        doc.addField("blog_url", "/article/" + article.getId());
         doc.addField("blog_category_id", article.getCategoryId());
         try {
             solrClient.add(doc);
