@@ -41,10 +41,8 @@ public class UserApi {
     @PostMapping("/sign_up")
     public ResponseResult register(@RequestBody User user,
                                    @RequestParam("email_code") String emailCode,
-                                   @RequestParam("captcha_code") String captchaCode,
-                                   @RequestParam("captcha_key") String captchaKey,
-                                   HttpServletRequest request) {
-        return userService.register(user, emailCode, captchaCode, captchaKey, request);
+                                   @RequestParam("captcha_code") String captchaCode) {
+        return userService.register(user, emailCode, captchaCode);
     }
 
     /**
@@ -57,15 +55,13 @@ public class UserApi {
      *
      * @param captcha
      * @param user
-     * @param captchaKey
      * @return
      */
-    @PostMapping("/login/{captcha}/{captcha_key}")
+    @PostMapping("/login/{captcha}")
     public ResponseResult login(@PathVariable("captcha") String captcha,
-                                @PathVariable("captcha_key") String captchaKey,
                                 @RequestBody User user,
                                 @RequestParam(value = "from", required = false) String from) {
-        return userService.doLogin(captcha, captchaKey, user, from);
+        return userService.doLogin(captcha, user, from);
     }
 
     /**
@@ -75,9 +71,9 @@ public class UserApi {
      * @return
      */
     @GetMapping("/captcha")
-    public void getCaptcha(HttpServletResponse response, @RequestParam("captcha_key") String captchaKey) {
+    public void getCaptcha(HttpServletResponse response) {
         try {
-            userService.createCaptcha(response, captchaKey);
+            userService.createCaptcha(response);
         } catch (Exception e) {
             log.error(response.toString());
         }

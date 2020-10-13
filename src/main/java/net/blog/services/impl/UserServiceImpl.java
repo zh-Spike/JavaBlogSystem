@@ -138,15 +138,21 @@ public class UserServiceImpl extends BaseService implements IUserService {
 
 
     @Override
-    public void createCaptcha(HttpServletResponse response, String captchaKey) throws Exception {
-        if (TextUtils.isEmpty(captchaKey) || captchaKey.length() < 13) {
-            return;
-        }
-        long key;
-        try {
-            key = Long.parseLong(captchaKey);
-        } catch (Exception e) {
-            return;
+    public void createCaptcha(HttpServletResponse response) throws Exception {
+//        if (TextUtils.isEmpty(captchaKey) || captchaKey.length() < 13) {
+//            return;
+//        }
+
+        // 放弃通过时间来获得验证码
+        // 优化性能
+        // 防止重复创建 占用redis太多资源
+        // 检查上一次的id 如果有就重复利用
+        String lastId = CookieUtils.getCookie(getRequest(), Constants.User.LAST_CAPTCHA_ID);
+        String key;
+        if (TextUtils.isEmpty(lastId)) {
+            key = idWorker.nextId() + "";
+        } else {
+            key = lastId;
         }
         response.setContentType("image/gif");
         response.setHeader("Pragma", "No-cache");
@@ -180,6 +186,8 @@ public class UserServiceImpl extends BaseService implements IUserService {
         // 1. 自然过期
         // 2. 验证码用完就删
         // 3.用完的情况：get
+        // 把之前id写道cookie里面,用于后面检查
+        CookieUtils.setUpCookie(response, Constants.User.LAST_CAPTCHA_ID, key);
         redisUtils.set(Constants.User.KEY_CAPTCHA_CONTENT + key, content, 60 * 10);
         targetCaptcha.out(response.getOutputStream());
     }
@@ -267,8 +275,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
     }
 
     @Override
-    public ResponseResult register(User user, String emailCode, String captchaCode,
-                                   String captchaKey, HttpServletRequest request) {
+    public ResponseResult register(User user, String emailCode, String captchaCode) {
         //第一步：检查当前用户名是否已经注册
         String userName = user.getUserName();
         if (TextUtils.isEmpty(userName)) {
@@ -302,6 +309,11 @@ public class UserServiceImpl extends BaseService implements IUserService {
             //正确，删除redis
             redisUtils.del(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
         }
+        // captchaKey从redis里拿
+        String captchaKey = CookieUtils.getCookie(getRequest(), Constants.User.LAST_CAPTCHA_ID);
+        if (TextUtils.isEmpty(captchaKey)) {
+            return ResponseResult.FAILED("请允许保留Cookie信息");
+        }
         //第五步：检查CAPTCHA是否正确
         String captchaVerifyCode = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
         if (TextUtils.isEmpty(captchaVerifyCode)) {
@@ -322,7 +334,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         //第七步：补全数据
         //注册IP，登录IP，角色，头像，创建时间，登陆时间
-        String ipAddress = request.getRemoteAddr();
+        String ipAddress = getRequest().getRemoteAddr();
         user.setRegIp(ipAddress);
         user.setLoginIp(ipAddress);
         user.setUpdateTime(new Date());
@@ -332,6 +344,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         user.setState("1");
         user.setId(idWorker.nextId() + "");
         //第八步：保存到数据库
+        CookieUtils.deleteCookie(getResponse(), Constants.User.LAST_CAPTCHA_ID);
         userDao.save(user);
         //第九步：返回结果
         return ResponseResult.GET(ResponseState.JOIN_IN_SUCCESS);
@@ -340,7 +353,6 @@ public class UserServiceImpl extends BaseService implements IUserService {
 
     @Override
     public ResponseResult doLogin(String captcha,
-                                  String captchaKey,
                                   User user,
                                   String from) {
         // from可能没有值 给一个默认
@@ -348,6 +360,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
                 || (!Constants.FROM_MOBILE.equals(from) && !Constants.FORM_PC.equals(from))) {
             from = Constants.FROM_MOBILE;
         }
+        String captchaKey = CookieUtils.getCookie(getRequest(), Constants.User.LAST_CAPTCHA_ID);
         HttpServletRequest request = getRequest();
         HttpServletResponse response = getResponse();
         String captchaValue = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaKey);
@@ -388,6 +401,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         userFromDb.setLoginIp(request.getRemoteAddr());
         userFromDb.setUpdateTime(new Date());
         createToken(response, userFromDb, from);
+        CookieUtils.deleteCookie(getResponse(), Constants.User.LAST_CAPTCHA_ID);
         return ResponseResult.SUCCESS("登录成功");
     }
 
@@ -730,26 +744,31 @@ public class UserServiceImpl extends BaseService implements IUserService {
         // 尝试取出上次的loginId
         String lastLoginId = CookieUtils.getCookie(getRequest(), Constants.User.LAST_REQUEST_LOGIN_ID);
         if (!TextUtils.isEmpty(lastLoginId)) {
-            // 先删除redis
-            redisUtils.del(Constants.User.KEY_PC_LOGIN_ID + lastLoginId);
-            // 检查上次请求时间 太频繁直接拦截
-            Object lastGetTime = redisUtils.get(Constants.User.LAST_REQUEST_LOGIN_ID + lastLoginId);
-            if (lastGetTime != null) {
-                return ResponseResult.FAILED("服务器繁忙");
-            }
+//            // 先删除redis
+//            redisUtils.del(Constants.User.KEY_PC_LOGIN_ID + lastLoginId);
+//            // 检查上次请求时间 太频繁直接拦截
+//            Object lastGetTime = redisUtils.get(Constants.User.LAST_REQUEST_LOGIN_ID + lastLoginId);
+//            if (lastGetTime != null) {
+//                return ResponseResult.FAILED("服务器繁忙");
+//            }
         }
         // 1. 生成一个唯一的ID
-        long code = idWorker.nextId();
+        long code;
+        if (!TextUtils.isEmpty(lastLoginId)) {
+            code = Long.parseLong(lastLoginId);
+        } else {
+            code = idWorker.nextId();
+        }
         // 2. 保存到redis 值为false 时间为5minutes 二维码的有效期
         redisUtils.set(Constants.User.KEY_PC_LOGIN_ID + code, Constants.User.KEY_PC_LOGIN_STATE_FALSE,
                 Constants.TimeValueInSecond.MIN_5);
         Map<String, Object> result = new HashMap<>();
         String originalDomain = TextUtils.getDomain(getRequest());
-        result.put("code", code);
+        result.put("code", String.valueOf(code));
         result.put("url", originalDomain + "/portal/image/qr_code/" + code);
         CookieUtils.setUpCookie(getResponse(), Constants.User.LAST_REQUEST_LOGIN_ID, String.valueOf(code));
-        redisUtils.set(Constants.User.LAST_REQUEST_LOGIN_ID + String.valueOf(code),
-                "true", Constants.TimeValueInSecond.SECOND_10);
+//        redisUtils.set(Constants.User.LAST_REQUEST_LOGIN_ID + String.valueOf(code),
+//                "true", Constants.TimeValueInSecond.SECOND_10);
         // 返回结果
         return ResponseResult.SUCCESS("获取成功").setData(result);
     }
@@ -779,22 +798,20 @@ public class UserServiceImpl extends BaseService implements IUserService {
         Callable<ResponseResult> callable = new Callable<ResponseResult>() {
             @Override
             public ResponseResult call() throws Exception {
-                try {
-                    log.info("start waiting for scan");
-                    // 先阻塞
-                    countDownLatchManager.getLatch(loginId).await(Constants.User.QR_CODE_STATE_CHECK_WAITING_TIME,
-                            TimeUnit.SECONDS);
-                    // 收到状态更新的通知后
-                    log.info("start check login state");
-                    ResponseResult checkResult = checkLoginIdState(loginId);
-                    if (checkResult != null) return checkResult;
-                    // 超时后返回等待扫描
-                    // 完事后删除对应latch
-                    return ResponseResult.WAITING_FOR_SCAN();
-                } finally {
-                    log.info("delete latch");
-                    countDownLatchManager.deleteLatch(loginId);
-                }
+                log.info("start waiting for scan...");
+                // 先阻塞
+                countDownLatchManager.getLatch(loginId).await(Constants.User.QR_CODE_STATE_CHECK_WAITING_TIME,
+                        TimeUnit.SECONDS);
+                // 收到状态更新的通知后
+                log.info("start check login state...");
+                ResponseResult checkResult = checkLoginIdState(loginId);
+                if (checkResult != null)
+                    return checkResult;
+                // 超时后返回等待扫描
+                // 完事后删除对应latch
+                countDownLatchManager.deleteLatch(loginId);
+                CookieUtils.deleteCookie(getResponse(), Constants.User.LAST_CAPTCHA_ID);
+                return ResponseResult.WAITING_FOR_SCAN();
             }
         };
         try {
@@ -871,6 +888,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
                 return ResponseResult.QR_CODE_DEPRECATE();
             }
             createToken(getResponse(), userFromDb, Constants.FORM_PC);
+            CookieUtils.deleteCookie(getResponse(), Constants.User.LAST_REQUEST_LOGIN_ID);
             // 登录成功
             return ResponseResult.LOG_IN_SUCCESS();
         }

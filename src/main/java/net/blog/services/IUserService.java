@@ -10,15 +10,13 @@ public interface IUserService {
 
     ResponseResult initManagerAccount(User user, HttpServletRequest request);
 
-    void createCaptcha(HttpServletResponse response, String captchaKey) throws Exception;
+    void createCaptcha(HttpServletResponse response) throws Exception;
 
     ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress);
 
-    ResponseResult register(User user, String emailCode, String captchaCode,
-                            String captchaKey, HttpServletRequest request);
+    ResponseResult register(User user, String emailCode, String captchaCode);
 
-    ResponseResult doLogin(String captcha, String captchaKey,
-                           User user, String from);
+    ResponseResult doLogin(String captcha, User user, String from);
 
     User checkUser();
 
@@ -32,7 +30,7 @@ public interface IUserService {
 
     ResponseResult deleteUserById(String userId);
 
-    ResponseResult listUsers(int page, int size,String userName,String email);
+    ResponseResult listUsers(int page, int size, String userName, String email);
 
     ResponseResult updateUserPassword(String verifyCode, User user);
 

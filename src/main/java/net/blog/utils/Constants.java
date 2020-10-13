@@ -26,8 +26,9 @@ public interface Constants {
         String KEY_COMMIT_TOKEN_RECORD = "key_commit_token_record_";
         String KEY_PC_LOGIN_ID = "key_pc_login_id_";
         String KEY_PC_LOGIN_STATE_FALSE = "false";
-        int QR_CODE_STATE_CHECK_WAITING_TIME = 30;
+        int QR_CODE_STATE_CHECK_WAITING_TIME = 15;
         String LAST_REQUEST_LOGIN_ID = "l_r_l_i";
+        String LAST_CAPTCHA_ID = "l_cap_i";
     }
 
     interface ImageType {
