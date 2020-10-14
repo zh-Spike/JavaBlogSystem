@@ -205,7 +205,14 @@ public class UserServiceImpl extends BaseService implements IUserService {
      * @return ResponseResult
      */
     @Override
-    public ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress) {
+    public ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress, String captchaCode) {
+        // 检查图灵验证码是否正确
+        // 从cookies里拿key
+        String captchaId = CookieUtils.getCookie(request, Constants.User.LAST_CAPTCHA_ID);
+        String captchaValue = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaId);
+        if (!captchaCode.equals(captchaValue)) {
+            return ResponseResult.FAILED("图灵验证码不正确");
+        }
         if (emailAddress == null) {
             return ResponseResult.FAILED("邮箱地址不能为空");
         }

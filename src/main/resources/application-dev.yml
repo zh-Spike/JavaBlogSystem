@@ -2,17 +2,17 @@ spring:
   application:
     name: BlogApplication
   datasource:
-    url: jdbc:mysql://192.168.106.129:3306/blog_system?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.106.128:3306/blog_system?characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
   redis:
     port: 6379
-    host: 192.168.106.129
+    host: 192.168.106.128
     password: 123456
   data:
     solr:
-      host: http://192.168.106.129:8983/solr/blog_core
+      host: http://192.168.106.128:8983/solr/blog_core
 
 server:
   port: 8081

@@ -86,9 +86,10 @@ public class UserApi {
      */
     @GetMapping("/verify_code")
     public ResponseResult sendVerifyCode(HttpServletRequest request, @RequestParam("type") String type,
-                                         @RequestParam("email") String emailAddress) {
+                                         @RequestParam("email") String emailAddress,
+                                         @RequestParam("captchaCode") String captchaCode) {
         log.info("email ==>" + emailAddress);
-        return userService.sendEmail(type, request, emailAddress);
+        return userService.sendEmail(type, request, emailAddress, captchaCode);
     }
 
     /**

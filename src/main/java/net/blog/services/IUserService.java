@@ -12,7 +12,7 @@ public interface IUserService {
 
     void createCaptcha(HttpServletResponse response) throws Exception;
 
-    ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress);
+    ResponseResult sendEmail(String type, HttpServletRequest request, String emailAddress, String captchaCode);
 
     ResponseResult register(User user, String emailCode, String captchaCode);
 
