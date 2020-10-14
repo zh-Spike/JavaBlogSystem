@@ -2,6 +2,14 @@ package net.blog.services.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.vladsch.flexmark.ext.jekyll.tag.JekyllTagExtension;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
+import com.vladsch.flexmark.ext.toc.SimTocExtension;
+import com.vladsch.flexmark.ext.toc.TocExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Node;
+import com.vladsch.flexmark.util.data.MutableDataSet;
 import lombok.extern.slf4j.Slf4j;
 import net.blog.dao.ArticleDao;
 import net.blog.dao.ArticleNoContentDao;
@@ -299,9 +307,32 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         String state = article.getState();
         if (Constants.Article.STATE_PUBLISH.equals(state) ||
                 Constants.Article.STATE_TOP.equals(state)) {
+            // 处理文章内容
+            String html;
+            // 转HTML
+            if (Constants.Article.TYPE_MARKDOWN.equals(article.getType())) {
+                // 转成html
+                // markdown to html
+                MutableDataSet options = new MutableDataSet().set(Parser.EXTENSIONS, Arrays.asList(
+                        TablesExtension.create(),
+                        JekyllTagExtension.create(),
+                        TocExtension.create(),
+                        SimTocExtension.create()
+                ));
+                Parser parser = Parser.builder(options).build();
+                HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+                Node document = parser.parse(article.getContent());
+                html = renderer.render(document);
+            } else {
+                html = article.getContent();
+            }
+            // 搞一份文章的复制
+            String articleGsonCopy = gson.toJson(article);
+            Article newArticle = gson.fromJson(articleGsonCopy, Article.class);
+            newArticle.setContent(html);
             // 正常发布才能增加阅读量
             redisUtils.set(Constants.Article.KEY_ARTICLE_CACHE + articleId,
-                    gson.toJson(article), Constants.TimeValueInSecond.MIN_5);
+                    gson.toJson(newArticle), Constants.TimeValueInSecond.MIN_5);
             // 设置阅读量的key 先从redis里获取,如果redis里没有就从article中获取,并且再添加到redis里
             String viewCount = (String) redisUtils.get(Constants.Article.KEY_ARTICLE_VIEW_COUNT + articleId);
             if (TextUtils.isEmpty(viewCount)) {
@@ -316,7 +347,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
                 solrService.updateArticle(articleId, article);
             }
             // 可以返回
-            return ResponseResult.SUCCESS("获取文章成功").setData(article);
+            return ResponseResult.SUCCESS("获取文章成功").setData(newArticle);
         }
         // 如果删除/草稿,需要admin
         User user = userService.checkUser();
