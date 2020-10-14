@@ -49,4 +49,6 @@ public interface IUserService {
     ResponseResult resetPassword(String userId, String password);
 
     ResponseResult getRegisterCount();
+
+    ResponseResult checkEmailCode(String email, String emailCode, String captchaCode);
 }

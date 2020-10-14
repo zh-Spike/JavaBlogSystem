@@ -880,6 +880,22 @@ public class UserServiceImpl extends BaseService implements IUserService {
         return ResponseResult.SUCCESS("获取用户总数成功").setData(count);
     }
 
+    @Override
+    public ResponseResult checkEmailCode(String email, String emailCode, String captchaCode) {
+        // 检查人类验证码是否正确
+        String captchaId = CookieUtils.getCookie(getRequest(), Constants.User.LAST_CAPTCHA_ID);
+        String captcha = (String) redisUtils.get(Constants.User.KEY_CAPTCHA_CONTENT + captchaId);
+        if (!captchaCode.equals(captcha)) {
+            return ResponseResult.FAILED("图灵验证码不正确");
+        }
+        // 检查邮箱验证码
+        String redisVerifyCode = (String) redisUtils.get(Constants.User.KEY_EMAIL_CODE_CONTENT + email);
+        if (!emailCode.equals(redisVerifyCode)) {
+            return ResponseResult.FAILED("邮箱验证码不正确");
+        }
+        return ResponseResult.SUCCESS("邮箱验证码正确");
+    }
+
     private ResponseResult checkLoginIdState(String loginId) {
         String loginState = (String) redisUtils.get(Constants.User.KEY_PC_LOGIN_ID + loginId);
         if (loginState == null) {

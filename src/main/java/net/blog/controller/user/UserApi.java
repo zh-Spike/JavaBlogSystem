@@ -289,5 +289,11 @@ public class UserApi {
         return userService.getRegisterCount();
     }
 
+    @GetMapping("/check_email_code")
+    public ResponseResult checkEmailCode(@RequestParam("email") String email,
+                                         @RequestParam("emailCode") String emailCode,
+                                         @RequestParam("captchaCode") String captchaCode) {
+        return userService.checkEmailCode(email, emailCode, captchaCode);
+    }
 }
 

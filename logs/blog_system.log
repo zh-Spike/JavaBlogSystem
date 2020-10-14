@@ -3941,3 +3941,55 @@
 [2020/10/14-16:10:50][http-nio-8082-exec-4][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > hbada
 [2020/10/14-16:10:53][http-nio-8082-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > parseToken
 [2020/10/14-16:10:53][http-nio-8082-exec-5][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/10/14-18:25:04][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/10/14-18:25:05][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 12104 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/10/14-18:25:05][main][INFO ][net.blog.BlogApplication]:The following profiles are active: prod
+[2020/10/14-18:25:13][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 8.944 seconds (JVM running for 9.643)
+[2020/10/14-18:28:55][http-nio-8082-exec-6][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-5][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_05
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_05\png\751753958954893312.png
+[2020/10/14-18:28:55][http-nio-8082-exec-6][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_02
+[2020/10/14-18:28:55][http-nio-8082-exec-6][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_02\png\750672281511919616.png
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_02
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_02\png\750691121268523008.png
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_10_05
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_10_05\jpg\762801432079368192.jpg
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_02
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_02\png\750696567551295488.png
+[2020/10/14-18:28:55][http-nio-8082-exec-5][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_08
+[2020/10/14-18:28:55][http-nio-8082-exec-5][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_08\jpg\752911807034687488.jpg
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_08
+[2020/10/14-18:28:55][http-nio-8082-exec-7][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_08\png\752911863037034496.png
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_10_05
+[2020/10/14-18:28:55][http-nio-8082-exec-2][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_10_05\jpg\762801236536721408.jpg
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_09_04
+[2020/10/14-18:28:55][http-nio-8082-exec-1][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_09_04\png\751530439163772928.png
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getImage
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.ImageServiceImpl]:viewImage format == >2020_08_29
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.ImageServiceImpl]:get image target path == >D:\Codes\BlogSystem\logs\images\2020_08_29\jpg\749295826957762560.jpg
+[2020/10/14-18:28:55][http-nio-8082-exec-8][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > listUserAppointment
+[2020/10/14-18:28:55][http-nio-8082-exec-4][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getLabels
+[2020/10/14-18:28:55][http-nio-8082-exec-8][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > parseToken
+[2020/10/14-18:28:55][http-nio-8082-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/10/14-18:28:56][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > parseToken
+[2020/10/14-18:28:56][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/10/14-18:28:56][http-nio-8082-exec-9][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > parseToken
+[2020/10/14-18:28:56][http-nio-8082-exec-9][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
+[2020/10/14-18:29:09][main][INFO ][net.blog.BlogApplication]:BlogApplication run...
+[2020/10/14-18:29:10][main][INFO ][net.blog.BlogApplication]:Starting BlogApplication on Innovation with PID 11112 (D:\Codes\BlogSystem\target\classes started by ETNJL in D:\Codes\BlogSystem)
+[2020/10/14-18:29:10][main][INFO ][net.blog.BlogApplication]:The following profiles are active: prod
+[2020/10/14-18:29:23][main][INFO ][net.blog.BlogApplication]:Started BlogApplication in 13.71 seconds (JVM running for 14.545)
+[2020/10/14-18:30:06][http-nio-8082-exec-1][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > getCaptcha
+[2020/10/14-18:30:07][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha font type index ==> 8
+[2020/10/14-18:30:07][http-nio-8082-exec-1][INFO ][net.blog.services.impl.UserServiceImpl]:captcha content == > 4uzcd
+[2020/10/14-18:30:07][http-nio-8082-exec-3][INFO ][net.blog.interceptor.ApiInterceptor]:method name == > parseToken
+[2020/10/14-18:30:07][http-nio-8082-exec-3][INFO ][net.blog.services.impl.UserServiceImpl]:checkUser tokenKey == > null
