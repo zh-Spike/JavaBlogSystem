@@ -270,6 +270,22 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
     @Autowired
     private Gson gson;
 
+    @Override
+    public ResponseResult getArticleByIdForAdmin(String articleId) {
+        // 查询文章
+        Article article = articleDao.findOneById(articleId);
+        if (article == null) {
+            return ResponseResult.FAILED("文章不存在");
+        }
+        // 如果删除/草稿,需要admin
+        User user = userService.checkUser();
+        if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
+            return ResponseResult.PERMISSION_DENIED();
+        }
+        // 返回结果
+        return ResponseResult.SUCCESS("获取文章成功").setData(article);
+    }
+
     /**
      * 如果有审核机制 审核的文章只能管理员和作者自己才能看
      * 草稿、删除、置顶、发布
@@ -303,6 +319,7 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
         if (article == null) {
             return ResponseResult.FAILED("文章不存在");
         }
+        User user = userService.checkUser();
         // 判断文章状态
         String state = article.getState();
         if (Constants.Article.STATE_PUBLISH.equals(state) ||
@@ -350,7 +367,6 @@ public class ArticleServiceImpl extends BaseService implements IArticleService {
             return ResponseResult.SUCCESS("获取文章成功").setData(newArticle);
         }
         // 如果删除/草稿,需要admin
-        User user = userService.checkUser();
         if (user == null || !Constants.User.ROLE_ADMIN.equals(user.getRoles())) {
             return ResponseResult.PERMISSION_DENIED();
         }

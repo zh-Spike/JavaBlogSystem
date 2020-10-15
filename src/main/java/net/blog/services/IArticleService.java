@@ -11,6 +11,8 @@ public interface IArticleService {
 
     ResponseResult getArticleById(String articleId);
 
+    ResponseResult getArticleByIdForAdmin(String articleId);
+
     ResponseResult updateArticle(String articleId, Article article);
 
     ResponseResult deleteArticleById(String articleId);
