@@ -169,6 +169,8 @@ public class CommentServiceImpl extends BaseService implements ICommentService {
         if (comment == null) {
             return ResponseResult.FAILED("评论不存在");
         }
+        // 清空对应文章的redis的缓存
+        redisUtils.del(Constants.Comment.KEY_COMMENT_FIRST_PAGE_CACHE + comment.getArticleId());
         String state = comment.getState();
         if (Constants.Comment.STATE_PUBLISH.equals(state)) {
             comment.setState(Constants.Comment.STATE_TOP);
