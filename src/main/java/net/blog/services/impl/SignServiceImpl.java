@@ -15,9 +15,15 @@ import net.blog.utils.Constants;
 import net.blog.utils.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -70,7 +76,7 @@ public class SignServiceImpl extends BaseService implements ISignService {
         } else {
             return ResponseResult.FAILED("审核未通过");
         }
-        if (!isUsedStr.equals(Constants.Appointment.IS_USED)) {
+        if (isUsedStr.equals(Constants.Appointment.IS_USED)) {
             return ResponseResult.FAILED("该申请已使用");
         }
         appointmentFromDb.setIsUsed(Constants.Appointment.IS_USED);
@@ -149,5 +155,32 @@ public class SignServiceImpl extends BaseService implements ISignService {
         }
         //返回结果
         return ResponseResult.SUCCESS("获取签到列表成功").setData(signs);
+    }
+
+    @Override
+    public ResponseResult listUserSign() {
+        User user = userService.checkUser();
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
+        String userId = user.getId();
+        // 创建分页条件
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        // 查询
+        // 返回结果
+        List<Sign> all = signDao.findAll(new Specification<Sign>() {
+            @Override
+            public Predicate toPredicate(Root<Sign> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                if (!TextUtils.isEmpty(userId)) {
+                    Predicate userIdPre = criteriaBuilder.equal(root.get("userId").as(String.class), userId);
+                    predicates.add(userIdPre);
+                }
+                Predicate[] preArray = new Predicate[predicates.size()];
+                predicates.toArray(preArray);
+                return criteriaBuilder.and(preArray);
+            }
+        }, sort);
+        return ResponseResult.SUCCESS("获取签到列表成功").setData(all);
     }
 }

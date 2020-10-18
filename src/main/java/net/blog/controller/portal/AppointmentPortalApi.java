@@ -25,6 +25,12 @@ public class AppointmentPortalApi {
         return appointmentService.deleteAppointmentById(appointmentId);
     }
 
+    @CheckTooFrequentCommit
+    @PutMapping("/update/{appointmentId}")
+    public ResponseResult updateAppointment(@PathVariable("appointmentId") String appointmentId, @RequestBody Appointment appointment) {
+        return appointmentService.updateAppointment(appointmentId, appointment);
+    }
+
     @GetMapping("/list/{page}/{size}")
     public ResponseResult listAppointment(@PathVariable("page") int page, @PathVariable("size") int size,
                                           @RequestParam(value = "userId", required = false) String userId,

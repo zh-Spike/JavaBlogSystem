@@ -95,7 +95,14 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
     @Override
     public ResponseResult updateAppointment(String appointmentId, Appointment appointment) {
         // 第一步:找出
+        User user = userService.checkUser();
+        if (user == null) {
+            return ResponseResult.ACCOUNT_NOT_LOGIN();
+        }
         Appointment appointmentFromDb = appointmentDao.findOneById(appointmentId);
+        if (!user.getId().equals(appointmentFromDb.getUserId()) && !user.getRoles().equals(Constants.User.ROLE_ADMIN)) {
+            return ResponseResult.FAILED("请检查权限");
+        }
         if (appointmentFromDb == null) {
             return ResponseResult.FAILED("该预约不存在");
         }

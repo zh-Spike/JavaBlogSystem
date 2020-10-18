@@ -25,4 +25,9 @@ public class SignPortalApi {
     public ResponseResult signOut(@PathVariable("signId") String signId) {
         return signService.signOut(signId);
     }
+
+    @GetMapping("/list")
+    public ResponseResult listUserSign() {
+        return signService.listUserSign();
+    }
 }

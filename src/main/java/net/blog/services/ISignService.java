@@ -11,4 +11,6 @@ public interface ISignService {
     ResponseResult updateSign(String signId);
 
     ResponseResult listSigns();
+
+    ResponseResult listUserSign();
 }
