@@ -349,6 +349,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
         user.setAvatar(Constants.User.DEFAULT_AVATAR);
         user.setRoles(Constants.User.ROLE_NORMAL);
         user.setState("1");
+        user.setSign("");
         user.setId(idWorker.nextId() + "");
         //第八步：保存到数据库
         CookieUtils.deleteCookie(getResponse(), Constants.User.LAST_CAPTCHA_ID);
