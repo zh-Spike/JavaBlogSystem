@@ -307,7 +307,7 @@ public class EmailSender {
 
     public static void sendRegisterVerifyCode(String code, String address) throws Exception {
         EmailSender.subject("邮箱注册验证码")
-                .from("zh_spike博客系统")
+                .from("HDU实验室管理系统系统")
                 .text("注册验证码是:" + code + " 有效期为10分钟，若非本人，请忽略本邮件")
                 .to(address)
                 .send();
