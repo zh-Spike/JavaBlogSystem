@@ -12,7 +12,7 @@ public class CookieUtils {
     //1年
     public static final int default_age = 60 * 60 * 24 * 365;
 
-    public static final String domain = "localhost";
+    public static final String domain = "hdulabres.imztj.cn";
 
     /**
      * 设置cookie值
@@ -31,7 +31,7 @@ public class CookieUtils {
         /**
          * 域名: 如果是单点登录就是顶级域名
          */
-        // cookie.setDomain(domain);
+        cookie.setDomain(domain);
         cookie.setMaxAge(age);
         response.addCookie(cookie);
     }

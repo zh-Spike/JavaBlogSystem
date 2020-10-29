@@ -15,7 +15,7 @@ spring:
     database: 1
   data:
     solr:
-      host: http://172.25.109.213:8983/solr/blog_core
+      host: http://172.25.109.213:8983/solr/sob_blog_core
 server:
   port: 8080
 # docker部署
