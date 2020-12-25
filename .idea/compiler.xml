@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="blog_system" />
+        <module name="BlogSystem" />
         <module name="BlogSystemDemo" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BlogSystem" options="-parameters" />
       <module name="BlogSystemDemo" options="-parameters" />
       <module name="blog_system" options="-parameters" />
     </option>
