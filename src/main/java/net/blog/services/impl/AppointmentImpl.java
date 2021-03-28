@@ -77,6 +77,17 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         appointment.setIsUsed(Constants.Appointment.NOT_USED);
         appointment.setCreateTime(new Date());
         appointment.setUpdateTime(new Date());
+
+        String startWeek = String.valueOf(appointment.getStartWeek());
+        String endWeek = String.valueOf(appointment.getEndWeek());
+        if (startWeek.equals("0") || endWeek.equals("0") ) {
+            return ResponseResult.FAILED("周数不能为空");
+        } else if (appointment.getStartWeek() > appointment.getEndWeek()) {
+            return ResponseResult.FAILED("周数不对应");
+        }
+
+        appointment.setStartWeek(appointment.getStartWeek());
+        appointment.setEndWeek(appointment.getEndWeek());
         // 保存数据
         appointmentDao.save(appointment);
         // 返回结果
@@ -136,6 +147,14 @@ public class AppointmentImpl extends BaseService implements IAppointmentService 
         }
         if (appointmentFromDb.getEndTime() != null) {
             appointmentFromDb.setEndTime(appointment.getEndTime());
+        }
+        String appointmentStartWeekStr = String.valueOf(appointment.getStartWeek());
+        if (!appointmentStartWeekStr.equals("0")) {
+            appointmentFromDb.setStartWeek(appointment.getStartWeek());
+        }
+        String appointmentEndWeekStr = String.valueOf(appointment.getEndWeek());
+        if (!appointmentEndWeekStr.equals("0")) {
+            appointmentFromDb.setEndWeek(appointment.getEndWeek());
         }
         // 第三步:保存数据
         appointmentFromDb.setUpdateTime(new Date());

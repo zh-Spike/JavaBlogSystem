@@ -35,6 +35,12 @@ public class Appointment {
     @Column(name = "isused")
     private String isUsed;
 
+    @Column(name = "start_week")
+    private long startWeek;
+
+    @Column(name = "end_week")
+    private long endWeek;
+
     public String getLabName() {
         return labName;
     }
@@ -140,5 +146,21 @@ public class Appointment {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public long getEndWeek() {
+        return endWeek;
+    }
+
+    public void setEndWeek(long endWeek) {
+        this.endWeek = endWeek;
+    }
+
+    public long getStartWeek() {
+        return startWeek;
+    }
+
+    public void setStartWeek(long startWeek) {
+        this.startWeek = startWeek;
     }
 }
